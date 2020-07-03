@@ -16,6 +16,13 @@ public class Categoria {
     public String descripcion;
     public Conexion m_Conexion;
 
+    public void setCategoria(String nombre, String descripcion, Conexion m_Conexion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.m_Conexion = m_Conexion;
+    }
+
+    
     public Categoria(int id, String nombre, String descripcion, Conexion m_Conexion) {
         this.id = id;
         this.nombre = nombre;
@@ -49,14 +56,6 @@ public class Categoria {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-    public Conexion getM_Conexion() {
-        return m_Conexion;
-    }
-
-    public void setM_Conexion(Conexion m_Conexion) {
-        this.m_Conexion = m_Conexion;
-    }
     
-    
+
 }

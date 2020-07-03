@@ -6,21 +6,9 @@
 package correos.veterinaria.software;
 
 import correos.veterinaria.correo.ClienteSMTP;
-import correos.veterinaria.procesador.Analex;
-import correos.veterinaria.procesador.Cinta;
-import correos.veterinaria.procesador.Parser;
-import correos.veterinaria.procesador.Token;
-import correos.veterinaria.software.Negocio.UsuarioNegocio;
-import correos.veterinaria.software.Negocio.ProductoNegocio;
-import correos.veterinaria.software.Negocio.VentaNegocio;
-import correos.veterinaria.software.Negocio.AsistenciaNegocio;
-import correos.veterinaria.software.Negocio.HorarioNegocio;
-import correos.veterinaria.software.Negocio.MensualidadNegocio;
-import correos.veterinaria.software.Negocio.RutinaEjercicioNegocio;
-import correos.veterinaria.software.Negocio.ReporteNegocio;
-import correos.veterinaria.utils.Helper;
-import correos.veterinaria.utils.Mensaje;
-import correos.veterinaria.utils.Utils;
+import correos.veterinaria.procesador.*;
+import correos.veterinaria.software.Negocio.*;
+import correos.veterinaria.utils.*;
 import java.sql.Date;
 import javax.mail.MessagingException;
 import javax.swing.table.DefaultTableModel;
@@ -30,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Jorge Luis Urquiza
  */
 public class VeterinariaMail {
+    MailCategoria mailCategoria = new MailCategoria();
 
     public void processMessage(String Message) throws MessagingException {
         // Setteando Variables
@@ -190,63 +179,12 @@ public class VeterinariaMail {
                 break;
 
             case Token.REGISTRARCATEGORIA:
-                registrarCategoria(analex, destinatario);
+              
                 break;
         }
     }
 
-    public void registrarCategoria(Analex analex, String correoDestnatario) {
-        // Obtengo el Siguiente token
-        analex.Avanzar();
-        Token token = analex.Preanalisis();
-
-        // Reviso si no es ayuda
-        if (token.getNombre() == Token.HELP) {
-            // Mostrar ayuda de esa funcionalidad
-            // Enviar correo con la ayuda
-            ClienteSMTP.sendMail(correoDestnatario, "Ayudas - Musclemania Mail", Helper.HELP_REGISTRARUSUARIO);
-            return;
-        }
-
-        // Sino, ejecutar el comando
-        UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
-        analex.Avanzar();
-        // Atributos
-        String nombres = Utils.quitarComillas(analex.Preanalisis().getToStr());
-        System.out.println("Nombres :" + nombres);
-        analex.Avanzar();
-        analex.Avanzar();
-        analex.Avanzar();
-        String apellidos = Utils.quitarComillas(analex.Preanalisis().getToStr());
-        System.out.println("Apellidos :" + apellidos);
-        analex.Avanzar();
-        analex.Avanzar();
-        analex.Avanzar();
-        int telefono = (int) analex.Preanalisis().getAtributo();
-        System.out.println("Telefono :" + telefono);
-        analex.Avanzar();
-        analex.Avanzar();
-        analex.Avanzar();
-        Date fecha_nacimiento = Utils.convertirFechas(Utils.quitarComillas(analex.Preanalisis().getToStr()));
-        System.out.println("Fecha :" + fecha_nacimiento);
-        analex.Avanzar();
-        analex.Avanzar();
-        analex.Avanzar();
-        int tipo = (int) analex.Preanalisis().getAtributo();
-        System.out.println("Tipo :" + tipo);
-        analex.Avanzar();
-        analex.Avanzar();
-        analex.Avanzar();
-        boolean estado = analex.Preanalisis().getNombre() == Token.TRUE;
-        System.out.println("Estado :" + estado);
-        if (tipo > 3) {
-            ClienteSMTP.sendMail(correoDestnatario, "Registrar Usuario", "Tipo No Valido");
-        } else {
-            usuarioNegocio.registrarUsuario(nombres, apellidos, telefono, fecha_nacimiento, tipo, estado);
-            ClienteSMTP.sendMail(correoDestnatario, "Registrar Usuario", "Registro realizado Correctamente");
-        }
-
-    }
+    
 
     public void registrarUsuario(Analex analex, String correoDest) {
         // Obtengo el Siguiente token
@@ -405,7 +343,7 @@ public class VeterinariaMail {
 
     public void obtenerAsistencias(Analex analex, String correoDest) throws MessagingException {
         // Obtengo el Siguiente token
-        analex.Avanzar();
+        analex.Avanzar(); 
         Token token = analex.Preanalisis();
 
         // Reviso si no es ayuda
