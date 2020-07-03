@@ -18,9 +18,10 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 /**
  *
- * @author Percy Tomicha
+ * @author Jorge Luis Urquiza
  */
 public class Mensaje {
+    
     private String correo;
     private String subject;
     private String data;

@@ -32,6 +32,10 @@ public class Main {
          veterinario.modificar(1, "Juanito", "Perez Gallardo", 111, "78036436", "Calle paraguay #20");
          veterinario.eliminar(2);
          */
+         //CU3
+        ClienteNegocio cliente = new ClienteNegocio();
+        cliente.registrar("Ernesto ","Zambrana","2030542", "71036584");
+        cliente.eliminar(3);
     }
 
 }
