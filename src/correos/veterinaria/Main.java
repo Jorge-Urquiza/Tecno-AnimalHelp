@@ -5,6 +5,8 @@
  */
 package correos.veterinaria;
 
+import correos.veterinaria.software.Negocio.*;
+
 /**
  *
  * @author Jorge Luis Urquiza
@@ -15,7 +17,21 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      
+        //cu1
+        /*
+         CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+         categoriaNegocio.registrar("Frutas", "Todas las frutas");
+         categoriaNegocio.registrar("Lacteos", "Derivados Leche");
+         categoriaNegocio.eliminar(3);
+         */
+
+        //CU2
+        /*
+         VeterinarioNegocio veterinario = new VeterinarioNegocio();
+         veterinario.registrar("Evans", "Balcazar", 5555, "75055455", "Calle Uruguay #20");
+         veterinario.modificar(1, "Juanito", "Perez Gallardo", 111, "78036436", "Calle paraguay #20");
+         veterinario.eliminar(2);
+         */
     }
-    
+
 }
