@@ -111,7 +111,7 @@ public class Mensaje {
             msg.setContent(this.data, "text/html; charset=UTF-8");
             // sends the e-mail
             Transport.send(msg);
-            System.out.println("Envie MAIL: to=" + this.correo + " subject=" + subject + " data:" + this.data);
+           // System.out.println("Envie MAIL: to=" + this.correo + " subject=" + subject + " data:" + this.data);
             return true;
         } catch (MessagingException mex) {
             System.out.println("ERROR AL ENVIAR SMTP");

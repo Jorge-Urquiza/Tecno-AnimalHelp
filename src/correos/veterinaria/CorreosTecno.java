@@ -10,7 +10,6 @@ import correos.veterinaria.software.VeterinariaMail;
 import correos.veterinaria.utils.Constants;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.mail.MessagingException;
 
 /**
  *
@@ -70,7 +69,7 @@ public class CorreosTecno extends javax.swing.JFrame {
         public void run() {
             try {
                 new VeterinariaMail().processMessage(mensaje);
-            } catch (MessagingException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(CorreosTecno.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

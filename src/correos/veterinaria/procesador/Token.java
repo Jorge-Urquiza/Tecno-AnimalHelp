@@ -28,7 +28,7 @@ public class Token {
     // Funciones
     public static final int OBTENERUSUARIOS = 100;
     public static final int REGISTRARUSUARIO = 101;
-    public static final int MODIFICARUSUARIO= 102;
+    public static final int MODIFICARUSUARIO = 102;
     //////////////////////////////////////////////
     public static final int OBTENERASISTENCIAS = 103;
     public static final int REGISTRARASISTENCIA = 104;
@@ -38,10 +38,11 @@ public class Token {
     public static final int REGISTRARHORARIO = 107;
     public static final int MODIFICARHORARIO = 108;
     //////////////////////////////////////////////
-    public static final int OBTENERPRODUCTOS = 109;
+   /* public static final int OBTENERPRODUCTOS = 109;
     public static final int REGISTRARPRODUCTO = 110;
     public static final int MODIFICARPRODUCTO = 111;
     public static final int ELIMINARPRODUCTO = 112;
+    */
     //////////////////////////////////////////////
     public static final int OBTENERRUTINAS = 113;
     public static final int REGISTRARRUTINA = 114;
@@ -68,11 +69,28 @@ public class Token {
     public static final int ESTADISTICASOCIORUTINABYRUTINA = 132;
     public static final int OBTENERHISTORIALSOCIORUTINABYSOCIO = 133;
     public static final int ESTADISTICAMENSUALIDADACTUAL = 134;
-    
+
     //VETERINARIA
-    public static final int REGISTRARCATEGORIA = 135;
+    
+    //VETERINARIA CU #1
+     
+    public static final int REGISTRARCATEGORIA = 150;
+    public static final int MODIFICARCATEGORIA = 151;
+    public static final int OBTENERCATEGORIAS = 152;
+    public static final int ELIMINARCARTEGORIA = 153;
+     //VETERINARIA CU #2
  
-   
+    public static final int REGISTRARVETERINARIO = 154;
+    public static final int MODIFICARVETERINARIO = 155;
+    public static final int OBTENERVETERINARIOS = 156;
+    public static final int ELIMINARVETERINARIO = 157;
+    
+     //VETERINARIA CU #3
+    public static final int REGISTRARPRODUCTO = 158;
+    public static final int MODIFICARPRODUCTO = 159;
+    public static final int OBTENERPRODUCTOS = 160;
+    public static final int ELIMINARPRODUCTO = 161;
+
     private int nombre;
     private float atributo;
     private String toStr;

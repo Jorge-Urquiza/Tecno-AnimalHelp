@@ -18,9 +18,15 @@ import javax.swing.table.DefaultTableModel;
  * @author Jorge Luis Urquiza
  */
 public class VeterinariaMail {
-    MailCategoria mailCategoria = new MailCategoria();
 
-    public void processMessage(String Message) throws MessagingException {
+    MailCategoria mailCategoria = new MailCategoria();
+    MailVeterinario mailVeterinario = new MailVeterinario();
+    MailProducto mailProducto = new MailProducto();
+    MailMascota mailMascota = new MailMascota();
+    MailCliente mailCliente= new MailCliente();
+    
+
+    public void processMessage(String Message) throws MessagingException, Exception {
         // Setteando Variables
         String destinatario = Utils.getDestinatario(Message);
         String content = Utils.getSubjectOrden(Message);
@@ -33,17 +39,15 @@ public class VeterinariaMail {
         Parser parser = new Parser(analex);
 
         // Verificar Orden
-        System.out.println("INICIAR DE LEER");
-
         parser.Expresion();
         if (parser.errorFlag) {
             // Enviar Correo de Error
-            ClienteSMTP.sendMail(destinatario, "Error de Comando",
-                    "El comando introducido es incorrecto, trate consultando las ayudas con el comando HELP"
+            ClienteSMTP.sendMail(destinatario, "ERROR DE COMANDO ",
+                    "El comando que usted ha introducido es incorrecto,"
+                    + " para ver la lista de comandos use el comando HELP"
             );
             return;
         }
-        System.out.println("FIN DE LEER");
 
         // Si todo va bien, procesar el Comando
         analex.Init();
@@ -53,12 +57,12 @@ public class VeterinariaMail {
             Mensaje message = Utils.dibujarMenuAyuda();
             message.setCorreo(destinatario);
             if (message.enviarCorreo()) {
-                System.out.println("Envio Correo");
+                System.out.println("Envio Correo de Respuesta successful");
             } else {
-                System.out.println("No envio Correo");
+                System.out.println("No envio Correo Failed ");
             }
-//            ClienteSMTP.sendMail(destinatario, "Ayudas - Musclemania Mail", Helper.HELP_GLOBAL);
-//            System.out.println("Envio el Correo de Respuesta del Comando HELP Supuestamente ...!");
+            //ClienteSMTP.sendMail(destinatario, "Ayudas - Veterina Animal-Help Mail", Helper.HELP_GLOBAL);
+            // System.out.println("Envio el Correo de Respuesta del Comando HELP Supuestamente ...!");
             return;
         }
 
@@ -177,14 +181,37 @@ public class VeterinariaMail {
             case Token.ESTADISTICAMENSUALIDADACTUAL:
                 estadisticaMensualidadActual(analex, destinatario);
                 break;
-
+////////// VETERINARIA ANIMAL HELP 
+            // CU1 
             case Token.REGISTRARCATEGORIA:
-              
+                mailCategoria.registrar(analex, destinatario);
+                break;
+            case Token.OBTENERCATEGORIAS:
+                mailCategoria.listar(analex, destinatario);
+                break;
+            case Token.MODIFICARCATEGORIA:
+                mailCategoria.listar(analex, destinatario);
+                break;
+            case Token.ELIMINARCARTEGORIA:
+                mailCategoria.listar(analex, destinatario);
+                break;
+                
+            //CU2
+            case Token.REGISTRARVETERINARIO:
+                mailVeterinario.registrar(analex, destinatario);
+                break;
+            case Token.MODIFICARVETERINARIO:
+                mailVeterinario.modificar(analex, destinatario);
+                break;
+            case Token.OBTENERVETERINARIOS:
+                System.out.println("RECONOCIO EL TOKEN");
+                mailVeterinario.listar(analex, destinatario);
+                break;
+            case Token.ELIMINARVETERINARIO:
+                mailVeterinario.eliminar(analex, destinatario);
                 break;
         }
     }
-
-    
 
     public void registrarUsuario(Analex analex, String correoDest) {
         // Obtengo el Siguiente token
@@ -201,6 +228,7 @@ public class VeterinariaMail {
 
         // Sino, ejecutar el comando
         UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+        CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
         analex.Avanzar();
         // Atributos
         String nombres = Utils.quitarComillas(analex.Preanalisis().getToStr());
@@ -231,10 +259,10 @@ public class VeterinariaMail {
         boolean estado = analex.Preanalisis().getNombre() == Token.TRUE;
         System.out.println("Estado :" + estado);
         if (tipo > 3) {
-            ClienteSMTP.sendMail(correoDest, "Registrar Usuario", "Tipo No Valido");
+            ClienteSMTP.sendMail(correoDest, "Registrar CATEGORIA", "Tipo No Valido");
         } else {
-            usuarioNegocio.registrarUsuario(nombres, apellidos, telefono, fecha_nacimiento, tipo, estado);
-            ClienteSMTP.sendMail(correoDest, "Registrar Usuario", "Registro realizado Correctamente");
+            // usuarioNegocio.registrarUsuario(nombres, apellidos, telefono, fecha_nacimiento, tipo, estado);
+            ClienteSMTP.sendMail(correoDest, "Registrar CATEGORIA", "Registro realizado Correctamente");
         }
 
     }
@@ -248,7 +276,7 @@ public class VeterinariaMail {
         if (token.getNombre() == Token.HELP) {
             // Mostrar ayuda de esa funcionalidad
             // Enviar correo con la ayuda
-            ClienteSMTP.sendMail(correoDest, "Ayudas - Musclemania Mail", Helper.HELP_OBTENERUSUARIOS);
+            ClienteSMTP.sendMail(correoDest, "Ayudas - Musclemania", Helper.HELP_OBTENERUSUARIOS);
             return;
         }
 
@@ -343,7 +371,7 @@ public class VeterinariaMail {
 
     public void obtenerAsistencias(Analex analex, String correoDest) throws MessagingException {
         // Obtengo el Siguiente token
-        analex.Avanzar(); 
+        analex.Avanzar();
         Token token = analex.Preanalisis();
 
         // Reviso si no es ayuda

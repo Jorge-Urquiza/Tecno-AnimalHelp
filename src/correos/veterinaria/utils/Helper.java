@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package correos.veterinaria.utils;
+
 import correos.veterinaria.utils.helpers.HelperAsistencia;
 import correos.veterinaria.utils.helpers.HelperHorario;
 import correos.veterinaria.utils.helpers.HelperMensualidad;
@@ -65,6 +66,18 @@ public class Helper {
             + "ESTADISTICASOCIORUTINABYRUTINA\n"
             + "OBTENERHISTORIALSOCIORUTINA\n"
             + "ESTADISTICAMENSUALIDADACTUAL\n";
+    /*
+     VETERINARIA ANIMAL HELPS CONSTANTES HELPERS
+    
+    
+     */
+
+    public static final String HELP_OBTENERCATEGORIA = HelperUsuario.HELP_OBTENERUSUARIOS;
+
+    /*
+        
+     FIN VETENERINA ANIAL HELP
+     */
     public static final String HELP_OBTENERUSUARIOS = HelperUsuario.HELP_OBTENERUSUARIOS;
     public static final String HELP_REGISTRARUSUARIO = HelperUsuario.HELP_REGISTRARUSUARIO;
     public static final String HELP_MODIFICARUSUARIO = HelperUsuario.HELP_MODIFICARUSUARIO;

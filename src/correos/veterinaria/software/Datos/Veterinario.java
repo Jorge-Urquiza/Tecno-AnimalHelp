@@ -7,6 +7,7 @@ package correos.veterinaria.software.Datos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 
@@ -116,7 +117,7 @@ public class Veterinario {
     }
 
     public void modificar() {
-       this.m_Conexion.abrirConexion();
+        this.m_Conexion.abrirConexion();
         Connection con = this.m_Conexion.getConexion();
 
         PreparedStatement ps = null;
@@ -163,6 +164,47 @@ public class Veterinario {
     }
 
     public DefaultTableModel getVeterinarios() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Tabla para mostrar lo obtenido de la consulta
+        DefaultTableModel categorias = new DefaultTableModel();
+        categorias.setColumnIdentifiers(new Object[]{
+            "id", "nombre", "apellido", "ci", "celular", "direccion"
+        });
+        DefaultTableModel veterinarios = new DefaultTableModel();
+        // Abro y obtengo la conexion
+        this.m_Conexion.abrirConexion();
+        Connection con = this.m_Conexion.getConexion();
+
+        // Preparo la consulta
+        String sql = "SELECT\n"
+                + "veterinarios.id,\n"
+                + "veterinarios.nombre,\n"
+                + "veterinarios.apellido,\n"
+                + "veterinarios.ci,\n"
+                + "veterinarios.celular,\n"
+                + "veterinarios.direccion\n"
+                + "FROM veterinarios order by id asc";
+
+        try {
+            // La ejecuto
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            // Cierro la conexion
+            this.m_Conexion.cerrarConexion();
+            // Recorro el resultado
+            while (rs.next()) {
+                // Agrego las tuplas a mi tabla
+                veterinarios.addRow(new Object[]{
+                    rs.getInt("id"),
+                    rs.getString("nombre"),
+                    rs.getString("apellido"),
+                    rs.getInt("ci"),
+                    rs.getString("celular"),
+                    rs.getString("direccion")
+                });
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return veterinarios;
     }
 }

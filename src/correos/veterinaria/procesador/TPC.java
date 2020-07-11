@@ -14,7 +14,7 @@ import java.util.LinkedList;
  */
 public class TPC {
 //TPC se usa para reconocer las palabras reservadas y el token ID.
-    
+
     private static final LinkedList<String> lexemas = new LinkedList<>(Arrays.asList(
             "HELP",
             "TRUE",
@@ -54,10 +54,24 @@ public class TPC {
             "ESTADISTICASOCIORUTINABYRUTINA",
             "OBTENERHISTORIALSOCIORUTINABYSOCIO",
             "ESTADISTICAMENSUALIDADACTUAL",////////////CU8//////////////////
-            
-            
+
             //CASOS DE USO VETERINARIA 
-          "REGISTRARCATEGORIA"
+            //CU1
+            "REGISTRARCATEGORIA",
+            "MODIFICARCATEGORIA",
+            "OBTENERCATEGORIAS",
+            "ELIMINARCARTEGORIA",
+            ///CU2
+            "REGISTRARVETERINARIO",
+            "MODIFICARVETERINARIO",
+            "OBTENERVETERINARIOS",
+            "ELIMINARVETERINARIO",
+            
+///CU3
+            "REGISTRARPRODUCTO",
+            "MODIFICARPRODUCTO",
+            "OBTENERPRODUCTOS",
+            "ELIMINARPRODUCTO"
     ));
 //Token asociado
     private static final LinkedList<Token> tokens = new LinkedList<>(Arrays.asList(
@@ -99,9 +113,25 @@ public class TPC {
             new Token(Token.FUNC, Token.ESTADISTICASOCIORUTINABYRUTINA, "ESTADISTICASOCIORUTINABYRUTINA"),
             new Token(Token.FUNC, Token.OBTENERHISTORIALSOCIORUTINABYSOCIO, "OBTENERHISTORIALSOCIORUTINABYSOCIO"),
             new Token(Token.FUNC, Token.ESTADISTICAMENSUALIDADACTUAL, "ESTADISTICAMENSUALIDADACTUAL"),////////////CU7///////////////////
+
+            ////VETERINARIA ANIMALHELP
+            //C1
+          
+            new Token(Token.FUNC, Token.REGISTRARCATEGORIA, "REGISTRARCATEGORIA"),
+            new Token(Token.FUNC, Token.MODIFICARCATEGORIA, "MODIFICARCATEGORIA"),
+            new Token(Token.FUNC, Token.OBTENERCATEGORIAS, "OBTENERCATEGORIAS"),
+            new Token(Token.FUNC, Token.ELIMINARCARTEGORIA, "ELIMINARCARTEGORIA"),
+            //CU2
+            new Token(Token.FUNC, Token.REGISTRARVETERINARIO, "REGISTRARVETERINARIO"),
+            new Token(Token.FUNC, Token.MODIFICARVETERINARIO, "MODIFICARVETERINARIO"),
+            new Token(Token.FUNC, Token.OBTENERVETERINARIOS, "OBTENERVETERINARIOS"),
+            new Token(Token.FUNC, Token.ELIMINARVETERINARIO, "ELIMINARVETERINARIO"),
             
-            //VETERINARIA CU #1
-            new Token(Token.FUNC, Token.REGISTRARCATEGORIA, "REGISTRARCATEGORIA")////////////CU7///////////////////
+            //CU3
+            new Token(Token.FUNC, Token.REGISTRARPRODUCTO, "REGISTRARPRODUCTO"),
+            new Token(Token.FUNC, Token.MODIFICARPRODUCTO, "MODIFICARPRODUCTO"),
+            new Token(Token.FUNC, Token.OBTENERPRODUCTOS, "OBTENERPRODUCTOS"),
+            new Token(Token.FUNC, Token.ELIMINARPRODUCTO, "ELIMINARPRODUCTO")
     ));
 
     public static Token estaEnTPC(String lexema) {
