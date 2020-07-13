@@ -182,7 +182,7 @@ public class VeterinariaMail {
                 estadisticaMensualidadActual(analex, destinatario);
                 break;
 ////////// VETERINARIA ANIMAL HELP 
-            // CU1 
+             // CU1 
             case Token.REGISTRARCATEGORIA:
                 mailCategoria.registrar(analex, destinatario);
                 break;
@@ -190,12 +190,12 @@ public class VeterinariaMail {
                 mailCategoria.listar(analex, destinatario);
                 break;
             case Token.MODIFICARCATEGORIA:
-                mailCategoria.listar(analex, destinatario);
+                mailCategoria.modificar(analex, destinatario);
                 break;
             case Token.ELIMINARCARTEGORIA:
-                mailCategoria.listar(analex, destinatario);
+                mailCategoria.eliminar(analex, destinatario);
                 break;
-                
+
             //CU2
             case Token.REGISTRARVETERINARIO:
                 mailVeterinario.registrar(analex, destinatario);
@@ -204,7 +204,6 @@ public class VeterinariaMail {
                 mailVeterinario.modificar(analex, destinatario);
                 break;
             case Token.OBTENERVETERINARIOS:
-                System.out.println("RECONOCIO EL TOKEN");
                 mailVeterinario.listar(analex, destinatario);
                 break;
             case Token.ELIMINARVETERINARIO:

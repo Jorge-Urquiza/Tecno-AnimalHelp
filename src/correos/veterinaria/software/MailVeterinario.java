@@ -18,11 +18,41 @@ public class MailVeterinario extends TemplateMail {
 
     VeterinarioNegocio veterinarioNegocio = new VeterinarioNegocio();
 
-    @Override
+        @Override
     public void registrar(Analex analex, String destinatario) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Obtengo el Siguiente token
+        analex.Avanzar();
+        Token token = analex.Preanalisis();
+        // Reviso si no es ayuda
+        if (token.getNombre() == Token.HELP) {
+            // Mostrar ayuda de esa funcionalidad
+            // Enviar correo con la ayuda
+            ClienteSMTP.sendMail(destinatario, "Ayudas - AnimalHelp Mail", Helper.HELP_REGISTRARUSUARIO);
+            return;
+        }
+        // Sino, ejecutar el comando
+        analex.Avanzar();
+        // Atributos
+        String nombre = Utils.quitarComillas(analex.Preanalisis().getToStr());
+        analex.Avanzar();
+        analex.Avanzar();
+        analex.Avanzar();
+        String apellido = Utils.quitarComillas(analex.Preanalisis().getToStr());
+        analex.Avanzar();
+        analex.Avanzar();
+        analex.Avanzar();
+        int ci = Integer.parseInt(analex.Preanalisis().getToStr());
+        analex.Avanzar();
+        analex.Avanzar();
+        analex.Avanzar();
+        String celular = Utils.quitarComillas(analex.Preanalisis().getToStr());
+        analex.Avanzar();
+        analex.Avanzar();
+        analex.Avanzar();
+        String direccion = Utils.quitarComillas(analex.Preanalisis().getToStr());
+        veterinarioNegocio.registrar(nombre, apellido, ci, celular, direccion);
+        ClienteSMTP.sendMail(destinatario, "Registrar Veterinario", "Registro realizado Correctamente!!");
     }
-
     @Override
     public void modificar(Analex analex, String destinatario) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -41,10 +71,10 @@ public class MailVeterinario extends TemplateMail {
         if (token.getNombre() == Token.HELP) {
             // Mostrar ayuda de esa funcionalidad
             // Enviar correo con la ayuda
-            ClienteSMTP.sendMail(destinatario,Cadenas.AYUDA, Helper.HELP_OBTENERUSUARIOS);
+            ClienteSMTP.sendMail(destinatario, Cadenas.AYUDA, Helper.HELP_OBTENERUSUARIOS);
             return;
         }
-        String Head[] = {"ID", "NOMBRE", "APELLIDO", "CI", "CELULAR", "DIRECCION"};
+        String Head[] = {"NOMBRE", "APELLIDO", "CI", "CELULAR", "DIRECCION"};
         String Cabecera = "ANIMALHELP - LISTA DE VETERINARIOS";
         Mensaje message = Utils.dibujarTablaHtml(veterinarioNegocio.getVeterinarios(), Head, Cabecera);
         message.setCorreo(destinatario);

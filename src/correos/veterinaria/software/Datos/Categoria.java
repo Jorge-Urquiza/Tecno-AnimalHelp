@@ -62,8 +62,48 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
-    public DefaultTableModel getCategoria(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     public DefaultTableModel getCategoria(int id) {
+        // Tabla para mostrar lo obtenido de la consulta
+        DefaultTableModel categoria = new DefaultTableModel();
+        categoria.setColumnIdentifiers(new Object[]{
+            "id", "nombre", "descripcion"
+        });
+
+        // Abro y obtengo la conexion
+        this.m_Conexion.abrirConexion();
+        Connection con = this.m_Conexion.getConexion();
+
+        // Preparo la consulta
+        String sql = "SELECT\n"
+                + "categorias.id,\n"
+                + "categorias.nombre,\n"
+                + "categorias.descripcion\n"
+                + "FROM categorias\n"
+                + "WHERE categorias.id=?";
+        // Los simbolos de interrogacion son para mandar parametros 
+        // a la consulta al momento de ejecutalas
+
+        try {
+            // La ejecuto
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            // Cierro la conexion
+            this.m_Conexion.cerrarConexion();
+
+            // Recorro el resultado
+            while (rs.next()) {
+                // Agrego las tuplas a mi tabla
+                categoria.addRow(new Object[]{
+                    rs.getInt("id"),
+                    rs.getString("nombre"),
+                    rs.getString("descripcion"),
+                });
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return categoria;
     }
 
     public DefaultTableModel getCategorias() {

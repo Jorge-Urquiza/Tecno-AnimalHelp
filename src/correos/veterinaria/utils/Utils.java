@@ -231,7 +231,20 @@ public class Utils {
                 "EJEMPLO"
         ));
         LinkedList<String> CasosDeUso = new LinkedList<>(Arrays.asList(
-                "REGISTRARCATEGORIA",
+                //Veterinaria
+                //cu1
+                "REGISTRAR CATEGORIA",
+                "OBTENER CATEGORIA",
+                "MODIFICAR CATEGORIA",
+                "ELIMINAR CATEGORIA",
+                
+                //cu2
+                "REGISTRAR VETERINARIO",
+                "OBTENER VETERINARIO",
+                "MODIFICAR VETERINARIO",
+                "ELIMINAR VETERINARIO",
+//////////////
+/*
                 "OBTENER USUARIOS",
                 "REGISTRAR USUARIO",
                 "MODIFICAR USUARIO",//////////////CU1/////////////////
@@ -265,11 +278,27 @@ public class Utils {
                 "ESTADISTICA ASISTENCIA BY HORARIO",
                 "OBTENER RUTINA EJERCICIO BY RUTINA",
                 "ESTADISTICA SOCIO RUTINA BY RUTINA",
-                "OBTENER HISTORIAL SOCIO RUTINA BY SOCIO",
+                "OBTENER HISTORIAL SOCIO RUTINA BY SOCIO",*/
                 "ESTADISTICA MENSUALIDAD ACTUAL"////////////CU8//////////////////
         ));
         LinkedList<String> Detalles = new LinkedList<>(Arrays.asList(
+            //veterinaria animal help
+
+                //CU1
                 "REGISTRARCATEGORIA[\"Nombre\"][\"Descripcion\"]",
+                "OBTENERCATEGORIAS",
+                "MODIFICARCATEGORIA[id de la categoria][\"Nombre\"][\"Descripcion\"]",
+                "ELIMINARCATEGORIA[id de la categoria]",
+                //CU2
+
+                "REGISTRARVETERINARIO[\"Nombre\"][\"Apellidos\"][Cedula Identidad][\"Celular\"][\"Direcciopn\"]",
+                "OBTENERVETERINARIOS",
+                "MODIFICARVETERINARIO[id de veterinario][\"Nombre\"][\"Descripcion\"]",
+                "ELIMINARVETERINARIO[id veterinario]",
+                /////
+
+            //////
+                /*
                 "OBTENERUSUARIOS",
                 "REGISTRARUSUARIO[\"Nombres\"][\"Apellidos\"][Telefono][\"Fecha de Nacimiento\"][Tipo de Usuario(1, 2, o 3)][Estado del Usuario(true o false)]",
                 "MODIFICARUSUARIO [id del Usuario][\"Nombres\"][\"Apellidos\"][Telefono][\"Fecha de Nacimiento\"][Tipo de Usuario(1, 2, o 3)][Estado del Usuario(true o false)]",//////////////CU1/////////////////
@@ -303,11 +332,22 @@ public class Utils {
                 "ESTADISTICAASISTENCIABYHORARIO[Id del Horario]",
                 "OBTENERRUTINAEJERCICIOBYRUTINA[Id de la Rutina]",
                 "ESTADISTICASOCIORUTINABYRUTINA[Id de la Rutina]",
-                "OBTENERHISTORIALSOCIORUTINABYSOCIO[Id del Socio]",
+                "OBTENERHISTORIALSOCIORUTINABYSOCIO[Id del Socio]",*/
                 "ESTADISTICAMENSUALIDADACTUAL"////////////CU8//////////////////
         ));
         LinkedList<String> Ejemplos = new LinkedList<>(Arrays.asList(
-                "REGISTRARCATEGORIA[\"Lacteos\"][\"Derivados de la leche\"]",
+   //Veterinaria
+                "REGISTRAR CATEGORIA",
+                "OBTENER USUARIOS",
+                "MODIFICAR USUARIO",
+                "ELIMINAR USUARIO",
+                
+                "REGISTRAR VETERINARIO",
+                "OBTENER VETERINARIO",
+                "MODIFICAR VETERINARIO",
+                "ELIMINAR VETERINARIO",
+                /*
+//
                 "OBTENERUSUARIOS",
                 "REGISTRARUSUARIO[\"Juan Carlos Alberto\"][\"Contreras Montalvan\"][35435746][\"12-12-1997\"][1][true]",
                 "MODIFICARUSUARIO [1][\"Juan Miguel\"][_][2324524][_][2][_]",//////////////CU1/////////////////
@@ -342,6 +382,7 @@ public class Utils {
                 "OBTENERRUTINAEJERCICIOBYRUTINA[1]",
                 "ESTADISTICASOCIORUTINABYRUTINA[1]",
                 "OBTENERHISTORIALSOCIORUTINABYSOCIO[1]",
+        */
                 "ESTADISTICAMENSUALIDADACTUAL"////////////CU8//////////////////
         ));
         String data = "<!DOCTYPE html>\n"
