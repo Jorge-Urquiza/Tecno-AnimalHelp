@@ -237,152 +237,166 @@ public class Utils {
                 "OBTENER CATEGORIA",
                 "MODIFICAR CATEGORIA",
                 "ELIMINAR CATEGORIA",
-                
                 //cu2
                 "REGISTRAR VETERINARIO",
                 "OBTENER VETERINARIO",
                 "MODIFICAR VETERINARIO",
                 "ELIMINAR VETERINARIO",
-//////////////
-/*
-                "OBTENER USUARIOS",
-                "REGISTRAR USUARIO",
-                "MODIFICAR USUARIO",//////////////CU1/////////////////
-                "OBTENER ASISTENCIAS",
-                "REGISTRAR ASISTENCIA",
-                "MODIFICAR ASISTENCIA",////////////CU2///////////////////
-                "OBTENER HORARIOS",
-                "REGISTRAR HORARIO",
-                "MODIFICAR HORARIO",/////////////CU3/////////////////
-                "OBTENER PRODUCTOS",
+                //cu3
                 "REGISTRAR PRODUCTO",
+                "OBTENER PRODUCTOS",
                 "MODIFICAR PRODUCTO",
-                "ELIMINAR PRODUCTO",/////////////CU4/////////////////
-                "OBTENER RUTINAS",
-                "REGISTRAR RUTINA",
-                "MODIFICAR RUTINA",
-                "OBTENER EJERCICIOS",
-                "REGISTRAR EJERCICIO",
-                "MODIFICAR EJERCICIO",
-                "REGISTRAR RUTINA EJERCICIO",
-                "MODIFICAR RUTINA EJERCICIO",
-                "REGISTRAR SOCIO RUTINA",
-                "MODIFICAR SOCIO RUTINA",////////////////CU5//////////////
-                "OBTENER VENTAS",
-                "REGISTRAR VENTA",
-                "MODIFICAR VENTA",//////////CU6////////////////////
-                "OBTENER MENSUALIDADES",
-                "REGISTRAR MENSUALIDAD",
-                "MODIFICAR MENSUALIDAD",////////////CU7//////////////////
-                "OBTENER ASISTENCIA BY SOCIO",
-                "ESTADISTICA ASISTENCIA BY HORARIO",
-                "OBTENER RUTINA EJERCICIO BY RUTINA",
-                "ESTADISTICA SOCIO RUTINA BY RUTINA",
-                "OBTENER HISTORIAL SOCIO RUTINA BY SOCIO",*/
+                "ELIMINAR PRODUCTO",
+                //////////////
+                /*
+                 "OBTENER USUARIOS",
+                 "REGISTRAR USUARIO",
+                 "MODIFICAR USUARIO",//////////////CU1/////////////////
+                 "OBTENER ASISTENCIAS",
+                 "REGISTRAR ASISTENCIA",
+                 "MODIFICAR ASISTENCIA",////////////CU2///////////////////
+                 "OBTENER HORARIOS",
+                 "REGISTRAR HORARIO",
+                 "MODIFICAR HORARIO",/////////////CU3/////////////////
+                 "OBTENER PRODUCTOS",
+                 "REGISTRAR PRODUCTO",
+                 "MODIFICAR PRODUCTO",
+                 "ELIMINAR PRODUCTO",/////////////CU4/////////////////
+                 "OBTENER RUTINAS",
+                 "REGISTRAR RUTINA",
+                 "MODIFICAR RUTINA",
+                 "OBTENER EJERCICIOS",
+                 "REGISTRAR EJERCICIO",
+                 "MODIFICAR EJERCICIO",
+                 "REGISTRAR RUTINA EJERCICIO",
+                 "MODIFICAR RUTINA EJERCICIO",
+                 "REGISTRAR SOCIO RUTINA",
+                 "MODIFICAR SOCIO RUTINA",////////////////CU5//////////////
+                 "OBTENER VENTAS",
+                 "REGISTRAR VENTA",
+                 "MODIFICAR VENTA",//////////CU6////////////////////
+                 "OBTENER MENSUALIDADES",
+                 "REGISTRAR MENSUALIDAD",
+                 "MODIFICAR MENSUALIDAD",////////////CU7//////////////////
+                 "OBTENER ASISTENCIA BY SOCIO",
+                 "ESTADISTICA ASISTENCIA BY HORARIO",
+                 "OBTENER RUTINA EJERCICIO BY RUTINA",
+                 "ESTADISTICA SOCIO RUTINA BY RUTINA",
+                 "OBTENER HISTORIAL SOCIO RUTINA BY SOCIO",*/
                 "ESTADISTICA MENSUALIDAD ACTUAL"////////////CU8//////////////////
         ));
         LinkedList<String> Detalles = new LinkedList<>(Arrays.asList(
-            //veterinaria animal help
+                //veterinaria animal help
 
                 //CU1
                 "REGISTRARCATEGORIA[\"Nombre\"][\"Descripcion\"]",
                 "OBTENERCATEGORIAS",
-                "MODIFICARCATEGORIA[id de la categoria][\"Nombre\"][\"Descripcion\"]",
-                "ELIMINARCATEGORIA[id de la categoria]",
+                "MODIFICARCATEGORIA[\"ID categoria\"][\"Nombre\"][\"Descripcion\"]",
+                "ELIMINARCATEGORIA[\"ID categoria\"]",
                 //CU2
 
                 "REGISTRARVETERINARIO[\"Nombre\"][\"Apellidos\"][Cedula Identidad][\"Celular\"][\"Direcciopn\"]",
                 "OBTENERVETERINARIOS",
                 "MODIFICARVETERINARIO[id de veterinario][\"Nombre\"][\"Descripcion\"]",
                 "ELIMINARVETERINARIO[id veterinario]",
-                /////
-
-            //////
-                /*
-                "OBTENERUSUARIOS",
-                "REGISTRARUSUARIO[\"Nombres\"][\"Apellidos\"][Telefono][\"Fecha de Nacimiento\"][Tipo de Usuario(1, 2, o 3)][Estado del Usuario(true o false)]",
-                "MODIFICARUSUARIO [id del Usuario][\"Nombres\"][\"Apellidos\"][Telefono][\"Fecha de Nacimiento\"][Tipo de Usuario(1, 2, o 3)][Estado del Usuario(true o false)]",//////////////CU1/////////////////
-                "OBTENERASISTENCIAS",
-                "REGISTRARASISTENCIA[\"Fecha de la Asistencia\"][Presencia (true o false)][Id del Usuario][Id del Horario]",
-                "MODIFICARASISTENCIA[Id de la Asistencia][\"Fecha de la Asistencia\"][Presencia (true o false)][Id del Usuario][Id del Horario]",////////////CU2///////////////////
-                "OBTENERHORARIOS",
-                "REGISTRARHORARIO[\"Hora de Inicio\"][\"Hora Final\"][Tipo de Horario(1, 2, o 3)]",
-                "MODIFICARHORARIO[Id del Horario][\"Hora de Inicio\"][\"Hora Final\"][Tipo de Horario(1, 2, o 3)]\n",/////////////CU3/////////////////
+                //cu3
+                "REGISTRARPRODUCTO[\"Nombre\"][\"Precio\"][ID Categoria]",
                 "OBTENERPRODUCTOS",
-                "REGISTRARPRODUCTO[\"Nombre del Producto\"]\n",
-                "MODIFICARPRODUCTO[Id del Producto][\"Nombre del Producto\"]\n",
-                "ELIMINARPRODUCTO[Id del Producto]",/////////////CU4/////////////////
-                "OBTENERRUTINAS",
-                "REGISTRARRUTINA[\"Nombre de la Rutina\"][\"Musculo que sera trabajado\"]",
-                "MODIFICARRUTINA[Id de la Rutina][\"Nombre de la Rutina\"][\"Musculo que sera trabajado\"]",
-                "OBTENEREJERCICIOS",
-                "REGISTRAREJERCICIO[\"Nombre del Ejercicio\"]",
-                "MODIFICAREJERCICIO[Id del Ejercicio][\"Nombre del Ejercicio\"]",
-                "REGISTRARRUTINAEJERCICIO[Repeticiones del Ejercicio][Series del Ejercicio][Id de la Rutina][Id del Ejercicio]",
-                "MODIFICARRUTINAEJERCICIO[Id de la Rutina Ejercicio][Repeticiones del Ejercicio][Series del Ejercicio][Id de la Rutina][Id del Ejercicio]",
-                "REGISTRARSOCIORUTINA[\"Fecha que realizara el Socio la Rutina\"][Id del Usuario][Id de la Rutina]",
-                "MODIFICARSOCIORUTINA[Id del socio Rutina][\"Fecha que realizara el Socio la Rutina\"][Id del Usuario][Id de la Rutina]",////////////////CU5//////////////
-                "OBTENERVENTAS",
-                "REGISTRARVENTA[Cantidad a vender][\"Fecha de la Venta\"][Precio de la Venta][Id del Produto]",
-                "MODIFICARVENTA[Id de la Venta][Cantidad a vender][\"Fecha de la Venta\"][Precio de la Venta][Id del Produto]",//////////CU6////////////////////
-                "OBTENERMENSUALIDADES",
-                "REGISTRARMENSUALIDAD[\"Fecha Inicio de la Mensualidad\"][\"Fecha Final de la Mensualidad\"][Monto de la Mensualidad][Id del Usuario]",
-                "MODIFICARMENSUALIDAD[Id de la Mensualidad][\"Fecha Inicio de la Mensualidad\"][\"Fecha Final de la Mensualidad\"][Monto de la Mensualidad][Id del Usuario]",////////////CU7//////////////////
-                "OBTENERASISTENCIABYSOCIO[Id del Socio]",
-                "ESTADISTICAASISTENCIABYHORARIO[Id del Horario]",
-                "OBTENERRUTINAEJERCICIOBYRUTINA[Id de la Rutina]",
-                "ESTADISTICASOCIORUTINABYRUTINA[Id de la Rutina]",
-                "OBTENERHISTORIALSOCIORUTINABYSOCIO[Id del Socio]",*/
+                "MODIFICARPRODUCTO[ID Producto][\"Nombre\"][\"Precio\"][ID Categoria]",
+                "ELIMINARPRODUCTO[ID Producto]",
+                /*
+                 "OBTENERUSUARIOS",
+                 "REGISTRARUSUARIO[\"Nombres\"][\"Apellidos\"][Telefono][\"Fecha de Nacimiento\"][Tipo de Usuario(1, 2, o 3)][Estado del Usuario(true o false)]",
+                 "MODIFICARUSUARIO [id del Usuario][\"Nombres\"][\"Apellidos\"][Telefono][\"Fecha de Nacimiento\"][Tipo de Usuario(1, 2, o 3)][Estado del Usuario(true o false)]",//////////////CU1/////////////////
+                 "OBTENERASISTENCIAS",
+                 "REGISTRARASISTENCIA[\"Fecha de la Asistencia\"][Presencia (true o false)][Id del Usuario][Id del Horario]",
+                 "MODIFICARASISTENCIA[Id de la Asistencia][\"Fecha de la Asistencia\"][Presencia (true o false)][Id del Usuario][Id del Horario]",////////////CU2///////////////////
+                 "OBTENERHORARIOS",
+                 "REGISTRARHORARIO[\"Hora de Inicio\"][\"Hora Final\"][Tipo de Horario(1, 2, o 3)]",
+                 "MODIFICARHORARIO[Id del Horario][\"Hora de Inicio\"][\"Hora Final\"][Tipo de Horario(1, 2, o 3)]\n",/////////////CU3/////////////////
+                 "OBTENERPRODUCTOS",
+                 "REGISTRARPRODUCTO[\"Nombre del Producto\"]\n",
+                 "MODIFICARPRODUCTO[Id del Producto][\"Nombre del Producto\"]\n",
+                 "ELIMINARPRODUCTO[Id del Producto]",/////////////CU4/////////////////
+                 "OBTENERRUTINAS",
+                 "REGISTRARRUTINA[\"Nombre de la Rutina\"][\"Musculo que sera trabajado\"]",
+                 "MODIFICARRUTINA[Id de la Rutina][\"Nombre de la Rutina\"][\"Musculo que sera trabajado\"]",
+                 "OBTENEREJERCICIOS",
+                 "REGISTRAREJERCICIO[\"Nombre del Ejercicio\"]",
+                 "MODIFICAREJERCICIO[Id del Ejercicio][\"Nombre del Ejercicio\"]",
+                 "REGISTRARRUTINAEJERCICIO[Repeticiones del Ejercicio][Series del Ejercicio][Id de la Rutina][Id del Ejercicio]",
+                 "MODIFICARRUTINAEJERCICIO[Id de la Rutina Ejercicio][Repeticiones del Ejercicio][Series del Ejercicio][Id de la Rutina][Id del Ejercicio]",
+                 "REGISTRARSOCIORUTINA[\"Fecha que realizara el Socio la Rutina\"][Id del Usuario][Id de la Rutina]",
+                 "MODIFICARSOCIORUTINA[Id del socio Rutina][\"Fecha que realizara el Socio la Rutina\"][Id del Usuario][Id de la Rutina]",////////////////CU5//////////////
+                 "OBTENERVENTAS",
+                 "REGISTRARVENTA[Cantidad a vender][\"Fecha de la Venta\"][Precio de la Venta][Id del Produto]",
+                 "MODIFICARVENTA[Id de la Venta][Cantidad a vender][\"Fecha de la Venta\"][Precio de la Venta][Id del Produto]",//////////CU6////////////////////
+                 "OBTENERMENSUALIDADES",
+                 "REGISTRARMENSUALIDAD[\"Fecha Inicio de la Mensualidad\"][\"Fecha Final de la Mensualidad\"][Monto de la Mensualidad][Id del Usuario]",
+                 "MODIFICARMENSUALIDAD[Id de la Mensualidad][\"Fecha Inicio de la Mensualidad\"][\"Fecha Final de la Mensualidad\"][Monto de la Mensualidad][Id del Usuario]",////////////CU7//////////////////
+                 "OBTENERASISTENCIABYSOCIO[Id del Socio]",
+                 "ESTADISTICAASISTENCIABYHORARIO[Id del Horario]",
+                 "OBTENERRUTINAEJERCICIOBYRUTINA[Id de la Rutina]",
+                 "ESTADISTICASOCIORUTINABYRUTINA[Id de la Rutina]",
+                 "OBTENERHISTORIALSOCIORUTINABYSOCIO[Id del Socio]",*/
                 "ESTADISTICAMENSUALIDADACTUAL"////////////CU8//////////////////
         ));
         LinkedList<String> Ejemplos = new LinkedList<>(Arrays.asList(
-   //Veterinaria
-                "REGISTRAR CATEGORIA",
-                "OBTENER USUARIOS",
-                "MODIFICAR USUARIO",
-                "ELIMINAR USUARIO",
+                //Veterinaria
+                //CU1
+                "REGISTRARCATEGORIA[\"Balanceado\"][\"Comida saludable\"]",
+                "OBTENERCATEGORIAS",
+                "MODIFICARCATEGORIA[1][_][\"Comida\"] "+Cadenas.GUION_BAJO,
+                "ELIMINARCATEGORIA[2]",
+                //CU2
+
+                "REGISTRARVETERINARIO[\"Luciano\"][\"Aguierre Peña\"][12530][\"+591700365436\"][\"Calle Guabira#03\"]",
+                "OBTENERVETERINARIOS",
+                "MODIFICARVETERINARIO[1][_][_][853651][\"+591 75575746\"][\"Calle Santa Cruz#1113\"]",
+                "ELIMINARVETERINARIO[2]",
                 
-                "REGISTRAR VETERINARIO",
-                "OBTENER VETERINARIO",
-                "MODIFICAR VETERINARIO",
-                "ELIMINAR VETERINARIO",
-                /*
-//
-                "OBTENERUSUARIOS",
-                "REGISTRARUSUARIO[\"Juan Carlos Alberto\"][\"Contreras Montalvan\"][35435746][\"12-12-1997\"][1][true]",
-                "MODIFICARUSUARIO [1][\"Juan Miguel\"][_][2324524][_][2][_]",//////////////CU1/////////////////
-                "OBTENERASISTENCIAS",
-                "REGISTRARASISTENCIA[\"20-07-2019\"][true][1][2]",
-                "MODIFICARASISTENCIA[1][_][_][2][3]",////////////CU2///////////////////
-                "OBTENERHORARIOS",
-                "REGISTRARHORARIO[\"10:30\"][\"11:30\"][2]",
-                "MODIFICARHORARIO[1][\"12:30\"][_][3]\n",/////////////CU3/////////////////
+                //cu3
+                "REGISTRARPRODUCTO[\"Doggy Cachorro\"][\"15\"][1]",
                 "OBTENERPRODUCTOS",
-                "REGISTRARPRODUCTO[\"Red Bull\"]\n",
-                "MODIFICARPRODUCTO[1][\"Black\"]\n",
-                "ELIMINARPRODUCTO[1]",/////////////CU4/////////////////
-                "OBTENERRUTINAS",
-                "REGISTRARRUTINA[\"Rutina 120 kg 1.70 m\"][\"brazos\"]",
-                "MODIFICARRUTINA[1][\"Rutina 120 kg 1.70 m\"][_]",
-                "OBTENEREJERCICIOS",
-                "REGISTRAREJERCICIO[\"sentadilla\"]",
-                "MODIFICAREJERCICIO[1][\"ranita\"]",
-                "REGISTRARRUTINAEJERCICIO[20][3][2][3]",
-                "MODIFICARRUTINAEJERCICIO[1][20][_][2][3]",
-                "REGISTRARSOCIORUTINA[\"21-06-2019\"][3][1]",
-                "MODIFICARSOCIORUTINA[1][\"21-06-2019\"][3][1]",////////////////CU5//////////////
-                "OBTENERVENTAS",
-                "REGISTRARVENTA[5][\"18-05-2019\"][40][1]",
-                "MODIFICARVENTA[1][5][\"18-05-2019\"][30][1]",//////////CU6////////////////////
-                "OBTENERMENSUALIDADES",
-                "REGISTRARMENSUALIDAD[\"18-04-2019\"][\"18-05-2019\"][48][2]",
-                "MODIFICARMENSUALIDAD[1][_][\"18-05-2019\"][49][_]",////////////CU7//////////////////
-                "OBTENERASISTENCIABYSOCIO[1]",
-                "ESTADISTICAASISTENCIABYHORARIO[1]",
-                "OBTENERRUTINAEJERCICIOBYRUTINA[1]",
-                "ESTADISTICASOCIORUTINABYRUTINA[1]",
-                "OBTENERHISTORIALSOCIORUTINABYSOCIO[1]",
-        */
+                "MODIFICARPRODUCTO[1][\"Doggy\"][\"18\"][_]"+ Cadenas.GUION_BAJO,
+                "ELIMINARPRODUCTO[2]",
+                /*
+                 //
+                 "OBTENERUSUARIOS",
+                 "REGISTRARUSUARIO[\"Juan Carlos Alberto\"][\"Contreras Montalvan\"][35435746][\"12-12-1997\"][1][true]",
+                 "MODIFICARUSUARIO [1][\"Juan Miguel\"][_][2324524][_][2][_]",//////////////CU1/////////////////
+                 "OBTENERASISTENCIAS",
+                 "REGISTRARASISTENCIA[\"20-07-2019\"][true][1][2]",
+                 "MODIFICARASISTENCIA[1][_][_][2][3]",////////////CU2///////////////////
+                 "OBTENERHORARIOS",
+                 "REGISTRARHORARIO[\"10:30\"][\"11:30\"][2]",
+                 "MODIFICARHORARIO[1][\"12:30\"][_][3]\n",/////////////CU3/////////////////
+                 "OBTENERPRODUCTOS",
+                 "REGISTRARPRODUCTO[\"Red Bull\"]\n",
+                 "MODIFICARPRODUCTO[1][\"Black\"]\n",
+                 "ELIMINARPRODUCTO[1]",/////////////CU4/////////////////
+                 "OBTENERRUTINAS",
+                 "REGISTRARRUTINA[\"Rutina 120 kg 1.70 m\"][\"brazos\"]",
+                 "MODIFICARRUTINA[1][\"Rutina 120 kg 1.70 m\"][_]",
+                 "OBTENEREJERCICIOS",
+                 "REGISTRAREJERCICIO[\"sentadilla\"]",
+                 "MODIFICAREJERCICIO[1][\"ranita\"]",
+                 "REGISTRARRUTINAEJERCICIO[20][3][2][3]",
+                 "MODIFICARRUTINAEJERCICIO[1][20][_][2][3]",
+                 "REGISTRARSOCIORUTINA[\"21-06-2019\"][3][1]",
+                 "MODIFICARSOCIORUTINA[1][\"21-06-2019\"][3][1]",////////////////CU5//////////////
+                 "OBTENERVENTAS",
+                 "REGISTRARVENTA[5][\"18-05-2019\"][40][1]",
+                 "MODIFICARVENTA[1][5][\"18-05-2019\"][30][1]",//////////CU6////////////////////
+                 "OBTENERMENSUALIDADES",
+                 "REGISTRARMENSUALIDAD[\"18-04-2019\"][\"18-05-2019\"][48][2]",
+                 "MODIFICARMENSUALIDAD[1][_][\"18-05-2019\"][49][_]",////////////CU7//////////////////
+                 "OBTENERASISTENCIABYSOCIO[1]",
+                 "ESTADISTICAASISTENCIABYHORARIO[1]",
+                 "OBTENERRUTINAEJERCICIOBYRUTINA[1]",
+                 "ESTADISTICASOCIORUTINABYRUTINA[1]",
+                 "OBTENERHISTORIALSOCIORUTINABYSOCIO[1]",
+                 */
                 "ESTADISTICAMENSUALIDADACTUAL"////////////CU8//////////////////
         ));
         String data = "<!DOCTYPE html>\n"
@@ -662,7 +676,7 @@ public class Utils {
         ArrayList<List<String>> rowList = new ArrayList<>();
         for (int i = 0; i < tabla.getColumnCount(); i++) {
             headers.add(tabla.getColumnName(i));
-        }     
+        }
         String data = "<!DOCTYPE html>\n"
                 + "<html>\n"
                 + "<head>\n"
