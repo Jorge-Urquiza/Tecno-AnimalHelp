@@ -3,7 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/user/Desktop/probar/Tecno-AnimalHelp/src/correos/veterinaria/software/MailCategoria.java</file>
+            <file>file:/C:/Users/user/Desktop/PRIMER%20PARCIAL%20TECNO%20WEB/Tecno-AnimalHelp/src/correos/veterinaria/procesador/TPC.java</file>
+            <file>file:/C:/Users/user/Desktop/PRIMER%20PARCIAL%20TECNO%20WEB/Tecno-AnimalHelp/src/correos/veterinaria/software/VeterinariaMail.java</file>
+            <file>file:/C:/Users/user/Desktop/PRIMER%20PARCIAL%20TECNO%20WEB/Tecno-AnimalHelp/src/correos/veterinaria/software/Datos/Productos.java</file>
+            <file>file:/C:/Users/user/Desktop/PRIMER%20PARCIAL%20TECNO%20WEB/Tecno-AnimalHelp/src/correos/veterinaria/software/Negocio/ProductosNegocio.java</file>
+            <file>file:/C:/Users/user/Desktop/PRIMER%20PARCIAL%20TECNO%20WEB/Tecno-AnimalHelp/src/correos/veterinaria/procesador/Analex.java</file>
+            <file>file:/C:/Users/user/Desktop/PRIMER%20PARCIAL%20TECNO%20WEB/Tecno-AnimalHelp/src/correos/veterinaria/software/MailCategoria.java</file>
+            <file>file:/C:/Users/user/Desktop/PRIMER%20PARCIAL%20TECNO%20WEB/Tecno-AnimalHelp/src/correos/veterinaria/software/TemplateMail.java</file>
+            <file>file:/C:/Users/user/Desktop/PRIMER%20PARCIAL%20TECNO%20WEB/Tecno-AnimalHelp/src/correos/veterinaria/software/MailProducto.java</file>
+            <file>file:/C:/Users/user/Desktop/PRIMER%20PARCIAL%20TECNO%20WEB/Tecno-AnimalHelp/src/correos/veterinaria/software/MailVeterinario.java</file>
         </group>
     </open-files>
 </project-private>

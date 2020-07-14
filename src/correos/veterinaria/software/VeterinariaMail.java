@@ -23,8 +23,7 @@ public class VeterinariaMail {
     MailVeterinario mailVeterinario = new MailVeterinario();
     MailProducto mailProducto = new MailProducto();
     MailMascota mailMascota = new MailMascota();
-    MailCliente mailCliente= new MailCliente();
-    
+    MailCliente mailCliente = new MailCliente();
 
     public void processMessage(String Message) throws MessagingException, Exception {
         // Setteando Variables
@@ -99,7 +98,7 @@ public class VeterinariaMail {
                 modificarHorario(analex, destinatario);
                 break;
             ////////////////////////////////////////////////////////////////////
-            case Token.OBTENERPRODUCTOS:
+           /* case Token.OBTENERPRODUCTOS:
                 obtenerProductos(analex, destinatario);
                 break;
             case Token.REGISTRARPRODUCTO:
@@ -181,8 +180,9 @@ public class VeterinariaMail {
             case Token.ESTADISTICAMENSUALIDADACTUAL:
                 estadisticaMensualidadActual(analex, destinatario);
                 break;
+                */
 ////////// VETERINARIA ANIMAL HELP 
-             // CU1 
+            // CU1 
             case Token.REGISTRARCATEGORIA:
                 mailCategoria.registrar(analex, destinatario);
                 break;
@@ -209,6 +209,21 @@ public class VeterinariaMail {
             case Token.ELIMINARVETERINARIO:
                 mailVeterinario.eliminar(analex, destinatario);
                 break;
+            // CU3
+         
+            case Token.REGISTRARPRODUCTO:
+                mailProducto.registrar(analex, destinatario);
+                break;
+            case Token.MODIFICARPRODUCTO:
+                mailProducto.modificar(analex, destinatario);
+                break;
+            case Token.OBTENERPRODUCTOS:
+                mailProducto.listar(analex, destinatario);
+                break;
+            case Token.ELIMINARPRODUCTO:
+                mailProducto.eliminar(analex, destinatario);
+                break;
+            
         }
     }
 

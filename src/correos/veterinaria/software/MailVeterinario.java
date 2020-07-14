@@ -72,7 +72,7 @@ public class MailVeterinario extends TemplateMail {
         DefaultTableModel veterinario = veterinarioNegocio.getVeterinario(id);
         // verifica si existe al id
         if (veterinario.getRowCount() == 0) {
-            ClienteSMTP.sendMail(destinatario, Cadenas.NO_EXISTS_ID, Cadenas.NO_EXISTS_ID);
+            ClienteSMTP.sendMail(destinatario, Cadenas.ERROR_ID, Cadenas.NO_EXISTS_ID);
             return;
         }
         // Revisar los GuionBajo

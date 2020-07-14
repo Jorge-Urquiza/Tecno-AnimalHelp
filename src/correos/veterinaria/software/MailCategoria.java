@@ -92,7 +92,7 @@ public class MailCategoria extends TemplateMail {
                 ? Utils.quitarComillas(analex.Preanalisis().getToStr())
                 : String.valueOf(categoria.getValueAt(0, 2));
         categoriaNegocio.modificar(id, nombre, descripcion);
-        ClienteSMTP.sendMail(destinatario, "Modificar Categoria", "Modificacion realizada Correctamente");
+        ClienteSMTP.sendMail(destinatario, "MODIFICAR PRODUCTO",Cadenas.MODIFICAR_SUCCESS);
     }
 
     @Override
@@ -111,7 +111,7 @@ public class MailCategoria extends TemplateMail {
         analex.Avanzar();
         int id = (int) analex.Preanalisis().getAtributo();
         categoriaNegocio.eliminar(id);
-        ClienteSMTP.sendMail(destinatario, "Eliminar Categoria", Cadenas.ELIMINAR_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "ELIMINAR PRODUCTO", Cadenas.ELIMINAR_SUCCESS);
     }
 
     @Override
@@ -125,8 +125,8 @@ public class MailCategoria extends TemplateMail {
             ClienteSMTP.sendMail(destinatario,Cadenas.AYUDA, Helper.HELP_OBTENERUSUARIOS);
             return;
         }
-        String Head[] = {"ID", "NOMBRE", "DESCRIPCION"};
-        String Cabecera = "VETERINARIA ANIMALHELP - LISTA DE CATEGORIAS";
+        String Head[] = {"ID", "NOMBRE", "PRECIO (BS.)", "CATEGORIA ID"};
+        String Cabecera = "VETERINARIA ANIMALHELP - LISTA DE PRODUCTOS";
         // Mensaje message = Utils.dibujarTabla2(usuarioNegocio.obtenerUsuarios(), Head, Cabecera);
         Mensaje message = Utils.dibujarTablaHtml(categoriaNegocio.getCategorias(), Head, Cabecera);
         message.setCorreo(destinatario);

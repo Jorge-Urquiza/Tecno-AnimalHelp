@@ -3,6 +3,7 @@ package correos.veterinaria.software.Datos;
 import correos.veterinaria.software.Datos.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,6 +22,7 @@ public class Productos {
     private String nombre;
     private String precio;
     private int categoria_id;
+
     private Conexion m_Conexion;
 
     public Productos() {
@@ -45,16 +47,16 @@ public class Productos {
     }
 
     ///METHODS
-    public void setProducto(String nombre, String precio, int categoria_id) {
+    public void setProducto(String nombre, int precio, int categoria_id) {
         this.nombre = nombre;
-        this.precio = precio;
+        this.precio = precio + "";
         this.categoria_id = categoria_id;
     }
 
-    public void setProducto(int id, String nombre, String precio, int categoria_id) {
+    public void setProducto(int id, String nombre, int precio, int categoria_id) {
         this.id = id;
         this.nombre = nombre;
-        this.precio = precio;
+        this.precio = precio + "";
         this.categoria_id = categoria_id;
     }
 
@@ -80,7 +82,6 @@ public class Productos {
     }
     // JOIN 
     /*
-    
      SELECT * FROM productos INNER JOIN categorias 
      ON productos.categoria_id = categorias.id;
     
@@ -126,10 +127,76 @@ public class Productos {
     }
 
     public DefaultTableModel getProducto(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Tabla para mostrar lo obtenido de la consulta
+        DefaultTableModel producto = new DefaultTableModel();
+        producto.setColumnIdentifiers(new Object[]{
+            "ID", "NOMBRE", "PRECIO", "CATEGORIA_ID"
+        });
+
+        // Abro y obtengo la conexion
+        this.m_Conexion.abrirConexion();
+        Connection con = this.m_Conexion.getConexion();
+
+        // Preparo la consulta
+        String sql = "SELECT * FROM productos WHERE id=?";
+        try {
+            // La ejecuto
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            // Cierro la conexion
+            this.m_Conexion.cerrarConexion();
+
+            // Recorro el resultado
+            while (rs.next()) {
+                // Agrego las tuplas a mi tabla
+                producto.addRow(new Object[]{
+                    rs.getInt("id"),
+                    rs.getString("nombre"),
+                    Integer.parseInt(rs.getString("precio")),
+                    rs.getInt("categoria_id")
+                });
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return producto;
     }
 
     public DefaultTableModel getProductos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Tabla para mostrar lo obtenido de la consulta
+        DefaultTableModel productos = new DefaultTableModel();
+        productos.setColumnIdentifiers(new Object[]{
+            "ID", "NOMBRE", "PRECIO", "CATEGORIA_ID"
+        });
+
+        // Abro y obtengo la conexion
+        this.m_Conexion.abrirConexion();
+        Connection con = this.m_Conexion.getConexion();
+
+        // Preparo la consulta
+        String sql = "SELECT * FROM productos";
+        try {
+            // La ejecuto
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            // Cierro la conexion
+            this.m_Conexion.cerrarConexion();
+
+            // Recorro el resultado
+            while (rs.next()) {
+                // Agrego las tuplas a mi tabla
+                productos.addRow(new Object[]{
+                    rs.getInt("id"),
+                    rs.getString("nombre"),
+                    Integer.parseInt(rs.getString("precio")),
+                    rs.getInt("categoria_id")
+                });
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return productos;
     }
 }

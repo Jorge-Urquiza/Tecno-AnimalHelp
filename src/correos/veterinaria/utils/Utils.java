@@ -300,9 +300,9 @@ public class Utils {
                 "MODIFICARVETERINARIO[id de veterinario][\"Nombre\"][\"Descripcion\"]",
                 "ELIMINARVETERINARIO[id veterinario]",
                 //cu3
-                "REGISTRARPRODUCTO[\"Nombre\"][\"Precio\"][ID Categoria]",
+                "REGISTRARPRODUCTO[\"Nombre\"][Precio][ID Categoria]",
                 "OBTENERPRODUCTOS",
-                "MODIFICARPRODUCTO[ID Producto][\"Nombre\"][\"Precio\"][ID Categoria]",
+                "MODIFICARPRODUCTO[ID Producto][\"Nombre\"][Precio][ID Categoria]",
                 "ELIMINARPRODUCTO[ID Producto]",
                 /*
                  "OBTENERUSUARIOS",
@@ -356,9 +356,9 @@ public class Utils {
                 "ELIMINARVETERINARIO[2]",
                 
                 //cu3
-                "REGISTRARPRODUCTO[\"Doggy Cachorro\"][\"15\"][1]",
+                "REGISTRARPRODUCTO[\"Doggy Cachorro\"][15][1]",
                 "OBTENERPRODUCTOS",
-                "MODIFICARPRODUCTO[1][\"Doggy\"][\"18\"][_]"+ Cadenas.GUION_BAJO,
+                "MODIFICARPRODUCTO[1][\"Doggy\"][18][_]"+ Cadenas.GUION_BAJO,
                 "ELIMINARPRODUCTO[2]",
                 /*
                  //

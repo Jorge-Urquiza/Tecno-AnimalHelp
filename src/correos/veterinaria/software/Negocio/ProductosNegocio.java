@@ -29,13 +29,12 @@ public class ProductosNegocio {
     }
 
     public void registrar(String nombre, int precio, int categoria_id) {
-        producto.setProducto(nombre, Integer.toString(precio), categoria_id);
+        producto.setProducto(nombre, precio, categoria_id);
         producto.registrar();
     }
 
     public void modificar(int id, String nombre, int precio, int categoria_id) {
-
-        producto.setProducto(id, nombre, Integer.toString(precio), categoria_id);
+        producto.setProducto(id, nombre, precio, categoria_id);
         producto.modificar();
     }
 

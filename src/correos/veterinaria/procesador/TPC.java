@@ -28,10 +28,10 @@ public class TPC {
             "OBTENERHORARIOS",
             "REGISTRARHORARIO",
             "MODIFICARHORARIO",/////////////CU3/////////////////
-            "OBTENERPRODUCTOS",
-            "REGISTRARPRODUCTO",
-            "MODIFICARPRODUCTO",
-            "ELIMINARPRODUCTO",/////////////CU4/////////////////
+        //    "OBTENERPRODUCTOS",
+         //   "REGISTRARPRODUCTO",
+           // "MODIFICARPRODUCTO",
+            //"ELIMINARPRODUCTO",/////////////CU4/////////////////
             "OBTENERRUTINAS",
             "REGISTRARRUTINA",
             "MODIFICARRUTINA",
@@ -87,10 +87,10 @@ public class TPC {
             new Token(Token.FUNC, Token.OBTENERHORARIOS, "OBTENERHORARIOS"),
             new Token(Token.FUNC, Token.REGISTRARHORARIO, "REGISTRARHORARIO"),
             new Token(Token.FUNC, Token.MODIFICARHORARIO, "MODIFICARHORARIO"),////////////CU3///////////////////
-            new Token(Token.FUNC, Token.OBTENERPRODUCTOS, "OBTENERPRODUCTOS"),
-            new Token(Token.FUNC, Token.REGISTRARPRODUCTO, "REGISTRARPRODUCTO"),
-            new Token(Token.FUNC, Token.MODIFICARPRODUCTO, "MODIFICARPRODUCTO"),
-            new Token(Token.FUNC, Token.ELIMINARPRODUCTO, "ELIMINARPRODUCTO"),////////////CU4///////////////////
+           // new Token(Token.FUNC, Token.OBTENERPRODUCTOS, "OBTENERPRODUCTOS"),
+            //new Token(Token.FUNC, Token.REGISTRARPRODUCTO, "REGISTRARPRODUCTO"),
+            //new Token(Token.FUNC, Token.MODIFICARPRODUCTO, "MODIFICARPRODUCTO"),
+            //new Token(Token.FUNC, Token.ELIMINARPRODUCTO, "ELIMINARPRODUCTO"),////////////CU4///////////////////
             new Token(Token.FUNC, Token.OBTENERRUTINAS, "OBTENERRUTINAS"),
             new Token(Token.FUNC, Token.REGISTRARRUTINA, "REGISTRARRUTINA"),
             new Token(Token.FUNC, Token.MODIFICARRUTINA, "MODIFICARRUTINA"),
