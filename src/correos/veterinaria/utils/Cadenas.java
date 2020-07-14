@@ -20,7 +20,7 @@ public class Cadenas {
 
     // mensajes para CU
     public static final String REGISTRO_SUCCESS = "Registro Realizado Exitosamente";
-    public static final String MODIFICAR_SUCCESS = "Modificación Realizado Exitosamente";
+    public static final String MODIFICAR_SUCCESS = "Modificación Realizada Exitosamente";
     public static final String ELIMINAR_SUCCESS = "Registro Eliminado Exitosamente";
 
 }

@@ -9,6 +9,7 @@ import correos.veterinaria.correo.*;
 import correos.veterinaria.procesador.*;
 import correos.veterinaria.software.Negocio.VeterinarioNegocio;
 import correos.veterinaria.utils.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,7 +19,7 @@ public class MailVeterinario extends TemplateMail {
 
     VeterinarioNegocio veterinarioNegocio = new VeterinarioNegocio();
 
-        @Override
+    @Override
     public void registrar(Analex analex, String destinatario) throws Exception {
         // Obtengo el Siguiente token
         analex.Avanzar();
@@ -51,16 +52,84 @@ public class MailVeterinario extends TemplateMail {
         analex.Avanzar();
         String direccion = Utils.quitarComillas(analex.Preanalisis().getToStr());
         veterinarioNegocio.registrar(nombre, apellido, ci, celular, direccion);
-        ClienteSMTP.sendMail(destinatario, "Registrar Veterinario", "Registro realizado Correctamente!!");
+        ClienteSMTP.sendMail(destinatario, "REGISTRAR VETERINARIO",Cadenas.REGISTRO_SUCCESS);
     }
+
     @Override
     public void modificar(Analex analex, String destinatario) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        analex.Avanzar();
+        Token token = analex.Preanalisis();
+        // Reviso si no es ayuda
+        if (token.getNombre() == Token.HELP) {
+            // Mostrar ayuda de esa funcionalidad
+            // Enviar correo con la ayuda
+            ClienteSMTP.sendMail(destinatario, Cadenas.AYUDA, Helper.HELP_MODIFICARHORARIO);
+            return;
+        }
+        // Sino, ejecutar el comando
+        analex.Avanzar();
+        int id = (int) analex.Preanalisis().getAtributo();
+        DefaultTableModel veterinario = veterinarioNegocio.getVeterinario(id);
+        // verifica si existe al id
+        if (veterinario.getRowCount() == 0) {
+            ClienteSMTP.sendMail(destinatario, Cadenas.NO_EXISTS_ID, Cadenas.NO_EXISTS_ID);
+            return;
+        }
+        // Revisar los GuionBajo
+        analex.Avanzar();
+        analex.Avanzar();
+        analex.Avanzar();
+        String nombre = (analex.Preanalisis().getNombre() != Token.GB)
+                ? Utils.quitarComillas(analex.Preanalisis().getToStr())
+                // posicion de la fila del defaultTableModel
+                : String.valueOf(veterinario.getValueAt(0, 1));
+        analex.Avanzar();
+        analex.Avanzar();
+        analex.Avanzar();
+        String apellido = (analex.Preanalisis().getNombre() != Token.GB)
+                ? Utils.quitarComillas(analex.Preanalisis().getToStr())
+                : String.valueOf(veterinario.getValueAt(0, 2));
+        analex.Avanzar();
+        analex.Avanzar();
+        analex.Avanzar();
+        int ci = (analex.Preanalisis().getNombre() != Token.GB)
+                ? (int) analex.Preanalisis().getAtributo()
+                // posicion de la fila del defaultTableModel
+                : (int) veterinario.getValueAt(0, 3);
+        analex.Avanzar();
+        analex.Avanzar();
+        analex.Avanzar();
+        String celular = (analex.Preanalisis().getNombre() != Token.GB)
+                ? Utils.quitarComillas(analex.Preanalisis().getToStr())
+                : String.valueOf(veterinario.getValueAt(0, 4));
+        analex.Avanzar();
+        analex.Avanzar();
+        analex.Avanzar();
+        String direccion = (analex.Preanalisis().getNombre() != Token.GB)
+                ? Utils.quitarComillas(analex.Preanalisis().getToStr())
+                : String.valueOf(veterinario.getValueAt(0, 5));
+        veterinarioNegocio.modificar(id,nombre, apellido, ci, celular, direccion);
+        ClienteSMTP.sendMail(destinatario, "MODIFICAR VETERINARIO", Cadenas.MODIFICAR_SUCCESS);
+
     }
 
     @Override
     public void eliminar(Analex analex, String destinatario) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // Obtengo el Siguiente token
+        analex.Avanzar();
+        Token token = analex.Preanalisis();
+        // Reviso si no es ayuda
+        if (token.getNombre() == Token.HELP) {
+            // Mostrar ayuda de esa funcionalidad
+            // Enviar correo con la ayuda
+            ClienteSMTP.sendMail(destinatario,Cadenas.AYUDA, Helper.HELP_ELIMINARPRODUCTO);
+            return;
+        }
+        // Sino, ejecutar el comando
+        analex.Avanzar();
+        int id = (int) analex.Preanalisis().getAtributo();
+        veterinarioNegocio.eliminar(id);
+        ClienteSMTP.sendMail(destinatario, "ELIMINAR VETERINARIO", Cadenas.ELIMINAR_SUCCESS);  
     }
 
     @Override
@@ -74,7 +143,7 @@ public class MailVeterinario extends TemplateMail {
             ClienteSMTP.sendMail(destinatario, Cadenas.AYUDA, Helper.HELP_OBTENERUSUARIOS);
             return;
         }
-        String Head[] = {"NOMBRE", "APELLIDO", "CI", "CELULAR", "DIRECCION"};
+        String Head[] = {"ID","NOMBRE", "APELLIDO", "CI", "CELULAR", "DIRECCION"};
         String Cabecera = "ANIMALHELP - LISTA DE VETERINARIOS";
         Mensaje message = Utils.dibujarTablaHtml(veterinarioNegocio.getVeterinarios(), Head, Cabecera);
         message.setCorreo(destinatario);

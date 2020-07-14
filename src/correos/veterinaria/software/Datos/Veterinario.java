@@ -160,36 +160,64 @@ public class Veterinario {
     }
 
     public DefaultTableModel getVeterinario(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public DefaultTableModel getVeterinarios() {
         // Tabla para mostrar lo obtenido de la consulta
-        DefaultTableModel categorias = new DefaultTableModel();
-        categorias.setColumnIdentifiers(new Object[]{
-            "id", "nombre", "apellido", "ci", "celular", "direccion"
+        DefaultTableModel veterinario = new DefaultTableModel();
+        veterinario.setColumnIdentifiers(new Object[]{
+            "id", "nombre", "apellidos", "ci", "celular", "direccion"
         });
-        DefaultTableModel veterinarios = new DefaultTableModel();
+
         // Abro y obtengo la conexion
         this.m_Conexion.abrirConexion();
         Connection con = this.m_Conexion.getConexion();
 
         // Preparo la consulta
-        String sql = "SELECT\n"
-                + "veterinarios.id,\n"
-                + "veterinarios.nombre,\n"
-                + "veterinarios.apellido,\n"
-                + "veterinarios.ci,\n"
-                + "veterinarios.celular,\n"
-                + "veterinarios.direccion\n"
-                + "FROM veterinarios order by id asc";
+        String sql = "SELECT * FROM veterinarios WHERE id=?";
+        try {
+            // La ejecuto
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            // Cierro la conexion
+            this.m_Conexion.cerrarConexion();
 
+            // Recorro el resultado
+            while (rs.next()) {
+                // Agrego las tuplas a mi tabla
+                veterinario.addRow(new Object[]{
+                    rs.getInt("id"),
+                    rs.getString("nombre"),
+                    rs.getString("apellido"),
+                    rs.getInt("ci"),
+                    rs.getString("celular"),
+                    rs.getString("direccion"),});
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return veterinario;
+    }
+
+    public DefaultTableModel getVeterinarios() {
+        // Tabla para mostrar lo obtenido de la consulta
+        DefaultTableModel veterinarios = new DefaultTableModel();
+        veterinarios.setColumnIdentifiers(new Object[]{
+            "id", "nombre", "apellido", "ci", "celular", "direccion"
+        });
+
+        // Abro y obtengo la conexion
+        this.m_Conexion.abrirConexion();
+        Connection con = this.m_Conexion.getConexion();
+
+        // Preparo la consulta
+        String sql = "SELECT * FROM veterinarios";
         try {
             // La ejecuto
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
+
             // Cierro la conexion
             this.m_Conexion.cerrarConexion();
+
             // Recorro el resultado
             while (rs.next()) {
                 // Agrego las tuplas a mi tabla

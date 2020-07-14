@@ -19,22 +19,23 @@ public class Main {
      */
     public static void main(String[] args) {
         //cu1
-
+ /*
         CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
-        /*  categoriaNegocio.registrar("Frutas", "Todas las frutas");
+         categoriaNegocio.registrar("Frutas", "Todas las frutas");
          categoriaNegocio.registrar("Lacteos", "Derivados Leche");
          categoriaNegocio.eliminar(3);
-         */
+     
         DefaultTableModel tabla = categoriaNegocio.getCategorias();
         System.out.println(tabla.getColumnCount());
-        System.out.println(tabla.getRowCount());
-        String a= "Hola";
-        System.out.println(String.valueOf(a));
-        
-        System.out.println(tabla.getValueAt(1, 1));
+        System.out.println(tabla.getDataVector());
+            */
+       //(System.out.println(tabla.getValueAt(1, 1));
         //CU2
-        /*
-         VeterinarioNegocio veterinario = new VeterinarioNegocio();
+  
+        VeterinarioNegocio veterinario = new VeterinarioNegocio();
+        DefaultTableModel tabla = veterinario.getVeterinarios();
+        System.out.println(tabla.getDataVector());
+        /*   
          veterinario.registrar("Evans", "Balcazar", 5555, "75055455", "Calle Uruguay #20");
          veterinario.modificar(1, "Juanito", "Perez Gallardo", 111, "78036436", "Calle paraguay #20");
          veterinario.eliminar(2);
