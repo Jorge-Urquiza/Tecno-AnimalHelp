@@ -223,7 +223,22 @@ public class VeterinariaMail {
             case Token.ELIMINARPRODUCTO:
                 mailProducto.eliminar(analex, destinatario);
                 break;
-            
+                
+           //CU4
+            case Token.REGISTRARCLIENTE:
+                mailCliente.registrar(analex, destinatario);
+                break;
+            case Token.MODIFICARCLIENTE:
+                mailCliente.modificar(analex, destinatario);
+                break;
+            case Token.OBTENERCLIENTES:
+                mailCliente.listar(analex, destinatario);
+                break;
+            case Token.ELIMINARCLIENTE:
+                mailCliente.eliminar(analex, destinatario);
+                break;
+            // CU3
+
         }
     }
 

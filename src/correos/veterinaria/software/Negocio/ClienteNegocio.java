@@ -30,12 +30,12 @@ public class ClienteNegocio {
         return cliente.getClientes();
     }
 
-    public void registrar(String nombre, String apellidos, String ci, String celular) {
-        cliente.setCliente(nombre, apellidos, ci, celular);
+    public void registrar(String nombre, String apellidos, int ci, String celular) {
+        cliente.setCliente(nombre, apellidos, ci, celular); 
         cliente.registrar();
     }
 
-    public void modificar(int id, String nombre, String apellidos, String ci, String celular) {
+    public void modificar(int id, String nombre, String apellidos, int ci, String celular) {
         cliente.setCliente(id, nombre, apellidos, ci, celular);
         cliente.modificar();
     }
