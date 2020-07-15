@@ -95,6 +95,13 @@ public class Token {
     public static final int OBTENERCLIENTES = 164;
     public static final int ELIMINARCLIENTE = 165;
 
+
+     //VETERINARIA CU #5
+    public static final int REGISTRARMASCOTA = 166;
+    public static final int MODIFICARMASCOTA = 167;
+    public static final int OBTENERMASCOTAS = 168;
+    public static final int ELIMINARMASCOTA = 169;
+
     private int nombre;
     private float atributo;
     private String toStr;

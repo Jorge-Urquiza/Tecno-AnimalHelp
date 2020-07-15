@@ -7,6 +7,7 @@ package correos.veterinaria.software.Datos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 
@@ -148,7 +149,7 @@ public class Mascota {
         try {
             ps = con.prepareStatement("DELETE FROM mascotas WHERE id = ?");
             ps.setInt(1, this.id);
-            System.out.println("ELIMINADO");
+            System.out.println("ENTRO AL METODO ELIMINAR");
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -156,10 +157,74 @@ public class Mascota {
     }
 
     public DefaultTableModel getMascota(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Tabla para mostrar lo obtenido de la consulta
+        DefaultTableModel mascota = new DefaultTableModel();
+        mascota.setColumnIdentifiers(new Object[]{
+            "id", "nombre", "raza", "color", "cliente_id"
+        });
+        // Abro y obtengo la conexion
+        this.m_Conexion.abrirConexion();
+        Connection con = this.m_Conexion.getConexion();
+        // Preparo la consulta
+        String sql = "SELECT * FROM mascotas WHERE id=?";
+        try {
+            // La ejecuto
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            // Cierro la conexion
+            this.m_Conexion.cerrarConexion();
+            // Recorro el resultado
+            while (rs.next()) {
+                // Agrego las tuplas a mi tabla
+                mascota.addRow(new Object[]{
+                    rs.getInt("id"),
+                    rs.getString("nombre"),
+                    rs.getString("raza"),
+                    rs.getString("color"),
+                    rs.getInt("cliente_id")
+                });
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return mascota;
     }
 
     public DefaultTableModel getMascotas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Tabla para mostrar lo obtenido de la consulta
+        DefaultTableModel mascotas = new DefaultTableModel();
+        mascotas.setColumnIdentifiers(new Object[]{
+            "id", "nombre", "raza", "color", "cliente_id"
+        });
+        // Abro y obtengo la conexion
+        this.m_Conexion.abrirConexion();
+        Connection con = this.m_Conexion.getConexion();
+
+        // Preparo la consulta
+        String sql = "SELECT * FROM mascotas";
+        try {
+            // La ejecuto
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            // Cierro la conexion
+            this.m_Conexion.cerrarConexion();
+
+            // Recorro el resultado
+            while (rs.next()) {
+                // Agrego las tuplas a mi tabla
+                mascotas.addRow(new Object[]{
+                    rs.getInt("id"),
+                    rs.getString("nombre"),
+                    rs.getString("raza"),
+                    rs.getString("color"),
+                    rs.getInt("cliente_id")
+                });
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return mascotas;
     }
 }

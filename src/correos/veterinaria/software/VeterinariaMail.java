@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jorge Luis Urquiza
  */
-public class VeterinariaMail {
+public class VeterinariaMail  {
 
     MailCategoria mailCategoria = new MailCategoria();
     MailVeterinario mailVeterinario = new MailVeterinario();
@@ -237,8 +237,20 @@ public class VeterinariaMail {
             case Token.ELIMINARCLIENTE:
                 mailCliente.eliminar(analex, destinatario);
                 break;
-            // CU3
 
+                 //CU5
+            case Token.REGISTRARMASCOTA:
+                mailMascota.registrar(analex, destinatario);
+                break;
+            case Token.MODIFICARMASCOTA:
+                mailMascota.modificar(analex, destinatario);
+                break;
+            case Token.OBTENERMASCOTAS:
+                mailMascota.listar(analex, destinatario);
+                break;
+            case Token.ELIMINARMASCOTA:
+                mailMascota.eliminar(analex, destinatario);
+                break;
         }
     }
 
