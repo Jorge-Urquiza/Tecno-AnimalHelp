@@ -55,9 +55,10 @@ public class Token {
     public static final int REGISTRARSOCIORUTINA = 121;
     public static final int MODIFICARSOCIORUTINA = 122;
     //////////////////////////////////////////////
-    public static final int OBTENERVENTAS = 123;
-    public static final int REGISTRARVENTA = 124;
-    public static final int MODIFICARVENTA = 125;
+   /* public static final int OBTENERVENTAS = 123;
+     public static final int REGISTRARVENTA = 124;
+     public static final int MODIFICARVENTA = 125;
+     */
     //////////////////////////////////////////////
     public static final int OBTENERMENSUALIDADES = 126;
     public static final int REGISTRARMENSUALIDAD = 127;
@@ -76,7 +77,7 @@ public class Token {
     public static final int MODIFICARCATEGORIA = 151;
     public static final int OBTENERCATEGORIAS = 152;
     public static final int ELIMINARCARTEGORIA = 153;
-     //VETERINARIA CU #2
+    //VETERINARIA CU #2
 
     public static final int REGISTRARVETERINARIO = 154;
     public static final int MODIFICARVETERINARIO = 155;
@@ -95,12 +96,24 @@ public class Token {
     public static final int OBTENERCLIENTES = 164;
     public static final int ELIMINARCLIENTE = 165;
 
-
-     //VETERINARIA CU #5
+    //VETERINARIA CU #5
     public static final int REGISTRARMASCOTA = 166;
     public static final int MODIFICARMASCOTA = 167;
     public static final int OBTENERMASCOTAS = 168;
     public static final int ELIMINARMASCOTA = 169;
+
+    //VETERINARIA CU #6
+    public static final int REGISTRARVENTA = 170;
+    public static final int MODIFICARVENTA = 171;
+    public static final int OBTENERVENTAS = 172;
+    public static final int ELIMINARVENTA = 173;
+    
+     //VETERINARIA CU #7
+    public static final int REGISTRARATENCION = 174;
+    public static final int MODIFICARATENCION = 175;
+    public static final int OBTENERATENCIONES = 176;
+    public static final int ELIMINARATENCION = 177;
+
 
     private int nombre;
     private float atributo;

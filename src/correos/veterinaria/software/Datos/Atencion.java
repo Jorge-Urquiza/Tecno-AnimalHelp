@@ -198,15 +198,7 @@ public class Atencion {
         this.m_Conexion.abrirConexion();
         Connection con = this.m_Conexion.getConexion();
         // Preparo la consulta
-        String sql = "SELECT\n"
-                + "id,\n"
-                + "fecha,\n"
-                + "descripcion,\n"
-                + "diagnostico,\n"
-                + "cliente_id,\n"
-                + "veterinario_id,\n"
-                + "mascota_id\n"
-                + "WHERE id=?";
+         String sql = "SELECT * FROM atenciones WHERE id=?";
         // Los simbolos de interrogacion son para mandar parametros 
         // a la consulta al momento de ejecutalas
 

@@ -48,7 +48,7 @@ public class Main {
          cliente.eliminar(3);
          */
          //CU4
-
+/*
         ProductosNegocio producto = new ProductosNegocio();
         //producto.registrar("Biopet", 15, 1);
         VeterinarioNegocio veterinario = new VeterinarioNegocio();
@@ -64,9 +64,12 @@ public class Main {
          */
 
          //CU6
-        ///AtencionNegocio atencion = new AtencionNegocio();
+       AtencionNegocio atencion = new AtencionNegocio();
         //atencion.modificar(1,"15-04-2020", "El perro vino con dolores", "Darle pastillas", 1, 1, 1);
         //  atencion.registrar("05-04-2020", "El perro vino con diarrea", "Darle paracetamol", 1, 1, 1);
+       DefaultTableModel tabla = atencion.getAtenciones();
+        System.out.println(tabla.getDataVector());
+       
     }
 
 }

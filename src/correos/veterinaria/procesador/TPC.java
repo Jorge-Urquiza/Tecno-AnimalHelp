@@ -19,7 +19,7 @@ public class TPC {
             "HELP",
             "TRUE",
             "FALSE",
-            "OBTENERUSUARIOS",
+           /* "OBTENERUSUARIOS",
             "REGISTRARUSUARIO",
             "MODIFICARUSUARIO",//////////////CU1/////////////////
             "OBTENERASISTENCIAS",
@@ -28,9 +28,9 @@ public class TPC {
             "OBTENERHORARIOS",
             "REGISTRARHORARIO",
             "MODIFICARHORARIO",/////////////CU3/////////////////
-        //    "OBTENERPRODUCTOS",
-         //   "REGISTRARPRODUCTO",
-           // "MODIFICARPRODUCTO",
+            //    "OBTENERPRODUCTOS",
+            //   "REGISTRARPRODUCTO",
+            // "MODIFICARPRODUCTO",
             //"ELIMINARPRODUCTO",/////////////CU4/////////////////
             "OBTENERRUTINAS",
             "REGISTRARRUTINA",
@@ -54,7 +54,7 @@ public class TPC {
             "ESTADISTICASOCIORUTINABYRUTINA",
             "OBTENERHISTORIALSOCIORUTINABYSOCIO",
             "ESTADISTICAMENSUALIDADACTUAL",////////////CU8//////////////////
-
+*/
             //CASOS DE USO VETERINARIA 
             //CU1
             "REGISTRARCATEGORIA",
@@ -66,57 +66,66 @@ public class TPC {
             "MODIFICARVETERINARIO",
             "OBTENERVETERINARIOS",
             "ELIMINARVETERINARIO",
-            
             ///CU3
             "REGISTRARPRODUCTO",
             "MODIFICARPRODUCTO",
             "OBTENERPRODUCTOS",
             "ELIMINARPRODUCTO",
-            
-             ///CU4
+            ///CU4
             "REGISTRARCLIENTE",
             "MODIFICARCLIENTE",
             "OBTENERCLIENTES",
             "ELIMINARCLIENTE",
-            
-             ///CU5
+            ///CU5
             "REGISTRARMASCOTA",
             "MODIFICARMASCOTA",
             "OBTENERMASCOTAS",
-            "ELIMINARMASCOTA"
-
+            "ELIMINARMASCOTA",
+            //cu6
+            "REGISTRARVENTA",
+            "MODIFICARVENTA",
+            "OBTENERVENTAS",
+            "ELIMINARVENTA",
+            
+            //cu7
+ 
+            "REGISTRARATENCION",
+            "MODIFICARATENCION",
+            "OBTENERATENCIONES",
+            "ELIMINARATENCION"
     ));
 //Token asociado
     private static final LinkedList<Token> tokens = new LinkedList<>(Arrays.asList(
             new Token(Token.HELP, -1, "HELP"),
             new Token(Token.TRUE, -1, "TRUE"),
             new Token(Token.FALSE, -1, "FALSE"),
-            new Token(Token.FUNC, Token.OBTENERUSUARIOS, "OBTENERUSUARIOS"),
-            new Token(Token.FUNC, Token.REGISTRARUSUARIO, "REGISTRARUSUARIO"),
-            new Token(Token.FUNC, Token.MODIFICARUSUARIO, "MODIFICARUSUARIO"),//////////////CU1/////////////////
-            new Token(Token.FUNC, Token.OBTENERASISTENCIAS, "OBTENERASISTENCIAS"),
-            new Token(Token.FUNC, Token.REGISTRARASISTENCIA, "REGISTRARASISTENCIA"),
-            new Token(Token.FUNC, Token.MODIFICARASISTENCIA, "MODIFICARASISTENCIA"),////////////CU2///////////////////
-            new Token(Token.FUNC, Token.OBTENERHORARIOS, "OBTENERHORARIOS"),
-            new Token(Token.FUNC, Token.REGISTRARHORARIO, "REGISTRARHORARIO"),
-            new Token(Token.FUNC, Token.MODIFICARHORARIO, "MODIFICARHORARIO"),////////////CU3///////////////////
-           // new Token(Token.FUNC, Token.OBTENERPRODUCTOS, "OBTENERPRODUCTOS"),
-            //new Token(Token.FUNC, Token.REGISTRARPRODUCTO, "REGISTRARPRODUCTO"),
-            //new Token(Token.FUNC, Token.MODIFICARPRODUCTO, "MODIFICARPRODUCTO"),
-            //new Token(Token.FUNC, Token.ELIMINARPRODUCTO, "ELIMINARPRODUCTO"),////////////CU4///////////////////
-            new Token(Token.FUNC, Token.OBTENERRUTINAS, "OBTENERRUTINAS"),
-            new Token(Token.FUNC, Token.REGISTRARRUTINA, "REGISTRARRUTINA"),
-            new Token(Token.FUNC, Token.MODIFICARRUTINA, "MODIFICARRUTINA"),
-            new Token(Token.FUNC, Token.OBTENEREJERCICIOS, "OBTENEREJERCICIOS"),
-            new Token(Token.FUNC, Token.REGISTRAREJERCICIO, "REGISTRAREJERCICIO"),
-            new Token(Token.FUNC, Token.MODIFICAREJERCICIO, "MODIFICAREJERCICIO"),
-            new Token(Token.FUNC, Token.REGISTRARRUTINAEJERCICIO, "REGISTRARRUTINAEJERCICIO"),
-            new Token(Token.FUNC, Token.MODIFICARRUTINAEJERCICIO, "MODIFICARRUTINAEJERCICIO"),
-            new Token(Token.FUNC, Token.REGISTRARSOCIORUTINA, "REGISTRARSOCIORUTINA"),
-            new Token(Token.FUNC, Token.MODIFICARSOCIORUTINA, "MODIFICARSOCIORUTINA"),////////////CU5///////////////////
-            new Token(Token.FUNC, Token.OBTENERVENTAS, "OBTENERVENTAS"),
-            new Token(Token.FUNC, Token.REGISTRARVENTA, "REGISTRARVENTA"),
-            new Token(Token.FUNC, Token.MODIFICARVENTA, "MODIFICARVENTA"),////////////CU6///////////////////
+            /*  new Token(Token.FUNC, Token.OBTENERUSUARIOS, "OBTENERUSUARIOS"),
+             new Token(Token.FUNC, Token.REGISTRARUSUARIO, "REGISTRARUSUARIO"),
+             new Token(Token.FUNC, Token.MODIFICARUSUARIO, "MODIFICARUSUARIO"),//////////////CU1/////////////////
+             new Token(Token.FUNC, Token.OBTENERASISTENCIAS, "OBTENERASISTENCIAS"),
+             new Token(Token.FUNC, Token.REGISTRARASISTENCIA, "REGISTRARASISTENCIA"),
+             new Token(Token.FUNC, Token.MODIFICARASISTENCIA, "MODIFICARASISTENCIA"),////////////CU2///////////////////
+             new Token(Token.FUNC, Token.OBTENERHORARIOS, "OBTENERHORARIOS"),
+             new Token(Token.FUNC, Token.REGISTRARHORARIO, "REGISTRARHORARIO"),
+             new Token(Token.FUNC, Token.MODIFICARHORARIO, "MODIFICARHORARIO"),////////////CU3///////////////////
+             // new Token(Token.FUNC, Token.OBTENERPRODUCTOS, "OBTENERPRODUCTOS"),
+             //new Token(Token.FUNC, Token.REGISTRARPRODUCTO, "REGISTRARPRODUCTO"),
+             //new Token(Token.FUNC, Token.MODIFICARPRODUCTO, "MODIFICARPRODUCTO"),
+             //new Token(Token.FUNC, Token.ELIMINARPRODUCTO, "ELIMINARPRODUCTO"),////////////CU4///////////////////
+             new Token(Token.FUNC, Token.OBTENERRUTINAS, "OBTENERRUTINAS"),
+             new Token(Token.FUNC, Token.REGISTRARRUTINA, "REGISTRARRUTINA"),
+             new Token(Token.FUNC, Token.MODIFICARRUTINA, "MODIFICARRUTINA"),
+             new Token(Token.FUNC, Token.OBTENEREJERCICIOS, "OBTENEREJERCICIOS"),
+             new Token(Token.FUNC, Token.REGISTRAREJERCICIO, "REGISTRAREJERCICIO"),
+             new Token(Token.FUNC, Token.MODIFICAREJERCICIO, "MODIFICAREJERCICIO"),
+             new Token(Token.FUNC, Token.REGISTRARRUTINAEJERCICIO, "REGISTRARRUTINAEJERCICIO"),
+             new Token(Token.FUNC, Token.MODIFICARRUTINAEJERCICIO, "MODIFICARRUTINAEJERCICIO"),
+             new Token(Token.FUNC, Token.REGISTRARSOCIORUTINA, "REGISTRARSOCIORUTINA"),
+             new Token(Token.FUNC, Token.MODIFICARSOCIORUTINA, "MODIFICARSOCIORUTINA"),////////////CU5///////////////////
+           
+            // new Token(Token.FUNC, Token.OBTENERVENTAS, "OBTENERVENTAS"),
+            //  new Token(Token.FUNC, Token.REGISTRARVENTA, "REGISTRARVENTA"),
+            //new Token(Token.FUNC, Token.MODIFICARVENTA, "MODIFICARVENTA"),////////////CU6///////////////////
             new Token(Token.FUNC, Token.OBTENERMENSUALIDADES, "OBTENERMENSUALIDADES"),
             new Token(Token.FUNC, Token.REGISTRARMENSUALIDAD, "REGISTRARMENSUALIDAD"),
             new Token(Token.FUNC, Token.MODIFICARMENSUALIDAD, "MODIFICARMENSUALIDAD"),////////////CU7///////////////////
@@ -126,10 +135,10 @@ public class TPC {
             new Token(Token.FUNC, Token.ESTADISTICASOCIORUTINABYRUTINA, "ESTADISTICASOCIORUTINABYRUTINA"),
             new Token(Token.FUNC, Token.OBTENERHISTORIALSOCIORUTINABYSOCIO, "OBTENERHISTORIALSOCIORUTINABYSOCIO"),
             new Token(Token.FUNC, Token.ESTADISTICAMENSUALIDADACTUAL, "ESTADISTICAMENSUALIDADACTUAL"),////////////CU7///////////////////
-
+*/
             ////VETERINARIA ANIMALHELP
             //C1
-          
+
             new Token(Token.FUNC, Token.REGISTRARCATEGORIA, "REGISTRARCATEGORIA"),
             new Token(Token.FUNC, Token.MODIFICARCATEGORIA, "MODIFICARCATEGORIA"),
             new Token(Token.FUNC, Token.OBTENERCATEGORIAS, "OBTENERCATEGORIAS"),
@@ -139,26 +148,32 @@ public class TPC {
             new Token(Token.FUNC, Token.MODIFICARVETERINARIO, "MODIFICARVETERINARIO"),
             new Token(Token.FUNC, Token.OBTENERVETERINARIOS, "OBTENERVETERINARIOS"),
             new Token(Token.FUNC, Token.ELIMINARVETERINARIO, "ELIMINARVETERINARIO"),
-            
             //CU3
             new Token(Token.FUNC, Token.REGISTRARPRODUCTO, "REGISTRARPRODUCTO"),
             new Token(Token.FUNC, Token.MODIFICARPRODUCTO, "MODIFICARPRODUCTO"),
             new Token(Token.FUNC, Token.OBTENERPRODUCTOS, "OBTENERPRODUCTOS"),
             new Token(Token.FUNC, Token.ELIMINARPRODUCTO, "ELIMINARPRODUCTO"),
-            
             //CU4
             new Token(Token.FUNC, Token.REGISTRARCLIENTE, "REGISTRARCLIENTE"),
             new Token(Token.FUNC, Token.MODIFICARCLIENTE, "MODIFICARCLIENTE"),
             new Token(Token.FUNC, Token.OBTENERCLIENTES, "OBTENERCLIENTES"),
             new Token(Token.FUNC, Token.ELIMINARCLIENTE, "ELIMINARCLIENTE"),
-            
             //CU5
             new Token(Token.FUNC, Token.REGISTRARMASCOTA, "REGISTRARMASCOTA"),
             new Token(Token.FUNC, Token.MODIFICARMASCOTA, "MODIFICARMASCOTA"),
             new Token(Token.FUNC, Token.OBTENERMASCOTAS, "OBTENERMASCOTAS"),
-            new Token(Token.FUNC, Token.ELIMINARMASCOTA, "ELIMINARMASCOTA")
-           
+            new Token(Token.FUNC, Token.ELIMINARMASCOTA, "ELIMINARMASCOTA"),
+            //CU6
+            new Token(Token.FUNC, Token.REGISTRARVENTA, "REGISTRARVENTA"),
+            new Token(Token.FUNC, Token.MODIFICARVENTA, "MODIFICARVENTA"),
+            new Token(Token.FUNC, Token.OBTENERVENTAS, "OBTENERVENTAS"),
+            new Token(Token.FUNC, Token.ELIMINARVENTA, "ELIMINARVENTA"),
             
+            //CU7
+            new Token(Token.FUNC, Token.REGISTRARATENCION, "REGISTRARATENCION"),
+            new Token(Token.FUNC, Token.MODIFICARATENCION, "MODIFICARATENCION"),
+            new Token(Token.FUNC, Token.OBTENERATENCIONES, "OBTENERATENCIONES"),
+            new Token(Token.FUNC, Token.ELIMINARATENCION, "ELIMINARATENCION")
     ));
 
     public static Token estaEnTPC(String lexema) {

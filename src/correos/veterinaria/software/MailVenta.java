@@ -5,10 +5,32 @@
  */
 package correos.veterinaria.software;
 
+import correos.veterinaria.procesador.Analex;
+
 /**
  *
  * @author Jorge Luis Urquiza
  */
-public class MailVenta {
+public class MailVenta extends TemplateMail{
+
+    @Override
+    public void registrar(Analex analex, String destinatario) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void modificar(Analex analex, String destinatario) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void eliminar(Analex analex, String destinatario) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void listar(Analex analex, String destinatario) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

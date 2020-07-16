@@ -17,13 +17,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jorge Luis Urquiza
  */
-public class VeterinariaMail  {
+public class VeterinariaMail {
 
     MailCategoria mailCategoria = new MailCategoria();
     MailVeterinario mailVeterinario = new MailVeterinario();
     MailProducto mailProducto = new MailProducto();
     MailMascota mailMascota = new MailMascota();
     MailCliente mailCliente = new MailCliente();
+    MailVenta mailVenta = new MailVenta();
+    MailAtencion mailAtencion = new MailAtencion();
 
     public void processMessage(String Message) throws MessagingException, Exception {
         // Setteando Variables
@@ -67,7 +69,7 @@ public class VeterinariaMail  {
 
         // Sino es HELP, es una funcionalidad
         switch ((int) token.getAtributo()) {
-
+/*
             case Token.OBTENERUSUARIOS:
                 obtenerUsuarios(analex, destinatario);
                 break;
@@ -99,88 +101,88 @@ public class VeterinariaMail  {
                 break;
             ////////////////////////////////////////////////////////////////////
            /* case Token.OBTENERPRODUCTOS:
-                obtenerProductos(analex, destinatario);
-                break;
-            case Token.REGISTRARPRODUCTO:
-                registrarProducto(analex, destinatario);
-                break;
-            case Token.MODIFICARPRODUCTO:
-                modificarProducto(analex, destinatario);
-                break;
-            case Token.ELIMINARPRODUCTO:
-                eliminarProducto(analex, destinatario);
-                break;
-            ////////////////////////////////////////////////////////////////////
-            case Token.OBTENERRUTINAS:
-                obtenerRutinas(analex, destinatario);
-                break;
-            case Token.REGISTRARRUTINA:
-                registrarRutina(analex, destinatario);
-                break;
-            case Token.MODIFICARRUTINA:
-                modificarRutina(analex, destinatario);
-                break;
-            case Token.OBTENEREJERCICIOS:
-                obtenerEjercicios(analex, destinatario);
-                break;
-            case Token.REGISTRAREJERCICIO:
-                registrarEjercicio(analex, destinatario);
-                break;
-            case Token.MODIFICAREJERCICIO:
-                modificarEjercicio(analex, destinatario);
-                break;
-            case Token.REGISTRARRUTINAEJERCICIO:
-                registrarRutinaEjercicio(analex, destinatario);
-                break;
-            case Token.MODIFICARRUTINAEJERCICIO:
-                modificarRutinaEjercicio(analex, destinatario);
-                break;
-            case Token.REGISTRARSOCIORUTINA:
-                registrarSocioRutina(analex, destinatario);
-                break;
-            case Token.MODIFICARSOCIORUTINA:
-                modificarSocioRutina(analex, destinatario);
-                break;
-            ////////////////////////////////////////////////////////////////////
-            case Token.OBTENERVENTAS:
-                obtenerVentas(analex, destinatario);
-                break;
-            case Token.REGISTRARVENTA:
-                registrarVenta(analex, destinatario);
-                break;
-            case Token.MODIFICARVENTA:
-                modificarVenta(analex, destinatario);
-                break;
-            ////////////////////////////////////////////////////////////////////
-            case Token.OBTENERMENSUALIDADES:
-                obtenerMensualidades(analex, destinatario);
-                break;
-            case Token.REGISTRARMENSUALIDAD:
-                registrarMensualidad(analex, destinatario);
-                break;
-            case Token.MODIFICARMENSUALIDAD:
-                modificarMensualidad(analex, destinatario);
-                break;
-            ////////////////////////////////////////////////////////////////////
-            case Token.OBTENERASISTENCIABYSOCIO:
-                obtenerAsistenciaBySocio(analex, destinatario);
-                break;
-            case Token.ESTADISTICAASISTENCIABYHORARIO:
-                estadisticaAsistenciaByHorario(analex, destinatario);
-                break;
-            case Token.OBTENERRUTINAEJERCICIOBYRUTINA:
-                obtenerRutinaEjercicioByRutina(analex, destinatario);
-                break;
-            case Token.ESTADISTICASOCIORUTINABYRUTINA:
-                estadisticaSocioRutinaByRutina(analex, destinatario);
-                break;
-            case Token.OBTENERHISTORIALSOCIORUTINABYSOCIO:
-                obtenerHistorialSocioRutinaBySocio(analex, destinatario);
-                break;
-            case Token.ESTADISTICAMENSUALIDADACTUAL:
-                estadisticaMensualidadActual(analex, destinatario);
-                break;
-                */
+             obtenerProductos(analex, destinatario);
+             break;
+             case Token.REGISTRARPRODUCTO:
+             registrarProducto(analex, destinatario);
+             break;
+             case Token.MODIFICARPRODUCTO:
+             modificarProducto(analex, destinatario);
+             break;
+             case Token.ELIMINARPRODUCTO:
+             eliminarProducto(analex, destinatario);
+             break;
+             ////////////////////////////////////////////////////////////////////
+             case Token.OBTENERRUTINAS:
+             obtenerRutinas(analex, destinatario);
+             break;
+             case Token.REGISTRARRUTINA:
+             registrarRutina(analex, destinatario);
+             break;
+             case Token.MODIFICARRUTINA:
+             modificarRutina(analex, destinatario);
+             break;
+             case Token.OBTENEREJERCICIOS:
+             obtenerEjercicios(analex, destinatario);
+             break;
+             case Token.REGISTRAREJERCICIO:
+             registrarEjercicio(analex, destinatario);
+             break;
+             case Token.MODIFICAREJERCICIO:
+             modificarEjercicio(analex, destinatario);
+             break;
+             case Token.REGISTRARRUTINAEJERCICIO:
+             registrarRutinaEjercicio(analex, destinatario);
+             break;
+             case Token.MODIFICARRUTINAEJERCICIO:
+             modificarRutinaEjercicio(analex, destinatario);
+             break;
+             case Token.REGISTRARSOCIORUTINA:
+             registrarSocioRutina(analex, destinatario);
+             break;
+             case Token.MODIFICARSOCIORUTINA:
+             modificarSocioRutina(analex, destinatario);
+             break;
+             ////////////////////////////////////////////////////////////////////
+             case Token.OBTENERVENTAS:
+             obtenerVentas(analex, destinatario);
+             break;
+             case Token.REGISTRARVENTA:
+             registrarVenta(analex, destinatario);
+             break;
+             case Token.MODIFICARVENTA:
+             modificarVenta(analex, destinatario);
+             break;
+             ////////////////////////////////////////////////////////////////////
+             case Token.OBTENERMENSUALIDADES:
+             obtenerMensualidades(analex, destinatario);
+             break;
+             case Token.REGISTRARMENSUALIDAD:
+             registrarMensualidad(analex, destinatario);
+             break;
+             case Token.MODIFICARMENSUALIDAD:
+             modificarMensualidad(analex, destinatario);
+             break;
+             ////////////////////////////////////////////////////////////////////
+             case Token.OBTENERASISTENCIABYSOCIO:
+             obtenerAsistenciaBySocio(analex, destinatario);
+             break;
+             case Token.ESTADISTICAASISTENCIABYHORARIO:
+             estadisticaAsistenciaByHorario(analex, destinatario);
+             break;
+             case Token.OBTENERRUTINAEJERCICIOBYRUTINA:
+             obtenerRutinaEjercicioByRutina(analex, destinatario);
+             break;
+             case Token.ESTADISTICASOCIORUTINABYRUTINA:
+             estadisticaSocioRutinaByRutina(analex, destinatario);
+             break;
+             case Token.OBTENERHISTORIALSOCIORUTINABYSOCIO:
+             obtenerHistorialSocioRutinaBySocio(analex, destinatario);
+             break;
+             case Token.ESTADISTICAMENSUALIDADACTUAL:
+             estadisticaMensualidadActual(analex, destinatario);
+             break;
+             */
 ////////// VETERINARIA ANIMAL HELP 
             // CU1 
             case Token.REGISTRARCATEGORIA:
@@ -210,7 +212,7 @@ public class VeterinariaMail  {
                 mailVeterinario.eliminar(analex, destinatario);
                 break;
             // CU3
-         
+
             case Token.REGISTRARPRODUCTO:
                 mailProducto.registrar(analex, destinatario);
                 break;
@@ -223,8 +225,8 @@ public class VeterinariaMail  {
             case Token.ELIMINARPRODUCTO:
                 mailProducto.eliminar(analex, destinatario);
                 break;
-                
-           //CU4
+
+            //CU4
             case Token.REGISTRARCLIENTE:
                 mailCliente.registrar(analex, destinatario);
                 break;
@@ -238,7 +240,7 @@ public class VeterinariaMail  {
                 mailCliente.eliminar(analex, destinatario);
                 break;
 
-                 //CU5
+            //CU5
             case Token.REGISTRARMASCOTA:
                 mailMascota.registrar(analex, destinatario);
                 break;
@@ -250,6 +252,34 @@ public class VeterinariaMail  {
                 break;
             case Token.ELIMINARMASCOTA:
                 mailMascota.eliminar(analex, destinatario);
+                break;
+
+            //CU6
+            case Token.REGISTRARVENTA:
+                mailVenta.registrar(analex, destinatario);
+                break;
+            case Token.MODIFICARVENTA:
+                mailVenta.modificar(analex, destinatario);
+                break;
+            case Token.OBTENERVENTAS:
+                mailVenta.listar(analex, destinatario);
+                break;
+            case Token.ELIMINARVENTA:
+                mailVenta.eliminar(analex, destinatario);
+                break;
+            //CU7
+
+            case Token.REGISTRARATENCION:
+                mailAtencion.registrar(analex, destinatario);
+                break;
+            case Token.MODIFICARATENCION:
+                mailAtencion.modificar(analex, destinatario);
+                break;
+            case Token.OBTENERATENCIONES:
+                mailAtencion.listar(analex, destinatario);
+                break;
+            case Token.ELIMINARATENCION:
+                mailAtencion.eliminar(analex, destinatario);
                 break;
         }
     }
