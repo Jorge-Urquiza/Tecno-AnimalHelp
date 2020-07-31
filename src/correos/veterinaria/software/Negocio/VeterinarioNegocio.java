@@ -32,6 +32,7 @@ public class VeterinarioNegocio {
     public void registrar(String nombre, String apellidos, int ci, String celular, String direccion) {
         veterinario.setVeterinario(nombre, apellidos, ci, celular, direccion);
         veterinario.registrar();
+       
     }
 
     public void modificar(int id, String nombre, String apellidos, int ci, String celular, String direccion) {

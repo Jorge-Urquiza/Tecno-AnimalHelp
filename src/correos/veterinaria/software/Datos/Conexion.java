@@ -6,9 +6,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * @author mauriballes
- * @version 1.0
- * @created 15-Jun-2017 9:04:44 PM
+ *
+ * @author Jorge Luis Urquiza
  */
 public class Conexion {
 

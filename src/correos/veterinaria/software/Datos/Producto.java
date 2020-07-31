@@ -1,55 +1,136 @@
 package correos.veterinaria.software.Datos;
 
+import correos.veterinaria.software.Datos.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 /**
- * @author mauriballes
- * @version 1.0
- * @created 15-Jun-2017 9:04:50 PM
+ *
+ * @author Jorge Luis Urquiza
  */
 public class Producto {
 
     private int id;
     private String nombre;
-    public Conexion m_Conexion;
+    private String precio;
+    private int categoria_id;
+
+    private Conexion m_Conexion;
 
     public Producto() {
-        // Obteniendo la instancia de la Conexion
-        this.m_Conexion = Conexion.getInstancia();
+        m_Conexion = Conexion.getInstancia();
     }
 
-    /**
-     *
-     * @param nombre
-     */
-    public void setProducto(String nombre) {
+    //Setters and Getters
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    /**
-     *
-     * @param id
-     * @param nombre
-     */
-    public void setProducto(int id, String nombre) {
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
+
+    public void setCategoria_id(int categoria_id) {
+        this.categoria_id = categoria_id;
+    }
+
+    ///METHODS
+    public void setProducto(String nombre, int precio, int categoria_id) {
+        this.nombre = nombre;
+        this.precio = precio + "";
+        this.categoria_id = categoria_id;
+    }
+
+    public void setProducto(int id, String nombre, int precio, int categoria_id) {
         this.id = id;
         this.nombre = nombre;
+        this.precio = precio + "";
+        this.categoria_id = categoria_id;
     }
 
-    /**
-     *
-     * @param id
+    public void registrar() {
+        this.m_Conexion.abrirConexion();
+        Connection con = this.m_Conexion.getConexion();
+        // Preparo la consulta
+        PreparedStatement ps = null;
+        String query = "INSERT INTO productos \n"
+                + "(nombre,precio,categoria_id) \n"
+                + " values (?,?,?)";
+        try {
+            ps = con.prepareStatement(query);
+            ps.setString(1, nombre);
+            ps.setString(2, precio);
+            ps.setInt(3, categoria_id);
+            ps.executeUpdate();
+            System.out.println("Registrado!!");
+            con.close();
+        } catch (SQLException e) {
+            System.out.println("ERROR: " + e.getMessage());
+        }
+    }
+    // JOIN 
+    /*
+     SELECT * FROM productos INNER JOIN categorias 
+     ON productos.categoria_id = categorias.id;
+    
      */
+
+    public void modificar() {
+        this.m_Conexion.abrirConexion();
+        Connection con = this.m_Conexion.getConexion();
+        PreparedStatement ps = null;
+        String query = "UPDATE productos SET \n"
+                + "nombre = ?,\n"
+                + "precio = ?, \n"
+                + "categoria_id = ? \n"
+                + "WHERE id = ?";
+        try {
+            ps = con.prepareStatement(query);
+            ps.setString(1, nombre);
+            ps.setString(2, precio);
+            ps.setInt(3, categoria_id);
+            ps.setInt(4, id);
+            ps.executeUpdate();
+            System.out.println("Modificado!!");
+            con.close();
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public void eliminar() {
+        this.m_Conexion.abrirConexion();
+        Connection con = this.m_Conexion.getConexion();
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement("DELETE FROM productos WHERE id = ?");
+            ps.setInt(1, this.id);
+            System.out.println("ELIMINADO");
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+
     public DefaultTableModel getProducto(int id) {
         // Tabla para mostrar lo obtenido de la consulta
         DefaultTableModel producto = new DefaultTableModel();
         producto.setColumnIdentifiers(new Object[]{
-            "id", "nombre"
+            "ID", "NOMBRE", "PRECIO", "CATEGORIA_ID"
         });
 
         // Abro y obtengo la conexion
@@ -57,20 +138,12 @@ public class Producto {
         Connection con = this.m_Conexion.getConexion();
 
         // Preparo la consulta
-        String sql = "SELECT\n"
-                + "producto.id,\n"
-                + "producto.nombre\n"
-                + "FROM producto\n"
-                + "WHERE producto.id=?";
-        // Los simbolos de interrogacion son para mandar parametros 
-        // a la consulta al momento de ejecutalas
-
+        String sql = "SELECT * FROM productos WHERE id=?";
         try {
             // La ejecuto
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-
             // Cierro la conexion
             this.m_Conexion.cerrarConexion();
 
@@ -80,6 +153,8 @@ public class Producto {
                 producto.addRow(new Object[]{
                     rs.getInt("id"),
                     rs.getString("nombre"),
+                    Integer.parseInt(rs.getString("precio")),
+                    rs.getInt("categoria_id")
                 });
             }
         } catch (SQLException ex) {
@@ -92,18 +167,15 @@ public class Producto {
         // Tabla para mostrar lo obtenido de la consulta
         DefaultTableModel productos = new DefaultTableModel();
         productos.setColumnIdentifiers(new Object[]{
-            "id", "nombre"
+            "ID", "NOMBRE", "PRECIO", "CATEGORIA_ID"
         });
 
         // Abro y obtengo la conexion
         this.m_Conexion.abrirConexion();
         Connection con = this.m_Conexion.getConexion();
-        // Preparo la consulta
-        String sql = "SELECT\n"
-                + "producto.id,\n"
-                + "producto.nombre\n"
-                + "FROM producto";
 
+        // Preparo la consulta
+        String sql = "SELECT * FROM productos";
         try {
             // La ejecuto
             PreparedStatement ps = con.prepareStatement(sql);
@@ -118,89 +190,13 @@ public class Producto {
                 productos.addRow(new Object[]{
                     rs.getInt("id"),
                     rs.getString("nombre"),
+                    Integer.parseInt(rs.getString("precio")),
+                    rs.getInt("categoria_id")
                 });
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return productos;
-    }
-
-    public int registrarProducto() {
-        // Abro y obtengo la conexion
-        this.m_Conexion.abrirConexion();
-        Connection con = this.m_Conexion.getConexion();
-
-        // Preparo la consulta
-        String sql = "INSERT INTO producto(\n"
-                + "nombre)\n"
-                + "VALUES(?)";
-
-        try {
-            // La ejecuto
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            // El segundo parametro de usa cuando se tienen tablas que generan llaves primarias
-            // es bueno cuando nuestra bd tiene las primarias autoincrementables
-            ps.setString(1, this.nombre);
-            int rows = ps.executeUpdate();
-
-            // Cierro Conexion
-            this.m_Conexion.cerrarConexion();
-
-            // Obtengo el id generado pra devolverlo
-            if (rows != 0) {
-                ResultSet generateKeys = ps.getGeneratedKeys();
-                if (generateKeys.next()) {
-                    return generateKeys.getInt(1);
-                }
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return 0;
-    }
-
-    public void modificarProducto() {
-        // Abro y obtengo la conexion
-        this.m_Conexion.abrirConexion();
-        Connection con = this.m_Conexion.getConexion();
-
-        // Preparo la consulta
-        String sql = "UPDATE producto SET\n"
-                + "nombre = ?\n"
-                + "WHERE producto.id = ?";
-        try {
-            // La ejecuto
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, this.nombre);
-            ps.setInt(2, this.id);
-            int rows = ps.executeUpdate();
-
-            // Cierro la conexion
-            this.m_Conexion.cerrarConexion();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
-    public void eliminarProducto(int id) {
-        // Abro y obtengo la conexion
-        this.m_Conexion.abrirConexion();
-        Connection con = this.m_Conexion.getConexion();
-
-        // Preparo la consulta
-        String sql = "DELETE FROM producto\n"
-                + "WHERE producto.id = ?";
-        try {
-            // La ejecuto
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
-            int rows = ps.executeUpdate();
-
-            // Cierro la conexion
-            this.m_Conexion.cerrarConexion();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
     }
 }

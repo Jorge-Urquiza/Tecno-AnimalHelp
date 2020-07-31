@@ -7,7 +7,7 @@ package correos.veterinaria.procesador;
 
 /**
  *
- * @author mauriballes
+ * @author Jorge Luis Urquiza
  */
 public class Cinta {
 

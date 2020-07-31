@@ -5,61 +5,66 @@
  */
 package correos.veterinaria.software.Negocio;
 
+import correos.veterinaria.software.Datos.DetalleVenta;
 import correos.veterinaria.software.Datos.Venta;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
- * @author Percy Tomicha
+ * @author Jorge Luis Urquiza
  */
 public class VentaNegocio {
 
-    public Venta m_Venta;
+    private Venta venta;
+    private DetalleVenta detalle;
 
     public VentaNegocio() {
-        this.m_Venta = new Venta();
+        this.venta = new Venta();
+        this.detalle = new DetalleVenta();
     }
 
-    /**
-     *
-     * @param id
-     * @return 
-     */
-    public DefaultTableModel obtenerVenta(int id) {
-        return this.m_Venta.getVenta(id);
+    public void registrar(String nit, Date fecha, int cliente_id, int veterinario_id, LinkedList<DetalleVenta> lista) {
+        venta.setVenta(nit, fecha, cliente_id, veterinario_id);
+        int total = 0;
+        int venta_id = venta.registrar();
+
+        if (venta_id != -1) {
+            for (DetalleVenta detalle : lista) {
+                detalle.setIDVenta(venta_id);
+                detalle.registrar();
+                // System.out.println("DETALLES: producto_id: " + detalle_venta.getProducto_id() + "venta_ id: " + detalle_venta.getVenta_id() + "cant :" + detalle_venta.getCantidad());
+                total += detalle.getPrecioProductoxCantidad();
+                System.out.println("Vueltas" + total++);
+            }
+            venta.actualizarTotal(total);
+            System.out.println("COSTO TOTAL DE LA VENTA: " + total);
+        } else {
+            System.out.println("Error al crear la venta");
+        }
     }
 
-    /**
-     *
-     * @return 
-     */
-    public DefaultTableModel obtenerVentas() {
-        return this.m_Venta.getVentas();
+    public DefaultTableModel getVenta(int id) {
+        return venta.getVenta(id);
     }
 
-    /**
-     *
-     * @param cantidad
-     * @param fecha
-     * @param precio
-     * @param id_producto
-     * @return 
-     */
-    public int registrarVenta(int cantidad, Date fecha, float precio, int id_producto) {
-        this.m_Venta.setVenta(cantidad,fecha,precio,id_producto);
-        return this.m_Venta.registrarVenta();
+    public DefaultTableModel getVentas() {
+        return venta.getVentas();
     }
 
-    /**
-     *
-     * @param id
-     * @param cantidad
-     * @param fecha
-     * @param precio
-     * @param id_producto
-     */
-    public void modificarVenta(int id, int cantidad, Date fecha, float precio, int id_producto) {
-        this.m_Venta.setVenta(id, cantidad,fecha,precio,id_producto);
-        this.m_Venta.modificarVenta();
+    public void modificar(int id, String nit, Date fecha, int cliente_id, int veterinario_id) {
+        //id de la categoria a modificar
+        venta.setVenta(id, nit, fecha, cliente_id, veterinario_id);
+        venta.modificar();
     }
+
+    public void eliminar(int id) {
+        //primero debo de eliminar el detalle y depues la venta.
+        detalle.setIDVenta(id); // elimina todos los detalles de la venta
+        venta.setId(id); // elimina la venta
+
+    }
+
 }

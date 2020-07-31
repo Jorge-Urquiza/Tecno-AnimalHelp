@@ -1,61 +1,45 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package correos.veterinaria.software.Negocio;
 
-import correos.veterinaria.software.Datos.Producto;
-import java.sql.Date;
+import correos.veterinaria.software.Datos.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * @author mauriballes
- * @version 1.0
- * @created 15-Jun-2017 9:04:41 PM
+ *
+ * @author Jorge Luis Urquiza
  */
 public class ProductoNegocio {
 
-    public Producto m_Producto;
+    private Producto producto;
 
     public ProductoNegocio() {
-        this.m_Producto = new Producto();
+        this.producto = new Producto();
     }
 
-    /**
-     *
-     * @param id
-     * @return
-     */
-    public DefaultTableModel obtenerProducto(int id) {
-        return this.m_Producto.getProducto(id);
+    public DefaultTableModel getProducto(int id) {
+        return producto.getProducto(id);
     }
 
-    public DefaultTableModel obtenerProductos() {
-        return this.m_Producto.getProductos();
+    public DefaultTableModel getProductos() {
+        return producto.getProductos();
     }
 
-    /**
-     *
-     * @param nombre
-     * @return
-     */
-    public int registrarProducto(String nombre) {
-        this.m_Producto.setProducto(nombre);
-        return this.m_Producto.registrarProducto();
+    public void registrar(String nombre, int precio, int categoria_id) {
+        producto.setProducto(nombre, precio, categoria_id);
+        producto.registrar();
     }
 
-    /**
-     *
-     * @param id
-     * @param nombre
-     */
-    public void modificarProducto(int id, String nombre) {
-        this.m_Producto.setProducto(id, nombre);
-        this.m_Producto.modificarProducto();
+    public void modificar(int id, String nombre, int precio, int categoria_id) {
+        producto.setProducto(id, nombre, precio, categoria_id);
+        producto.modificar();
     }
 
-    /**
-     *
-     * @param id
-     */
-    public void eliminarProducto(int id) {
-        this.m_Producto.eliminarProducto(id);
+    public void eliminar(int id) {
+        producto.setId(id);
+        producto.eliminar();
     }
-
 }

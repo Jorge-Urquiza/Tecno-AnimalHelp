@@ -5,7 +5,7 @@
  */
 package correos.veterinaria;
 
-import correos.veterinaria.correo.ClientePOP;
+import correos.veterinaria.protocolos.ClientePOP;
 import correos.veterinaria.software.VeterinariaMail;
 import correos.veterinaria.utils.Constants;
 import java.util.logging.Level;
@@ -40,7 +40,6 @@ public class Veterinaria extends javax.swing.JFrame {
                 // Preguntar si hay mail
                 String content = ClientePOP.readMail();
                 if (content != null) {
-                    System.out.println("CORREO RECIBIDO:");
                     new HiloAtencion(content).start();
                 }
                 sleep();

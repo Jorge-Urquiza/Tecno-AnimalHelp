@@ -5,7 +5,6 @@
  */
 package correos.veterinaria.utils;
 
-//CONSTANTES DE LA BD 
 
 public class Database {
 

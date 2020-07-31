@@ -15,62 +15,90 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Percy Tomicha
+ * @author Jorge Luis Urquiza
  */
 public class Venta {
 
     private int id;
-    private int cantidad;
+    private String nit;
     private Date fecha;
-    private float precio;
-    private int id_producto;
-    public Conexion m_Conexion;
-    
+    private int total; // total de la venta 
+    private int cliente_id;
+    private int veterinario_id;
+
+    private Conexion m_Conexion;
+
     public Venta() {
-        // Obteniendo la instancia de la Conexion
-        this.m_Conexion = Conexion.getInstancia();
+        m_Conexion = Conexion.getInstancia();
     }
 
-    /**
-     *
-     * @param cantidad
-     * @param fecha
-     * @param precio
-     * @param id_producto
-     */
-    public void setVenta(int cantidad, Date fecha, float precio, int id_producto) {
-        this.cantidad = cantidad;
-        this.fecha = fecha;
-        this.precio = precio;
-        this.id_producto = id_producto;
-    }
-
-    /**
-     *
-     * @param id
-     * @param cantidad
-     * @param fecha
-     * @param precio
-     * @param id_producto
-     */
-    public void setVenta(int id, int cantidad, Date fecha, float precio, int id_producto) {
+    public void setId(int id) {
         this.id = id;
-        this.cantidad = cantidad;
-        this.fecha = fecha;
-        this.precio = precio;
-        this.id_producto = id_producto;
     }
 
-    /**
-     *
-     * @param id
-     * @return
-     */
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public void setVenta(int id, String nit, Date fecha, int cliente_id, int veterinario_id) {
+        this.id = id;
+        this.nit = nit;
+        this.fecha = fecha;
+        this.cliente_id = cliente_id;
+        this.veterinario_id = veterinario_id;
+        total = 0;
+    }
+
+    public void setVenta(String nit, Date fecha, int cliente_id, int veterinario_id) {
+        this.fecha = fecha;
+        this.nit = nit;
+        this.cliente_id = cliente_id;
+        this.veterinario_id = veterinario_id;
+        total = 0;
+    }
+
+    public int registrar() {
+        // Abro y obtengo la conexion
+        this.m_Conexion.abrirConexion();
+        Connection con = this.m_Conexion.getConexion();
+
+        // Preparo la consulta
+        String sql = "INSERT INTO ventas (\n"
+                + "nit,fecha,total,cliente_id,veterinario_id)\n"
+                + "VALUES(?,?,?,?,?)";
+        try {
+            // La ejecuto
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            // El segundo parametro de usa cuando se tienen tablas que generan llaves primarias
+            // es bueno cuando nuestra bd tiene las primarias autoincrementables
+            ps.setString(1, this.nit);
+            ps.setDate(2, this.fecha);
+            ps.setInt(3, this.total);
+            ps.setInt(4, this.cliente_id);
+            ps.setInt(5, this.veterinario_id);
+            int rows = ps.executeUpdate();
+            // Cierro Conexion
+            this.m_Conexion.cerrarConexion();
+            // Obtengo el id generado pra devolverlo
+            if (rows != 0) {
+                ResultSet generateKeys = ps.getGeneratedKeys();
+                if (generateKeys.next()) {
+                    id = generateKeys.getInt(1);
+                    return id;
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return -1; // NO REGISTRO
+
+    }
+
     public DefaultTableModel getVenta(int id) {
         // Tabla para mostrar lo obtenido de la consulta
         DefaultTableModel venta = new DefaultTableModel();
         venta.setColumnIdentifiers(new Object[]{
-            "id", "cantidad", "fecha", "precio", "id_producto"
+            "ID", "NIT", "FECHA", "CLIENTE_ID", "VETERINARIO_ID"
         });
 
         // Abro y obtengo la conexion
@@ -78,23 +106,12 @@ public class Venta {
         Connection con = this.m_Conexion.getConexion();
 
         // Preparo la consulta
-        String sql = "SELECT\n"
-                + "venta.id,\n"
-                + "venta.cantidad,\n"
-                + "venta.fecha,\n"
-                + "venta.precio,\n"
-                + "venta.id_producto\n"
-                + "FROM venta\n"
-                + "WHERE venta.id=?";
-        // Los simbolos de interrogacion son para mandar parametros 
-        // a la consulta al momento de ejecutalas
-
+        String sql = "SELECT * FROM ventas WHERE id=?";
         try {
             // La ejecuto
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-
             // Cierro la conexion
             this.m_Conexion.cerrarConexion();
 
@@ -103,10 +120,10 @@ public class Venta {
                 // Agrego las tuplas a mi tabla
                 venta.addRow(new Object[]{
                     rs.getInt("id"),
-                    rs.getInt("cantidad"),
+                    rs.getString("nit"),
                     rs.getDate("fecha"),
-                    rs.getFloat("precio"),
-                    rs.getInt("id_producto")
+                    rs.getInt("cliente_id"),
+                    rs.getInt("veterinario_id")
                 });
             }
         } catch (SQLException ex) {
@@ -115,121 +132,58 @@ public class Venta {
         return venta;
     }
 
-    /**
-     *
-     * @return
-     */
     public DefaultTableModel getVentas() {
-        // Tabla para mostrar lo obtenido de la consulta
-        DefaultTableModel ventas = new DefaultTableModel();
-        ventas.setColumnIdentifiers(new Object[]{
-            "id", "cantidad", "fecha", "precio", "producto"
-        });
-
-        // Abro y obtengo la conexion
-        this.m_Conexion.abrirConexion();
-        Connection con = this.m_Conexion.getConexion();
-
-        // Preparo la consulta
-        String sql = "SELECT\n"
-                + "venta.id,\n"
-                + "venta.cantidad,\n"
-                + "venta.fecha,\n"
-                + "venta.precio,\n"
-                + "producto.nombre as producto\n"
-                + "FROM venta,producto\n"
-                + "WHERE venta.id_producto=producto.id";
-        // Los simbolos de interrogacion son para mandar parametros 
-        // a la consulta al momento de ejecutalas
-
-        try {
-            // La ejecuto
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-
-            // Cierro la conexion
-            this.m_Conexion.cerrarConexion();
-
-            // Recorro el resultado
-            while (rs.next()) {
-                // Agrego las tuplas a mi tabla
-                ventas.addRow(new Object[]{
-                    rs.getInt("id"),
-                    rs.getInt("cantidad"),
-                    rs.getDate("fecha"),
-                    rs.getFloat("precio"),
-                    rs.getString("producto")
-                });
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return ventas;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public int registrarVenta() {
-        // Abro y obtengo la conexion
+    public void actualizarTotal(int total) {
         this.m_Conexion.abrirConexion();
         Connection con = this.m_Conexion.getConexion();
-
-        // Preparo la consulta
-        String sql = "INSERT INTO venta(\n"
-                + "cantidad,fecha,precio,id_producto)\n"
-                + "VALUES(?,?,?,?)";
-
+        PreparedStatement ps = null;
+        String query = "UPDATE ventas SET \n"
+                + "total = ? \n"
+                + "WHERE id = ?";
         try {
-            // La ejecuto
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            // El segundo parametro de usa cuando se tienen tablas que generan llaves primarias
-            // es bueno cuando nuestra bd tiene las primarias autoincrementables
-            ps.setInt(1, this.cantidad);
-            ps.setDate(2, this.fecha);
-            ps.setDouble(3, this.precio);
-            ps.setInt(4, this.id_producto);
-            int rows = ps.executeUpdate();
+            ps = con.prepareStatement(query);
+            ps.setInt(1, total);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+            System.out.println("Actualizado!!");
+            con.close();
+        } catch (SQLException e) {
 
-            // Cierro Conexion
-            this.m_Conexion.cerrarConexion();
-
-            // Obtengo el id generado pra devolverlo
-            if (rows != 0) {
-                ResultSet generateKeys = ps.getGeneratedKeys();
-                if (generateKeys.next()) {
-                    return generateKeys.getInt(1);
-                }
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println(e.getMessage());
         }
-        return 0;
+
     }
 
-    public void modificarVenta() {
-        // Abro y obtengo la conexion
+    public void eliminar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void modificar() {
         this.m_Conexion.abrirConexion();
         Connection con = this.m_Conexion.getConexion();
-
-        // Preparo la consulta
-        String sql = "UPDATE venta SET\n"
-                + "cantidad = ?,\n"
-                + "fecha = ?,\n"
-                + "precio = ?,\n"
-                + "id_producto = ?\n"
-                + "WHERE venta.id = ?";
+        PreparedStatement ps = null;
+        String query = "UPDATE ventas SET \n"
+                + "nit = ?,\n"
+                + "fecha = ?, \n"
+                + "cliente_id = ?, \n"
+                + "veterinario_id = ? \n"
+                + "WHERE id = ?";
         try {
-            // La ejecuto
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, this.cantidad);
-            ps.setDate(2, this.fecha);
-            ps.setDouble(3, this.precio);
-            ps.setInt(4, this.id_producto);
-            ps.setInt(5, this.id);
-            int rows = ps.executeUpdate();
+            ps = con.prepareStatement(query);
+            ps.setString(1, nit);
+            ps.setDate(2, fecha);
+            ps.setInt(3, cliente_id);
+            ps.setInt(4, veterinario_id);
+            ps.setInt(5, id);
+            ps.executeUpdate();
+            System.out.println("Modificado!!");
+            con.close();
+        } catch (SQLException e) {
 
-            // Cierro la conexion
-            this.m_Conexion.cerrarConexion();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 }

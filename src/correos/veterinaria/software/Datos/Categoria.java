@@ -9,8 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -21,6 +21,7 @@ public class Categoria {
     public int id;
     public String nombre;
     public String descripcion;
+    
     public Conexion m_Conexion;
 
     public void setCategoria(int id, String nombre, String descripcion) {

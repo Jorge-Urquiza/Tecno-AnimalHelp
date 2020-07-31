@@ -16,12 +16,18 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
 /**
  *
  * @author Jorge Luis Urquiza
  */
+/*
+ Session y Transport para la conexión con gmail y envio del mensaje.
+ MimeMessage, MimeMultiPart y MimeBodyPart Para construir el mensaje.
+ http://www.chuidiang.org/java/herramientas/javamail/enviar-adjuntos-javamail.php
+ */
 public class Mensaje {
-    
+
     private String correo;
     private String subject;
     private String data;
@@ -36,7 +42,7 @@ public class Mensaje {
         this.subject = subject;
         this.data = data;
     }
-    
+
     public Mensaje(String correo) {
         this.correo = correo;
     }
@@ -68,17 +74,17 @@ public class Mensaje {
         this.data = data;
     }
     /*
-    public boolean enviarCorreo() {
-        SMTP smtp = new SMTP("grupo07sa@mail.ficct.uagrm.edu.bo", correo);
-        return smtp.enviarMensaje(subject, data);
-    }
-    */
+     public boolean enviarCorreo() {
+     SMTP smtp = new SMTP("grupo07sa@mail.ficct.uagrm.edu.bo", correo);
+     return smtp.enviarMensaje(subject, data);
+     }
+     */
 
     @Override
     public String toString() {
         return "Mensaje{" + "subject=" + subject + ", data=" + data + '}';
     }
-    
+
     public boolean enviarCorreo() throws AddressException,
             MessagingException {
 
@@ -111,7 +117,7 @@ public class Mensaje {
             msg.setContent(this.data, "text/html; charset=UTF-8");
             // sends the e-mail
             Transport.send(msg);
-           // System.out.println("Envie MAIL: to=" + this.correo + " subject=" + subject + " data:" + this.data);
+            // System.out.println("Envie MAIL: to=" + this.correo + " subject=" + subject + " data:" + this.data);
             return true;
         } catch (MessagingException mex) {
             System.out.println("ERROR AL ENVIAR SMTP");

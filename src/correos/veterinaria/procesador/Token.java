@@ -26,52 +26,7 @@ public class Token {
     public static final int HELP = 11;
 
     // Funciones
-    public static final int OBTENERUSUARIOS = 100;
-    public static final int REGISTRARUSUARIO = 101;
-    public static final int MODIFICARUSUARIO = 102;
-    //////////////////////////////////////////////
-    public static final int OBTENERASISTENCIAS = 103;
-    public static final int REGISTRARASISTENCIA = 104;
-    public static final int MODIFICARASISTENCIA = 105;
-    //////////////////////////////////////////////
-    public static final int OBTENERHORARIOS = 106;
-    public static final int REGISTRARHORARIO = 107;
-    public static final int MODIFICARHORARIO = 108;
-    //////////////////////////////////////////////
-   /* public static final int OBTENERPRODUCTOS = 109;
-     public static final int REGISTRARPRODUCTO = 110;
-     public static final int MODIFICARPRODUCTO = 111;
-     public static final int ELIMINARPRODUCTO = 112;
-     */
-    //////////////////////////////////////////////
-    public static final int OBTENERRUTINAS = 113;
-    public static final int REGISTRARRUTINA = 114;
-    public static final int MODIFICARRUTINA = 115;
-    public static final int OBTENEREJERCICIOS = 116;
-    public static final int REGISTRAREJERCICIO = 117;
-    public static final int MODIFICAREJERCICIO = 118;
-    public static final int REGISTRARRUTINAEJERCICIO = 119;
-    public static final int MODIFICARRUTINAEJERCICIO = 120;
-    public static final int REGISTRARSOCIORUTINA = 121;
-    public static final int MODIFICARSOCIORUTINA = 122;
-    //////////////////////////////////////////////
-   /* public static final int OBTENERVENTAS = 123;
-     public static final int REGISTRARVENTA = 124;
-     public static final int MODIFICARVENTA = 125;
-     */
-    //////////////////////////////////////////////
-    public static final int OBTENERMENSUALIDADES = 126;
-    public static final int REGISTRARMENSUALIDAD = 127;
-    public static final int MODIFICARMENSUALIDAD = 128;
-    //////////////////////////////////////////////
-    public static final int OBTENERASISTENCIABYSOCIO = 129;
-    public static final int ESTADISTICAASISTENCIABYHORARIO = 130;
-    public static final int OBTENERRUTINAEJERCICIOBYRUTINA = 131;
-    public static final int ESTADISTICASOCIORUTINABYRUTINA = 132;
-    public static final int OBTENERHISTORIALSOCIORUTINABYSOCIO = 133;
-    public static final int ESTADISTICAMENSUALIDADACTUAL = 134;
-
-    //VETERINARIA
+    //VETERINARIA ANIMAL HELP - FUNCIONALIDADES
     //VETERINARIA CU #1
     public static final int REGISTRARCATEGORIA = 150;
     public static final int MODIFICARCATEGORIA = 151;
