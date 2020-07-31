@@ -5,8 +5,15 @@
  */
 package correos.veterinaria;
 
+import com.itextpdf.text.DocumentException;
 import correos.veterinaria.software.Negocio.*;
 import javax.swing.table.DefaultTableModel;
+import correos.veterinaria.utils.*;
+import correos.veterinaria.software.Datos.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  *
@@ -17,7 +24,7 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, FileNotFoundException, DocumentException {
         //cu1
  /*
          CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
@@ -49,12 +56,12 @@ public class Main {
          */
          //CU4
 /*
-        ProductosNegocio producto = new ProductosNegocio();
-        //producto.registrar("Biopet", 15, 1);
-        VeterinarioNegocio veterinario = new VeterinarioNegocio();
-        DefaultTableModel tabla = veterinario.getVeterinarios();
-        System.out.println(tabla.getDataVector());
-        /* producto.eliminar(2);
+         ProductosNegocio producto = new ProductosNegocio();
+         //producto.registrar("Biopet", 15, 1);
+         VeterinarioNegocio veterinario = new VeterinarioNegocio();
+         DefaultTableModel tabla = veterinario.getVeterinarios();
+         System.out.println(tabla.getDataVector());
+         /* producto.eliminar(2);
          */
         //CU5
         /*
@@ -63,13 +70,46 @@ public class Main {
          mascota.eliminar(2);
          */
 
-         //CU6
-       AtencionNegocio atencion = new AtencionNegocio();
+        //CU6
+        //AtencionNegocio atencion = new AtencionNegocio();
         //atencion.modificar(1,"15-04-2020", "El perro vino con dolores", "Darle pastillas", 1, 1, 1);
         //  atencion.registrar("05-04-2020", "El perro vino con diarrea", "Darle paracetamol", 1, 1, 1);
-       DefaultTableModel tabla = atencion.getAtenciones();
-        System.out.println(tabla.getDataVector());
-       
+        //DefaultTableModel tabla = atencion.getAtenciones();
+        //System.out.println(tabla.getDataVector());
+        //PROBANDO
+        // REPORTE
+        /*
+        
+        
+         String outputFile = "prueba.pdf";
+         // String outputFile = "C:/Users/users/Desktop/test.pdf";
+         CategoriaNegocio categoria = new CategoriaNegocio();
+         DefaultTableModel model = categoria.getCategorias();
+
+         String Head[] = {"ID", "NOMBRE", "PRECIO", "CATEGORIA_ID"};
+         String Cabecera = "ANIMALHELP - LISTA DE PRODUCTOS";
+         Mensaje mensaje = Utils.dibujarTablaHtml(model, Head, Cabecera);
+         String url= mensaje.getData();
+         categoria.generatePDF(url);
+
+         System.out.println("Done!");
+        
+         */
+       /* 
+        VentasNegocio venta = new VentasNegocio();
+        LinkedList<DetalleVenta> lista = new LinkedList<>();
+        DetalleVenta detalle1 = new DetalleVenta();
+        DetalleVenta detalle2 = new DetalleVenta();
+        detalle1.setDetalleVenta(3, 3);
+        //product_id y cantidad
+        detalle2.setDetalleVenta(4, 2);
+        
+        
+        lista.add(detalle1);
+        lista.add(detalle2);
+        venta.registrar('', 1, 1, lista);
+       */
+
     }
 
 }

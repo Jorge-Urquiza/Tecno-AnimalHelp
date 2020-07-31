@@ -367,6 +367,7 @@ public class Utils {
                  "MODIFICARUSUARIO [1][\"Juan Miguel\"][_][2324524][_][2][_]",//////////////CU1/////////////////
                  "OBTENERASISTENCIAS",
                  "REGISTRARASISTENCIA[\"20-07-2019\"][true][1][2]",
+                 
                  "MODIFICARASISTENCIA[1][_][_][2][3]",////////////CU2///////////////////
                  "OBTENERHORARIOS",
                  "REGISTRARHORARIO[\"10:30\"][\"11:30\"][2]",
@@ -740,6 +741,10 @@ public class Utils {
         }
         Mensaje mensaje = new Mensaje(Cabecera, data);
         return mensaje;
+    }
+
+    public static String dibujarTablaHtml(DefaultTableModel model) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

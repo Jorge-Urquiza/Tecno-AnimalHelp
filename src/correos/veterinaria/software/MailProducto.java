@@ -124,8 +124,8 @@ public class MailProducto extends TemplateMail {
             ClienteSMTP.sendMail(destinatario, Cadenas.AYUDA, Helper.HELP_OBTENERUSUARIOS);
             return;
         }
-        String Head[] = {"ID","NOMBRE", "PRECIO", "CATEGORIA_ID"};
-        String Cabecera = "ANIMALHELP - LISTA DE PRODUCTOS";
+         String Head[] = {"ID", "NOMBRE", "PRECIO (BS.)", "CATEGORIA ID"};
+        String Cabecera = "VETERINARIA ANIMALHELP - LISTA DE PRODUCTOS";
         Mensaje message = Utils.dibujarTablaHtml(productoNegocio.getProductos(), Head, Cabecera);
         message.setCorreo(destinatario);
         if (message.enviarCorreo()) {

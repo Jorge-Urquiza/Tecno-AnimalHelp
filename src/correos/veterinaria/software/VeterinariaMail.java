@@ -26,7 +26,8 @@ public class VeterinariaMail {
     MailCliente mailCliente = new MailCliente();
     MailVenta mailVenta = new MailVenta();
     MailAtencion mailAtencion = new MailAtencion();
-
+    MailReporte mailReporte = new MailReporte();
+    
     public void processMessage(String Message) throws MessagingException, Exception {
         // Setteando Variables
         String destinatario = Utils.getDestinatario(Message);
@@ -69,120 +70,7 @@ public class VeterinariaMail {
 
         // Sino es HELP, es una funcionalidad
         switch ((int) token.getAtributo()) {
-/*
-            case Token.OBTENERUSUARIOS:
-                obtenerUsuarios(analex, destinatario);
-                break;
-            case Token.REGISTRARUSUARIO:
-                registrarUsuario(analex, destinatario);
-                break;
-            case Token.MODIFICARUSUARIO:
-                modificarUsuario(analex, destinatario);
-                break;
-            ////////////////////////////////////////////////////////////////////
-            case Token.OBTENERASISTENCIAS:
-                obtenerAsistencias(analex, destinatario);
-                break;
-            case Token.REGISTRARASISTENCIA:
-                registrarAsistencia(analex, destinatario);
-                break;
-            case Token.MODIFICARASISTENCIA:
-                modificarAsistencia(analex, destinatario);
-                break;
-            ////////////////////////////////////////////////////////////////////
-            case Token.OBTENERHORARIOS:
-                obtenerHorarios(analex, destinatario);
-                break;
-            case Token.REGISTRARHORARIO:
-                registrarHorario(analex, destinatario);
-                break;
-            case Token.MODIFICARHORARIO:
-                modificarHorario(analex, destinatario);
-                break;
-            ////////////////////////////////////////////////////////////////////
-           /* case Token.OBTENERPRODUCTOS:
-             obtenerProductos(analex, destinatario);
-             break;
-             case Token.REGISTRARPRODUCTO:
-             registrarProducto(analex, destinatario);
-             break;
-             case Token.MODIFICARPRODUCTO:
-             modificarProducto(analex, destinatario);
-             break;
-             case Token.ELIMINARPRODUCTO:
-             eliminarProducto(analex, destinatario);
-             break;
-             ////////////////////////////////////////////////////////////////////
-             case Token.OBTENERRUTINAS:
-             obtenerRutinas(analex, destinatario);
-             break;
-             case Token.REGISTRARRUTINA:
-             registrarRutina(analex, destinatario);
-             break;
-             case Token.MODIFICARRUTINA:
-             modificarRutina(analex, destinatario);
-             break;
-             case Token.OBTENEREJERCICIOS:
-             obtenerEjercicios(analex, destinatario);
-             break;
-             case Token.REGISTRAREJERCICIO:
-             registrarEjercicio(analex, destinatario);
-             break;
-             case Token.MODIFICAREJERCICIO:
-             modificarEjercicio(analex, destinatario);
-             break;
-             case Token.REGISTRARRUTINAEJERCICIO:
-             registrarRutinaEjercicio(analex, destinatario);
-             break;
-             case Token.MODIFICARRUTINAEJERCICIO:
-             modificarRutinaEjercicio(analex, destinatario);
-             break;
-             case Token.REGISTRARSOCIORUTINA:
-             registrarSocioRutina(analex, destinatario);
-             break;
-             case Token.MODIFICARSOCIORUTINA:
-             modificarSocioRutina(analex, destinatario);
-             break;
-             ////////////////////////////////////////////////////////////////////
-             case Token.OBTENERVENTAS:
-             obtenerVentas(analex, destinatario);
-             break;
-             case Token.REGISTRARVENTA:
-             registrarVenta(analex, destinatario);
-             break;
-             case Token.MODIFICARVENTA:
-             modificarVenta(analex, destinatario);
-             break;
-             ////////////////////////////////////////////////////////////////////
-             case Token.OBTENERMENSUALIDADES:
-             obtenerMensualidades(analex, destinatario);
-             break;
-             case Token.REGISTRARMENSUALIDAD:
-             registrarMensualidad(analex, destinatario);
-             break;
-             case Token.MODIFICARMENSUALIDAD:
-             modificarMensualidad(analex, destinatario);
-             break;
-             ////////////////////////////////////////////////////////////////////
-             case Token.OBTENERASISTENCIABYSOCIO:
-             obtenerAsistenciaBySocio(analex, destinatario);
-             break;
-             case Token.ESTADISTICAASISTENCIABYHORARIO:
-             estadisticaAsistenciaByHorario(analex, destinatario);
-             break;
-             case Token.OBTENERRUTINAEJERCICIOBYRUTINA:
-             obtenerRutinaEjercicioByRutina(analex, destinatario);
-             break;
-             case Token.ESTADISTICASOCIORUTINABYRUTINA:
-             estadisticaSocioRutinaByRutina(analex, destinatario);
-             break;
-             case Token.OBTENERHISTORIALSOCIORUTINABYSOCIO:
-             obtenerHistorialSocioRutinaBySocio(analex, destinatario);
-             break;
-             case Token.ESTADISTICAMENSUALIDADACTUAL:
-             estadisticaMensualidadActual(analex, destinatario);
-             break;
-             */
+
 ////////// VETERINARIA ANIMAL HELP 
             // CU1 
             case Token.REGISTRARCATEGORIA:
@@ -267,6 +155,7 @@ public class VeterinariaMail {
             case Token.ELIMINARVENTA:
                 mailVenta.eliminar(analex, destinatario);
                 break;
+                
             //CU7
 
             case Token.REGISTRARATENCION:
