@@ -91,7 +91,6 @@ public class Cliente {
         clientes.setColumnIdentifiers(new Object[]{
             "id", "nombre", "apellido", "ci", "celular"
         });
-
         // Abro y obtengo la conexion
         this.m_Conexion.abrirConexion();
         Connection con = this.m_Conexion.getConexion();
@@ -101,11 +100,7 @@ public class Cliente {
         try {
             // La ejecuto
             PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-
-            // Cierro la conexion
-            this.m_Conexion.cerrarConexion();
-
+            ResultSet rs = ps.executeQuery();         
             // Recorro el resultado
             while (rs.next()) {
                 // Agrego las tuplas a mi tabla

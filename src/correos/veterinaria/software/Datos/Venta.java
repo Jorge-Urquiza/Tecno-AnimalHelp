@@ -133,7 +133,41 @@ public class Venta {
     }
 
     public DefaultTableModel getVentas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Tabla para mostrar lo obtenido de la consulta
+        DefaultTableModel clientes = new DefaultTableModel();
+        clientes.setColumnIdentifiers(new Object[]{
+            "id", "nit", "fecha", "total", "cliente_id", "veterinario_id"
+        });
+
+        // Abro y obtengo la conexion
+        this.m_Conexion.abrirConexion();
+        Connection con = this.m_Conexion.getConexion();
+
+        // Preparo la consulta
+        String sql = "SELECT * FROM ventas";
+        try {
+            // La ejecuto
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            // Cierro la conexion
+            this.m_Conexion.cerrarConexion();
+
+            // Recorro el resultado
+            while (rs.next()) {
+                // Agrego las tuplas a mi tabla
+                clientes.addRow(new Object[]{
+                    rs.getInt("id"),
+                    rs.getString("nit"),
+                    rs.getDate("fecha"),
+                    rs.getInt("total"),
+                    rs.getInt("cliente_id"),
+                    rs.getInt("veterinario_id"),});
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return clientes;
     }
 
     public void actualizarTotal(int total) {
@@ -158,7 +192,19 @@ public class Venta {
     }
 
     public void eliminar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.m_Conexion.abrirConexion();
+        Connection con = this.m_Conexion.getConexion();
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement("DELETE FROM detalles_ventas WHERE venta_id = ?");
+            ps.setInt(1, this.id);
+            ps.executeUpdate();
+            ps = con.prepareStatement("DELETE FROM ventas WHERE id = ?");
+            ps.setInt(1, this.id);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
     }
 
     public void modificar() {

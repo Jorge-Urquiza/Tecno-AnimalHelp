@@ -116,7 +116,12 @@ public class MailVenta extends TemplateMail {
 
     @Override
     public void eliminar(Analex analex, String destinatario) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // Obtengo el Siguiente token
+        analex.Avanzar();
+        Token token = analex.Preanalisis();
+        analex.Avanzar();
+        int id = (int) analex.Preanalisis().getAtributo();
+        ventaNegocio.eliminar(id);
     }
 
     @Override

@@ -60,10 +60,9 @@ public class VentaNegocio {
         venta.modificar();
     }
 
-    public void eliminar(int id) {
-        //primero debo de eliminar el detalle y depues la venta.
-        detalle.setIDVenta(id); // elimina todos los detalles de la venta
+    public void eliminar(int id) { 
         venta.setId(id); // elimina la venta
+        venta.eliminar();
 
     }
 

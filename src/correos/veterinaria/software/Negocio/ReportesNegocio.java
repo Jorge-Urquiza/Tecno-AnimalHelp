@@ -19,7 +19,27 @@ public class ReportesNegocio {
     public ReportesNegocio() {
         this.reporte = new Reporte();
     }
+    // reporte total de ventas por mes
     public DefaultTableModel ventasMensuales() {
         return reporte.ventasMensuales();
     }
+  // los clientes que mas compras han realizado
+    public DefaultTableModel top3ClientesCompras() {
+        return reporte.top3ClientesCompras();
+    }
+    // LAS 3 MASCOTAS QUE RECIBIERON ATENCION
+    public DefaultTableModel top3MascotasAtendidas() {
+        return reporte.top3MascotasAtendidas();
+    }
+
+    //los productos que mas vendieron
+    public DefaultTableModel top3ProductosVendidos() {
+        return reporte.top3ProductosVendidos();
+    }
+
+    //ventas total del dia de hoy
+    public DefaultTableModel ventasTotalDeHoy() {
+        return reporte.ventasTotalDeHoy();
+    }
+   
 }

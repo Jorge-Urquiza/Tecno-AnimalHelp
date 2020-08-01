@@ -95,21 +95,25 @@ public class Main {
          System.out.println("Done!");
         
          */
-       /* 
-        VentasNegocio venta = new VentasNegocio();
-        LinkedList<DetalleVenta> lista = new LinkedList<>();
-        DetalleVenta detalle1 = new DetalleVenta();
-        DetalleVenta detalle2 = new DetalleVenta();
-        detalle1.setDetalleVenta(3, 3);
-        //product_id y cantidad
-        detalle2.setDetalleVenta(4, 2);
+        /* 
+         VentaNegocio venta = new VentaNegocio();
+         System.out.println(venta.getVentas().getDataVector());
+   
+         LinkedList<DetalleVenta> lista = new LinkedList<>();
+         DetalleVenta detalle1 = new DetalleVenta();
+         DetalleVenta detalle2 = new DetalleVenta();
+         detalle1.setDetalleVenta(3, 3);
+         //product_id y cantidad
+         detalle2.setDetalleVenta(4, 2);
         
         
-        lista.add(detalle1);
-        lista.add(detalle2);
-        venta.registrar('', 1, 1, lista);
-       */
-
+         lista.add(detalle1);
+         lista.add(detalle2);
+         venta.registrar('', 1, 1, lista);
+         */
+        // CU8 
+        ReportesNegocio reporte = new ReportesNegocio();
+        System.out.println(reporte.top3ProductosVendidos().getDataVector());
     }
 
 }
