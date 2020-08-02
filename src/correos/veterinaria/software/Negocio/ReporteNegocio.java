@@ -12,11 +12,11 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jorge Luis Urquiza
  */
-public class ReportesNegocio {
+public class ReporteNegocio {
 
     private Reporte reporte;
 
-    public ReportesNegocio() {
+    public ReporteNegocio() {
         this.reporte = new Reporte();
     }
     // reporte total de ventas por mes

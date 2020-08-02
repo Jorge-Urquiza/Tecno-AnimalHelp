@@ -14,7 +14,6 @@ import java.util.LinkedList;
  */
 public class TPC {
 //TPC se usa para reconocer las palabras reservadas y el token ID.
-
     private static final LinkedList<String> lexemas = new LinkedList<>(Arrays.asList(
             "HELP",
             "TRUE",
@@ -51,11 +50,16 @@ public class TPC {
             "OBTENERVENTAS",
             "ELIMINARVENTA",
             //cu7
-
             "REGISTRARATENCION",
             "MODIFICARATENCION",
             "OBTENERATENCIONES",
-            "ELIMINARATENCION"
+            "ELIMINARATENCION",
+            //CU8 REPORTES
+            "VENTASMENSUALES",
+            "TOP3CLIENTESCOMPRAS",
+            "TOP3MASCOTASATENDIDAS",
+            "TOP3PRODUCTOSVENDIDOS",
+            "VENTASTOTALDEHOY"
     ));
 //Token asociado
     private static final LinkedList<Token> tokens = new LinkedList<>(Arrays.asList(
@@ -98,10 +102,15 @@ public class TPC {
             new Token(Token.FUNC, Token.REGISTRARATENCION, "REGISTRARATENCION"),
             new Token(Token.FUNC, Token.MODIFICARATENCION, "MODIFICARATENCION"),
             new Token(Token.FUNC, Token.OBTENERATENCIONES, "OBTENERATENCIONES"),
-            new Token(Token.FUNC, Token.ELIMINARATENCION, "ELIMINARATENCION")
+            new Token(Token.FUNC, Token.ELIMINARATENCION, "ELIMINARATENCION"),
+            //CU8 Reportes
+            new Token(Token.FUNC, Token.VENTASMENSUALES, "VENTASMENSUALES"),
+            new Token(Token.FUNC, Token.TOP3CLIENTESCOMPRAS, "TOP3CLIENTESCOMPRAS"),
+            new Token(Token.FUNC, Token.TOP3MASCOTASATENDIDAS, "TOP3MASCOTASATENDIDAS"),
+            new Token(Token.FUNC, Token.TOP3PRODUCTOSVENDIDOS, "TOP3PRODUCTOSVENDIDOS"),
+            new Token(Token.FUNC, Token.VENTASTOTALDEHOY, "VENTASTOTALDEHOY")
     ));
 //verifica si un lexema se encuentra en la tpc
-
     public static Token estaEnTPC(String lexema) {
         lexema = lexema.toUpperCase();
         for (int i = 0; i < lexemas.size(); i++) {

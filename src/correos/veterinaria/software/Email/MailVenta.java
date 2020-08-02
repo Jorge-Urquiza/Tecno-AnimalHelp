@@ -60,15 +60,14 @@ public class MailVenta extends TemplateMail {
             token = analex.Preanalisis();
             lista.add(new DetalleVenta(producto_id, cantidad));
         }
-        if (lista.size() != 0) {
-            ventaNegocio.registrar(nit, fecha, cliente_id, veterinario_id, lista);
-            ClienteSMTP.sendMail(destinatario, "REGISTRAR VENTA", Cadenas.REGISTRO_SUCCESS);
-            return;
-        }
+
+        ventaNegocio.registrar(nit, fecha, cliente_id, veterinario_id, lista);
+        ClienteSMTP.sendMail(destinatario, "REGISTRAR VENTA", Cadenas.REGISTRO_SUCCESS);
+
     }
 
     private boolean isEOF(Token token) {
-   
+
         return token.getNombre() == Token.FIN ? true : false; // pregunta si el token que veo es eof
     }
 
@@ -116,7 +115,7 @@ public class MailVenta extends TemplateMail {
 
     @Override
     public void eliminar(Analex analex, String destinatario) throws Exception {
-       // Obtengo el Siguiente token
+        // Obtengo el Siguiente token
         analex.Avanzar();
         Token token = analex.Preanalisis();
         analex.Avanzar();
@@ -126,7 +125,16 @@ public class MailVenta extends TemplateMail {
 
     @Override
     public void listar(Analex analex, String destinatario) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        analex.Avanzar();
+        Token token = analex.Preanalisis();
+        String Head[] = {"ID", "NOMBRE", "PRECIO (BS.)", "CATEGORIA ID"};
+        String Cabecera = "VETERINARIA ANIMALHELP - LISTA DE PRODUCTOS";
+        Mensaje message = Utils.dibujarTablaHtml(ventaNegocio.getVentas(), Head, Cabecera);
+        message.setCorreo(destinatario);
+        if (message.enviarCorreo()) {
+            System.out.println(Cadenas.SUCCESSFULL_MAIL);
+        } else {
+            System.out.println(Cadenas.FAILED_MAIL);
+        }
     }
-
 }

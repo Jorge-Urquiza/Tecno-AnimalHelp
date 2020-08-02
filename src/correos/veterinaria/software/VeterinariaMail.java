@@ -35,14 +35,14 @@ public class VeterinariaMail {
     MailVenta mailVenta = new MailVenta();
     MailAtencion mailAtencion = new MailAtencion();
     MailReporte mailReporte = new MailReporte();
-    
+
     public void processMessage(String Message) throws MessagingException, Exception {
         // Setteando Variables
         String destinatario = Utils.getDestinatario(Message); //obtener destinario
         String content = Utils.getSubjectOrden(Message); // obtener subject
         System.out.println("Content : \t" + content);
         System.out.println("DESTINARIO : \t" + destinatario);
-        
+
         Cinta cinta = new Cinta(content);
         Analex analex = new Analex(cinta);
         Parser parser = new Parser(analex);
@@ -158,9 +158,8 @@ public class VeterinariaMail {
             case Token.ELIMINARVENTA:
                 mailVenta.eliminar(analex, destinatario);
                 break;
-                
-            //CU7
 
+            //CU7
             case Token.REGISTRARATENCION:
                 mailAtencion.registrar(analex, destinatario);
                 break;
@@ -172,6 +171,23 @@ public class VeterinariaMail {
                 break;
             case Token.ELIMINARATENCION:
                 mailAtencion.eliminar(analex, destinatario);
+                break;
+
+            //CU8 REPORTES
+            case Token.VENTASMENSUALES:
+                mailReporte.ventasMensuales(analex, destinatario);
+                break;
+            case Token.TOP3CLIENTESCOMPRAS:
+                mailReporte.top3ClientesCompras(analex, destinatario);
+                break;
+            case Token.TOP3MASCOTASATENDIDAS:
+                mailReporte.top3MascotasAtendidas(analex, destinatario);
+                break;
+            case Token.TOP3PRODUCTOSVENDIDOS:
+                mailReporte.top3ProductosVendidos(analex, destinatario);
+                break;
+            case Token.VENTASTOTALDEHOY:
+                mailReporte.ventasTotalDeHoy(analex, destinatario);
                 break;
         }
     }

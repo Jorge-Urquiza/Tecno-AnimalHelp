@@ -62,13 +62,19 @@ public class Token {
     public static final int MODIFICARVENTA = 171;
     public static final int OBTENERVENTAS = 172;
     public static final int ELIMINARVENTA = 173;
-    
-     //VETERINARIA CU #7
+
+    //VETERINARIA CU #7
     public static final int REGISTRARATENCION = 174;
     public static final int MODIFICARATENCION = 175;
     public static final int OBTENERATENCIONES = 176;
     public static final int ELIMINARATENCION = 177;
 
+    //VETERINARIA CU #8 Reportes
+    public static final int VENTASMENSUALES = 178;
+    public static final int TOP3CLIENTESCOMPRAS = 179;
+    public static final int TOP3MASCOTASATENDIDAS = 180;
+    public static final int TOP3PRODUCTOSVENDIDOS = 181;
+    public static final int VENTASTOTALDEHOY = 182;
 
     private int nombre;
     private float atributo;

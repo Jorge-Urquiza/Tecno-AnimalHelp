@@ -5,15 +5,29 @@
  */
 package correos.veterinaria;
 
-import com.itextpdf.text.DocumentException;
-import correos.veterinaria.software.Negocio.*;
-import javax.swing.table.DefaultTableModel;
-import correos.veterinaria.utils.*;
-import correos.veterinaria.software.Datos.*;
+import com.idrsolutions.image.pdf.PdfEncoder;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.TimerTask;
+import org.jfree.chart.*;
+import javax.swing.JFrame;
+import javax.swing.Timer;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.UndoableEditListener;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import javax.swing.text.Element;
+import javax.swing.text.Position;
+import javax.swing.text.Segment;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartRenderingInfo;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.entity.StandardEntityCollection;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -24,7 +38,7 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException, FileNotFoundException, DocumentException {
+    public static void main(String[] args) throws IOException, FileNotFoundException {
         //cu1
  /*
          CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
@@ -112,8 +126,37 @@ public class Main {
          venta.registrar('', 1, 1, lista);
          */
         // CU8 
-        ReportesNegocio reporte = new ReportesNegocio();
-        System.out.println(reporte.top3ProductosVendidos().getDataVector());
+      /*  ReportesNegocio reporte = new ReportesNegocio();
+         System.out.println(reporte.top3ProductosVendidos().getDataVector());
+         */
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        dataset.setValue("PERROS" + " ( 20 %)", new Double(20));
+        dataset.setValue("GATOS" + " ( 40 %)", new Double(40));
+        dataset.setValue("CONEJOS" + " ( 10 %)", new Double(10));
+        JFreeChart chart = ChartFactory.createPieChart(// char t
+
+                "ATENCIONES",// title                                                                     
+                dataset, // data
+                true, // include legend
+                true, false);
+
+        try {
+            final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
+            final File file = new File("chart2.jpg");
+            // ChartUtilities.saveChartAsJPEG(file, chart, 800, 600);
+            ChartUtilities.saveChartAsJPEG(file, chart, 800, 600);
+
+            File pdfFile = new File("examplePDF.pdf");
+            pdfFile.createNewFile();
+
+            //write the image to the pdf
+            PdfEncoder encoder = new PdfEncoder();
+            encoder.write(file, pdfFile);
+
+        } catch (Exception e) {
+
+        }
+        // creo la imagen
     }
 
 }

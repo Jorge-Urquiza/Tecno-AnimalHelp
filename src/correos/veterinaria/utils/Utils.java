@@ -5,7 +5,6 @@
  */
 package correos.veterinaria.utils;
 
-
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -126,13 +125,13 @@ public class Utils {
                 "OBTENER VETERINARIO",
                 "MODIFICAR VETERINARIO",
                 "ELIMINAR VETERINARIO",
-                //cu3
-                "REGISTRAR PRODUCTO",
-                "OBTENER PRODUCTOS",
-                "MODIFICAR PRODUCTO",
-                "ELIMINAR PRODUCTO",
+                ///CU3
+                "REGISTRARPRODUCTO",
+                "MODIFICARPRODUCTO",
+                "OBTENERPRODUCTOS",
+                "ELIMINARPRODUCTO",
                
-                
+                //C8 REPORTES
                 "ESTADISTICA MENSUALIDAD ACTUAL"////////////CU8//////////////////
         ));
         LinkedList<String> Detalles = new LinkedList<>(Arrays.asList(
@@ -154,7 +153,7 @@ public class Utils {
                 "OBTENERPRODUCTOS",
                 "MODIFICARPRODUCTO[ID Producto][\"Nombre\"][Precio][ID Categoria]",
                 "ELIMINARPRODUCTO[ID Producto]",
-               
+                
                 "ESTADISTICAMENSUALIDADACTUAL"////////////CU8//////////////////
         ));
         LinkedList<String> Ejemplos = new LinkedList<>(Arrays.asList(
@@ -162,7 +161,7 @@ public class Utils {
                 //CU1
                 "REGISTRARCATEGORIA[\"Balanceado\"][\"Comida saludable\"]",
                 "OBTENERCATEGORIAS",
-                "MODIFICARCATEGORIA[1][_][\"Comida\"] "+Cadenas.GUION_BAJO,
+                "MODIFICARCATEGORIA[1][_][\"Comida\"] " + Cadenas.GUION_BAJO,
                 "ELIMINARCATEGORIA[2]",
                 //CU2
 
@@ -170,14 +169,11 @@ public class Utils {
                 "OBTENERVETERINARIOS",
                 "MODIFICARVETERINARIO[1][_][_][853651][\"+591 75575746\"][\"Calle Santa Cruz#1113\"]",
                 "ELIMINARVETERINARIO[2]",
-                
                 //cu3
                 "REGISTRARPRODUCTO[\"Doggy Cachorro\"][15][1]",
                 "OBTENERPRODUCTOS",
-                "MODIFICARPRODUCTO[1][\"Doggy\"][18][_]"+ Cadenas.GUION_BAJO,
+                "MODIFICARPRODUCTO[1][\"Doggy\"][18][_]" + Cadenas.GUION_BAJO,
                 "ELIMINARPRODUCTO[2]",
-               
-                
                 "ESTADISTICAMENSUALIDADACTUAL"////////////CU8//////////////////
         ));
         String data = "<!DOCTYPE html>\n"
@@ -240,7 +236,9 @@ public class Utils {
         Mensaje mensaje = new Mensaje(Cabecera, data);
         return mensaje;
     }
+
     //table example
+
     public static Mensaje dibujarTabla3(DefaultTableModel tabla, String Head[], String Cabecera) {
         String data = "<!DOCTYPE html>\n"
                 + "<html lang=\"en\">\n"

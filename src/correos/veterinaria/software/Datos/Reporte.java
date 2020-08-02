@@ -41,7 +41,8 @@ public class Reporte {
                 + "CAST (count(total ) AS INTEGER),\n"
                 + "CAST (avg(Cast(total as float)) as INTEGER)"
                 + "from ventas\n"
-                + "group by 1,2";
+                + "group by 1,2\n"
+                + "order by anho DESC";
         try {
             // La ejecuto
             PreparedStatement ps = con.prepareStatement(sql);

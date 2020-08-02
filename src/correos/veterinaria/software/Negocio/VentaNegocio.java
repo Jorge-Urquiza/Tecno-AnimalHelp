@@ -40,7 +40,6 @@ public class VentaNegocio {
                 System.out.println("Vueltas" + total++);
             }
             venta.actualizarTotal(total);
-            System.out.println("COSTO TOTAL DE LA VENTA: " + total);
         } else {
             System.out.println("Error al crear la venta");
         }
