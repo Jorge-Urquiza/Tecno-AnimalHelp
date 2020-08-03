@@ -5,8 +5,17 @@
  */
 package correos.veterinaria.software.Negocio;
 
+import com.idrsolutions.image.pdf.PdfEncoder;
 import correos.veterinaria.software.Datos.Reporte;
+import java.io.File;
+import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartRenderingInfo;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.entity.StandardEntityCollection;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -19,14 +28,17 @@ public class ReporteNegocio {
     public ReporteNegocio() {
         this.reporte = new Reporte();
     }
+
     // reporte total de ventas por mes
     public DefaultTableModel ventasMensuales() {
         return reporte.ventasMensuales();
     }
-  // los clientes que mas compras han realizado
+
+    // los clientes que mas compras han realizado
     public DefaultTableModel top3ClientesCompras() {
         return reporte.top3ClientesCompras();
     }
+
     // LAS 3 MASCOTAS QUE RECIBIERON ATENCION
     public DefaultTableModel top3MascotasAtendidas() {
         return reporte.top3MascotasAtendidas();
@@ -41,5 +53,44 @@ public class ReporteNegocio {
     public DefaultTableModel ventasTotalDeHoy() {
         return reporte.ventasTotalDeHoy();
     }
-   
+
+    public void tortaPorcentajeAnimal() {
+        double perros = reporte.getPorcentajePerros();
+        double gatos = reporte.getPorcentajeGatos();
+        LinkedList<Double> lista = new LinkedList<>();
+        lista.add(perros);
+        lista.add(gatos);
+        guardarPDF(lista);
+
+    }
+
+    private void guardarPDF(LinkedList<Double> lista) {
+        double perros = lista.get(0);
+        double gatos = lista.get(1);
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        dataset.setValue("PERROS: " + perros + "%", new Double(perros));
+        dataset.setValue("GATOS: " + gatos + "%", new Double(gatos));
+
+        JFreeChart chart = ChartFactory.createPieChart(// char t
+                "ATENCIONES",// title                                                                     
+                dataset, // data
+                true, // include legend
+                true, false);
+        try {
+            final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
+            final File file = new File("chart.jpg");
+            // ChartUtilities.saveChartAsJPEG(file, chart, 800, 600);
+            ChartUtilities.saveChartAsJPEG(file, chart, 800, 600);
+            File pdfFile = new File("reporte.pdf");
+            pdfFile.createNewFile();
+            //write the image to the pdf
+            PdfEncoder encoder = new PdfEncoder();
+            encoder.write(file, pdfFile);
+
+        } catch (Exception e) {
+            System.out.println("ALGO SALIO MAL INTENTE DE NUEVO");
+        }
+
+    }
+
 }

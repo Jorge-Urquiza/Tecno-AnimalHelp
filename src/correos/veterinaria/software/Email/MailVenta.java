@@ -60,17 +60,10 @@ public class MailVenta extends TemplateMail {
             token = analex.Preanalisis();
             lista.add(new DetalleVenta(producto_id, cantidad));
         }
-
         ventaNegocio.registrar(nit, fecha, cliente_id, veterinario_id, lista);
         ClienteSMTP.sendMail(destinatario, "REGISTRAR VENTA", Cadenas.REGISTRO_SUCCESS);
 
     }
-
-    private boolean isEOF(Token token) {
-
-        return token.getNombre() == Token.FIN ? true : false; // pregunta si el token que veo es eof
-    }
-
     @Override
     public void modificar(Analex analex, String destinatario) throws Exception {
         // Obtengo el Siguiente token
@@ -83,7 +76,6 @@ public class MailVenta extends TemplateMail {
             ClienteSMTP.sendMail(destinatario, Cadenas.ERROR_ID, Cadenas.NO_EXISTS_ID);
             return;
         }
-        System.out.println("VECTOR " + venta.getDataVector());
         analex.Avanzar();
         analex.Avanzar();
         analex.Avanzar();
@@ -136,5 +128,8 @@ public class MailVenta extends TemplateMail {
         } else {
             System.out.println(Cadenas.FAILED_MAIL);
         }
+    }
+    private boolean isEOF(Token token) {
+        return token.getNombre() == Token.FIN ? true : false; // pregunta si el token que veo es eof
     }
 }

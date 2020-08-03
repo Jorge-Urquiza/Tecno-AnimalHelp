@@ -220,4 +220,46 @@ public class Reporte {
         return ventas;
     }
 
+    public double getPorcentajePerros() {
+        this.m_Conexion.abrirConexion();
+        Connection con = this.m_Conexion.getConexion();
+        String sql = "select CAST ( ((select count(*) from mascotas2 where tipo = 1) * 100) / \n"
+                + "(select count(*) from mascotas2)as  DOUBLE PRECISION) as total";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            // Recorro el resultado
+            while (rs.next()) {
+                // Agrego las tuplas a mi tabla
+                return rs.getDouble("total");
+            }
+            // Cierro la conexion
+            this.m_Conexion.cerrarConexion();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return -1;
+    }
+
+    public double getPorcentajeGatos() {
+      this.m_Conexion.abrirConexion();
+        Connection con = this.m_Conexion.getConexion();
+        String sql = "select CAST ( ((select count(*) from mascotas2 where tipo = 2) * 100) / \n"
+                + "(select count(*) from mascotas2)as  DOUBLE PRECISION) as total";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            // Recorro el resultado
+            while (rs.next()) {
+                // Agrego las tuplas a mi tabla
+                return rs.getDouble("total");
+            }
+            // Cierro la conexion
+            this.m_Conexion.cerrarConexion();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return -1;
+    }
+
 }

@@ -75,6 +75,7 @@ public class Token {
     public static final int TOP3MASCOTASATENDIDAS = 180;
     public static final int TOP3PRODUCTOSVENDIDOS = 181;
     public static final int VENTASTOTALDEHOY = 182;
+    public static final int TORTAPORCENTAJEANIMAL = 183;
 
     private int nombre;
     private float atributo;

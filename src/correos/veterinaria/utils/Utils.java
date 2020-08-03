@@ -130,9 +130,13 @@ public class Utils {
                 "MODIFICARPRODUCTO",
                 "OBTENERPRODUCTOS",
                 "ELIMINARPRODUCTO",
-               
                 //C8 REPORTES
-                "ESTADISTICA MENSUALIDAD ACTUAL"////////////CU8//////////////////
+                "VENTASMENSUALES",
+                "TOP3CLIENTESCOMPRAS",
+                "TOP3MASCOTASATENDIDAS",
+                "TOP3PRODUCTOSVENDIDOS",
+                "VENTASTOTALDEHOY",
+                "TORTAPORCENTAJEANIMAL"
         ));
         LinkedList<String> Detalles = new LinkedList<>(Arrays.asList(
                 //veterinaria animal help
@@ -153,8 +157,13 @@ public class Utils {
                 "OBTENERPRODUCTOS",
                 "MODIFICARPRODUCTO[ID Producto][\"Nombre\"][Precio][ID Categoria]",
                 "ELIMINARPRODUCTO[ID Producto]",
-                
-                "ESTADISTICAMENSUALIDADACTUAL"////////////CU8//////////////////
+                //C8 REPORTES
+                "VENTASMENSUALES(Ventas totales por mes)",
+                "TOP3CLIENTESCOMPRAS (Los 3 clientes que mas compras realizaron)",
+                "TOP3MASCOTASATENDIDAS(Las mascotas que mas veces fueron atendidas)",
+                "TOP3PRODUCTOSVENDIDOS(Los 3 productos mas vendidos)",
+                "VENTASTOTALDEHOY",
+                "TORTAPORCENTAJEANIMAL(TORTA GRAFICA CON % DE ANIMALES ATENDIDOS POR TIPO (PERROS Y GATOS))"
         ));
         LinkedList<String> Ejemplos = new LinkedList<>(Arrays.asList(
                 //Veterinaria
@@ -164,7 +173,6 @@ public class Utils {
                 "MODIFICARCATEGORIA[1][_][\"Comida\"] " + Cadenas.GUION_BAJO,
                 "ELIMINARCATEGORIA[2]",
                 //CU2
-
                 "REGISTRARVETERINARIO[\"Luciano\"][\"Aguierre Peña\"][12530][\"+591700365436\"][\"Calle Guabira#03\"]",
                 "OBTENERVETERINARIOS",
                 "MODIFICARVETERINARIO[1][_][_][853651][\"+591 75575746\"][\"Calle Santa Cruz#1113\"]",
@@ -174,7 +182,13 @@ public class Utils {
                 "OBTENERPRODUCTOS",
                 "MODIFICARPRODUCTO[1][\"Doggy\"][18][_]" + Cadenas.GUION_BAJO,
                 "ELIMINARPRODUCTO[2]",
-                "ESTADISTICAMENSUALIDADACTUAL"////////////CU8//////////////////
+                //C8 REPORTES
+                "VENTASMENSUALES",
+                "TOP3CLIENTESCOMPRAS",
+                "TOP3MASCOTASATENDIDAS",
+                "TOP3PRODUCTOSVENDIDOS",
+                "VENTASTOTALDEHOY",
+                "TORTAPORCENTAJEANIMAL"
         ));
         String data = "<!DOCTYPE html>\n"
                 + "<html>\n"
@@ -238,7 +252,6 @@ public class Utils {
     }
 
     //table example
-
     public static Mensaje dibujarTabla3(DefaultTableModel tabla, String Head[], String Cabecera) {
         String data = "<!DOCTYPE html>\n"
                 + "<html lang=\"en\">\n"

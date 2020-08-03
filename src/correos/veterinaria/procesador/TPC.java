@@ -59,7 +59,8 @@ public class TPC {
             "TOP3CLIENTESCOMPRAS",
             "TOP3MASCOTASATENDIDAS",
             "TOP3PRODUCTOSVENDIDOS",
-            "VENTASTOTALDEHOY"
+            "VENTASTOTALDEHOY",
+            "TORTAPORCENTAJEANIMAL"
     ));
 //Token asociado
     private static final LinkedList<Token> tokens = new LinkedList<>(Arrays.asList(
@@ -108,7 +109,8 @@ public class TPC {
             new Token(Token.FUNC, Token.TOP3CLIENTESCOMPRAS, "TOP3CLIENTESCOMPRAS"),
             new Token(Token.FUNC, Token.TOP3MASCOTASATENDIDAS, "TOP3MASCOTASATENDIDAS"),
             new Token(Token.FUNC, Token.TOP3PRODUCTOSVENDIDOS, "TOP3PRODUCTOSVENDIDOS"),
-            new Token(Token.FUNC, Token.VENTASTOTALDEHOY, "VENTASTOTALDEHOY")
+            new Token(Token.FUNC, Token.VENTASTOTALDEHOY, "VENTASTOTALDEHOY"),
+             new Token(Token.FUNC, Token.TORTAPORCENTAJEANIMAL, "TORTAPORCENTAJEANIMAL")
     ));
 //verifica si un lexema se encuentra en la tpc
     public static Token estaEnTPC(String lexema) {

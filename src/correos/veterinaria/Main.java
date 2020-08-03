@@ -6,11 +6,13 @@
 package correos.veterinaria;
 
 import com.idrsolutions.image.pdf.PdfEncoder;
+import correos.veterinaria.utils.Mensaje;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.TimerTask;
+import javax.mail.MessagingException;
 import org.jfree.chart.*;
 import javax.swing.JFrame;
 import javax.swing.Timer;
@@ -38,7 +40,7 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException, FileNotFoundException {
+    public static void main(String[] args) throws IOException, FileNotFoundException, MessagingException {
         //cu1
  /*
          CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
@@ -129,34 +131,44 @@ public class Main {
       /*  ReportesNegocio reporte = new ReportesNegocio();
          System.out.println(reporte.top3ProductosVendidos().getDataVector());
          */
-        DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("PERROS" + " ( 20 %)", new Double(20));
-        dataset.setValue("GATOS" + " ( 40 %)", new Double(40));
-        dataset.setValue("CONEJOS" + " ( 10 %)", new Double(10));
-        JFreeChart chart = ChartFactory.createPieChart(// char t
+        /*
+        
+         DefaultPieDataset dataset = new DefaultPieDataset();
+         dataset.setValue("PERROS" + " ( 20 %)", new Double(20));
+         dataset.setValue("GATOS" + " ( 40 %)", new Double(40));
+         dataset.setValue("CONEJOS" + " ( 10 %)", new Double(10));
+         JFreeChart chart = ChartFactory.createPieChart(// char t
 
-                "ATENCIONES",// title                                                                     
-                dataset, // data
-                true, // include legend
-                true, false);
+         "ATENCIONES",// title                                                                     
+         dataset, // data
+         true, // include legend
+         true, false);
 
-        try {
-            final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
-            final File file = new File("chart2.jpg");
-            // ChartUtilities.saveChartAsJPEG(file, chart, 800, 600);
-            ChartUtilities.saveChartAsJPEG(file, chart, 800, 600);
+         try {
+         final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
+         final File file = new File("chart2.jpg");
+         // ChartUtilities.saveChartAsJPEG(file, chart, 800, 600);
+         ChartUtilities.saveChartAsJPEG(file, chart, 800, 600);
+         File pdfFile = new File("examplePDF.pdf");
+         pdfFile.createNewFile();
+         //write the image to the pdf
+         PdfEncoder encoder = new PdfEncoder();
+         encoder.write(file, pdfFile);
+            
+         } catch (Exception e) {
 
-            File pdfFile = new File("examplePDF.pdf");
-            pdfFile.createNewFile();
-
-            //write the image to the pdf
-            PdfEncoder encoder = new PdfEncoder();
-            encoder.write(file, pdfFile);
-
-        } catch (Exception e) {
-
+         }
+        
+        
+         */
+        Mensaje message = new Mensaje();
+        message.setCorreo("danielzeballos97@gmail.com");
+        message.setSubject("REPORTE");
+        if (message.enviarCorreoAdjunto()) {
+            System.out.println("ENVIAO");
+        } else {
+            System.out.println("NO ENVIAO");
         }
-        // creo la imagen
     }
 
 }

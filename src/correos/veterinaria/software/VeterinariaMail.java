@@ -189,6 +189,9 @@ public class VeterinariaMail {
             case Token.VENTASTOTALDEHOY:
                 mailReporte.ventasTotalDeHoy(analex, destinatario);
                 break;
+            case Token.TORTAPORCENTAJEANIMAL:
+                mailReporte.tortaPorcentajeAnimal(analex, destinatario);
+                break;
         }
     }
 }

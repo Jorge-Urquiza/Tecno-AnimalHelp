@@ -5,13 +5,22 @@
  */
 package correos.veterinaria.software.Email;
 
+import com.idrsolutions.image.pdf.PdfEncoder;
 import correos.veterinaria.procesador.Analex;
 import correos.veterinaria.software.Negocio.*;
 import correos.veterinaria.utils.Cadenas;
 import correos.veterinaria.utils.Mensaje;
 import correos.veterinaria.utils.Utils;
+import java.io.File;
+import java.util.LinkedList;
 import javax.mail.MessagingException;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartRenderingInfo;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.entity.StandardEntityCollection;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -75,9 +84,9 @@ public class MailReporte {
 
     //ventas total del dia de hoy
     public void ventasTotalDeHoy(Analex analex, String destinatario) throws MessagingException {
-        String Head[] = { "ID", "NIT", "FECHA", "TOTAL", "PROMEDIOVENTA"};
+        String Head[] = {"ID", "NIT", "FECHA", "TOTAL", "PROMEDIOVENTA"};
         String Cabecera = "REPORTE - VENTAS DEL DIA DE HOY";
-        Mensaje message = Utils.dibujarTablaHtml(reporteNegocio.top3ProductosVendidos(), Head, Cabecera);
+        Mensaje message = Utils.dibujarTablaHtml(reporteNegocio.ventasTotalDeHoy(), Head, Cabecera);
         message.setCorreo(destinatario);
         if (message.enviarCorreo()) {
             System.out.println(Cadenas.SUCCESSFULL_MAIL);
@@ -85,4 +94,25 @@ public class MailReporte {
             System.out.println(Cadenas.FAILED_MAIL);
         }
     }
+
+    public void tortaPorcentajeAnimal(Analex analex, String destinatario) throws MessagingException {
+        reporteNegocio.tortaPorcentajeAnimal();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Mensaje message = new Mensaje();
+        message.setCorreo(destinatario);
+        message.setSubject("REPORTE TORTA PORCENTAJE ANIMALES");
+        message.setCorreo(destinatario);
+        if (message.enviarCorreoAdjunto()) {
+            System.out.println("ENVIADO");
+        } else {
+            System.out.println("NO ENVIADO");
+        }
+
+    }
+
+   
 }

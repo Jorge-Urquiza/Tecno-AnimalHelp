@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jorge Luis Urquiza
  */
+
 public class Venta {
 
     private int id;
