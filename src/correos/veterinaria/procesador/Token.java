@@ -70,12 +70,12 @@ public class Token {
     public static final int ELIMINARATENCION = 177;
 
     //VETERINARIA CU #8 Reportes
-    public static final int VENTASMENSUALES = 178;
-    public static final int TOP3CLIENTESCOMPRAS = 179;
-    public static final int TOP3MASCOTASATENDIDAS = 180;
-    public static final int TOP3PRODUCTOSVENDIDOS = 181;
-    public static final int VENTASTOTALDEHOY = 182;
-    public static final int TORTAPORCENTAJEANIMAL = 183;
+    public static final int VENTASMENSUALES = 180;
+    public static final int TOPTRESCLIENTESCOMPRAS = 181;
+    public static final int TOPTRESMASCOTASATENDIDAS = 182;
+    public static final int TOPTRESPRODUCTOSVENDIDOS = 183;
+    public static final int VENTASTOTALDEHOY = 184;
+    public static final int TORTAPORCENTAJEANIMAL = 185;
 
     private int nombre;
     private float atributo;

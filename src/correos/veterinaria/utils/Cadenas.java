@@ -23,5 +23,5 @@ public class Cadenas {
     public static final String MODIFICAR_SUCCESS = "Modificación Realizada Exitosamente";
     public static final String ELIMINAR_SUCCESS = "Registro Eliminado Exitosamente";
 
-    public static final String GUION_BAJO="(Usar \"_\" para mantener los valores anterior de los registros)";
+    public static final String GUION_BAJO="\n (Usar \"_\" para mantener los valores anterior de los registros)";
 }

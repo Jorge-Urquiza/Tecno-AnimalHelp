@@ -40,8 +40,8 @@ public class VeterinariaMail {
         // Setteando Variables
         String destinatario = Utils.getDestinatario(Message); //obtener destinario
         String content = Utils.getSubjectOrden(Message); // obtener subject
-        System.out.println("Content : \t" + content);
-        System.out.println("DESTINARIO : \t" + destinatario);
+        System.out.println("Contenido : \t" + content);
+        System.out.println("Destinatario : \t" + destinatario);
 
         Cinta cinta = new Cinta(content);
         Analex analex = new Analex(cinta);
@@ -51,9 +51,9 @@ public class VeterinariaMail {
         parser.Expresion();
         if (parser.errorFlag) {
             // Enviar Correo de Error
-            ClienteSMTP.sendMail(destinatario, "ERROR DE COMANDO ",
-                    "El comando que usted ha introducido es incorrecto,"
-                    + " para ver la lista de comandos use el comando HELP"
+            ClienteSMTP.sendMail(destinatario,"ERROR DE COMANDO ",
+                    "El comando o caracteres que usted ha introducido es incorrecto,"
+                    + "para ver la lista de comandos disponibles y ejemplos utilice el comando HELP"
             );
             return;
         }
@@ -174,16 +174,17 @@ public class VeterinariaMail {
                 break;
 
             //CU8 REPORTES
+                
             case Token.VENTASMENSUALES:
                 mailReporte.ventasMensuales(analex, destinatario);
                 break;
-            case Token.TOP3CLIENTESCOMPRAS:
+            case Token.TOPTRESCLIENTESCOMPRAS:
                 mailReporte.top3ClientesCompras(analex, destinatario);
                 break;
-            case Token.TOP3MASCOTASATENDIDAS:
+            case Token.TOPTRESMASCOTASATENDIDAS:
                 mailReporte.top3MascotasAtendidas(analex, destinatario);
                 break;
-            case Token.TOP3PRODUCTOSVENDIDOS:
+            case Token.TOPTRESPRODUCTOSVENDIDOS:
                 mailReporte.top3ProductosVendidos(analex, destinatario);
                 break;
             case Token.VENTASTOTALDEHOY:

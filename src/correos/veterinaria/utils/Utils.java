@@ -114,79 +114,139 @@ public class Utils {
                 "EJEMPLO"
         ));
         LinkedList<String> CasosDeUso = new LinkedList<>(Arrays.asList(
-                //Veterinaria
-                //cu1
-                "REGISTRAR CATEGORIA",
-                "OBTENER CATEGORIA",
-                "MODIFICAR CATEGORIA",
-                "ELIMINAR CATEGORIA",
-                //cu2
+                //VETERINARIA ANIMAL HELP
+
+                //CU1 Gestionar Cliente
+                "REGISTRAR CLIENTE",
+                "MODIFICAR CLIENTE",
+                "OBTENERCLIENTES",
+                "ELIMINAR CLIENTE",
+                //CU2 Gestionar Mascota
+                "REGISTRAR MASCOTA",
+                "MODIFICAR MASCOTA",
+                "OBTENER MASCOTAS",
+                "ELIMINAR MASCOTA",
+                ///CU3 Gestionar Veterinario
                 "REGISTRAR VETERINARIO",
                 "OBTENER VETERINARIO",
                 "MODIFICAR VETERINARIO",
                 "ELIMINAR VETERINARIO",
-                ///CU3
-                "REGISTRARPRODUCTO",
-                "MODIFICARPRODUCTO",
-                "OBTENERPRODUCTOS",
-                "ELIMINARPRODUCTO",
-                //C8 REPORTES
+                ///CU4 Gestionar Categoria
+                "REGISTRAR CATEGORIA",
+                "OBTENER CATEGORIA",
+                "MODIFICAR CATEGORIA",
+                "ELIMINAR CATEGORIA",
+                ///CU5 Gestionar Producto
+                "REGISTRAR PRODUCTO",
+                "MODIFICAR PRODUCTO",
+                "OBTENER PRODUCTOS",
+                "ELIMINAR PRODUCTO",
+                //CU6 Gestionar Venta
+                "REGISTRAR VENTA",
+                "MODIFICAR VENTA",
+                "OBTENERVENTAS",
+                "ELIMINAR VENTA",
+                //CU7 Gestionar atencion
+                "REGISTRAR ATENCION",
+                "MODIFICAR ATENCION",
+                "OBTENERATENCIONES",
+                "ELIMINAR ATENCION",
+                //CU8 REPORTES
                 "VENTASMENSUALES",
-                "TOP3CLIENTESCOMPRAS",
-                "TOP3MASCOTASATENDIDAS",
-                "TOP3PRODUCTOSVENDIDOS",
-                "VENTASTOTALDEHOY",
-                "TORTAPORCENTAJEANIMAL"
+                "TOP3 CLIENTES COMPRAS",
+                "TOP3 MASCOTAS MAS ATENDIDAS",
+                "TOP3 PRODUCTOS MAS VENDIDOS",
+                "VENTAS TOTAL DE HOY",
+                "TORTA PORCENTAJE POR ANIMAL"
         ));
         LinkedList<String> Detalles = new LinkedList<>(Arrays.asList(
                 //veterinaria animal help
 
-                //CU1
-                "REGISTRARCATEGORIA[\"Nombre\"][\"Descripcion\"]",
-                "OBTENERCATEGORIAS",
-                "MODIFICARCATEGORIA[\"ID categoria\"][\"Nombre\"][\"Descripcion\"]",
-                "ELIMINARCATEGORIA[\"ID categoria\"]",
-                //CU2
-
+                //CU1 Gestionar Cliente
+                "REGISTRARCLIENTE[\"Nombre\"][\"Apellidos\"][Cedula Identidad][\"Celular\"][\"Direcciopn\"]",
+                "MODIFICARCLIENTE[ID Cliente][\"Nombre\"][\"Apellidos\"][Cedula Identidad][\"Celular\"][\"Direcciopn\"]",
+                "OBTENERCLIENTES",
+                "ELIMINARCLIENTE[ID Cliente]",
+                //CU2 Gestionar Mascota
+                "REGISTRARMASCOTA[\"Nombre\"][\"Raza\"][\"Color\"][id del amo (cliente)][Tipo de mascota (1, 2 | 1=Perro 2 = Gato)]",
+                "MODIFICARMASCOTA[id de mascota][\"Nombre\"][\"Raza\"][\"Color\"][id del amo (cliente)][Tipo de mascota (1, 2 | 1=Perro 2 = Gato)]",
+                "OBTENERMASCOTAS",
+                "ELIMINARMASCOTA[id de la mascota]",
+                ///CU3 Gestionar Veterinario
                 "REGISTRARVETERINARIO[\"Nombre\"][\"Apellidos\"][Cedula Identidad][\"Celular\"][\"Direcciopn\"]",
                 "OBTENERVETERINARIOS",
                 "MODIFICARVETERINARIO[id de veterinario][\"Nombre\"][\"Descripcion\"]",
                 "ELIMINARVETERINARIO[id veterinario]",
-                //cu3
-                "REGISTRARPRODUCTO[\"Nombre\"][Precio][ID Categoria]",
+                ///CU4 Gestionar Categoria
+                "REGISTRARCATEGORIA[\"Nombre\"][\"Descripcion\"]",
+                "OBTENERCATEGORIAS",
+                "MODIFICARCATEGORIA[\"ID categoria\"][\"Nombre Categoria\"][\"Descripcion\"]",
+                "ELIMINARCATEGORIA[\"ID categoria\"]",
+                ///CU5 Gestionar Producto
+                "REGISTRARPRODUCTO[\"Nombre\"][Precio][ID  de la Categoria]",
                 "OBTENERPRODUCTOS",
                 "MODIFICARPRODUCTO[ID Producto][\"Nombre\"][Precio][ID Categoria]",
-                "ELIMINARPRODUCTO[ID Producto]",
+                "ELIMINARPRODUCTO[ID Producto] ",
+                //CU6 Gestionar Venta
+                "REGISTRARVENTAREGISTRARVENTA[\"21461\"][\"02-08-2020\"][2][1][1][5][3][4]",
+                "MODIFICARVENTAMODIFICARVENTA[8][_][\"10-02-2019\"][_][_]",
+                "OBTENERVENTAS",
+                "ELIMINARVENTAELIMINARVENTA[10]",
+                //CU7 Gestionar Atencion
+                "REGISTRARATENCION[\"Fecha\"][\"Descripcion\"][\"Diagnostico\"][id cliente][id veterinario][id mascota]",
+                "MODIFICARATENCION[ID atencion[[\"03-08-2020\"][\"Descripcion\"][\"Diagnostico medico\"][id cliente][id veterinario][id mascota]",
+                "OBTENERATENCIONES",
+                "ELIMINARATENCION[ID de la atención])",
                 //C8 REPORTES
                 "VENTASMENSUALES(Ventas totales por mes)",
                 "TOP3CLIENTESCOMPRAS (Los 3 clientes que mas compras realizaron)",
                 "TOP3MASCOTASATENDIDAS(Las mascotas que mas veces fueron atendidas)",
                 "TOP3PRODUCTOSVENDIDOS(Los 3 productos mas vendidos)",
-                "VENTASTOTALDEHOY",
+                "VENTASTOTALDEHOY (Todas las ventas realizadas hoy)",
                 "TORTAPORCENTAJEANIMAL(TORTA GRAFICA CON % DE ANIMALES ATENDIDOS POR TIPO (PERROS Y GATOS))"
         ));
         LinkedList<String> Ejemplos = new LinkedList<>(Arrays.asList(
                 //Veterinaria
-                //CU1
-                "REGISTRARCATEGORIA[\"Balanceado\"][\"Comida saludable\"]",
-                "OBTENERCATEGORIAS",
-                "MODIFICARCATEGORIA[1][_][\"Comida\"] " + Cadenas.GUION_BAJO,
-                "ELIMINARCATEGORIA[2]",
-                //CU2
+                //CU1 Gestionar Cliente
+                "REGISTRARCLIENTE[\"Jhasmany\"][\"Campos Aguilar\"][1555][\"+59175575745\"]",
+                "MODIFICARCLIENTE[7][_][_][_][\"+59178036436\"]<br>" + Cadenas.GUION_BAJO,
+                "OBTENERCLIENTES",
+                "ELIMINARCLIENTE[7]",
+                ///CU2 Gestionar Mascota
+                "REGISTRARMASCOTA[\"Sony\"][\"chihuahua\"][\"Negro\"][1][2]",
+                "MODIFICARMASCOTA[4][\"Sonic\"][_][_][_][_]<br>"+ Cadenas.GUION_BAJO,
+                "OBTENERMASCOTAS",
+                "ELIMINARMASCOTA[4]",
+                //CU3 Gestionar Veterinario
                 "REGISTRARVETERINARIO[\"Luciano\"][\"Aguierre Peña\"][12530][\"+591700365436\"][\"Calle Guabira#03\"]",
                 "OBTENERVETERINARIOS",
-                "MODIFICARVETERINARIO[1][_][_][853651][\"+591 75575746\"][\"Calle Santa Cruz#1113\"]",
+                "MODIFICARVETERINARIO[1][_][_][853651][\"+591 75575746\"][\"Calle Santa Cruz#1113\"]"+ Cadenas.GUION_BAJO,
                 "ELIMINARVETERINARIO[2]",
-                //cu3
-                "REGISTRARPRODUCTO[\"Doggy Cachorro\"][15][1]",
+                ///CU4 Gestionar Categoria
+                "REGISTRARCATEGORIA[\"Limpieza\"][\"Productos de aseo para las mascotas\"]",
+                "OBTENERCATEGORIAS",
+                "MODIFICARCATEGORIA[11][_][\" Limpieza para mascotas\"]<br>" + Cadenas.GUION_BAJO,
+                "ELIMINARCATEGORIA[10]",
+                ///CU5 Gestionar Porducto
+                "REGISTRARPRODUCTO[\"Golfo\"][15][11]",
                 "OBTENERPRODUCTOS",
-                "MODIFICARPRODUCTO[1][\"Doggy\"][18][_]" + Cadenas.GUION_BAJO,
-                "ELIMINARPRODUCTO[2]",
-                //C8 REPORTES
+                "MODIFICARPRODUCTO[5][\"Golfo ++\"][_][_]<br>" + Cadenas.GUION_BAJO,
+                "ELIMINARPRODUCTO[5]",
+                //CU6 Gestionar Venta
+                "REGISTRARVENTAREGISTRARVENTA[\"21461\"][\"02-08-2020\"][2][1][1][5][3][4]",
+                "MODIFICARVENTAMODIFICARVENTA[8][_][\"10-02-2019\"][_][_]<br>" + Cadenas.GUION_BAJO,
+                "OBTENERVENTAS",
+                "ELIMINARVENTAELIMINARVENTA[10]",
+                //CU7 Gestionar Atencion
+                "REGISTRARATENCION[\"02-08-2020\"][\"el animal tenia moquillo\"][\"darle vitaminas C\"][1][1][3]",
+                "MODIFICARATENCION[\"03-08-2020\"][_][\"darle vitaminas c y b\"][_][_][_]<br>" + Cadenas.GUION_BAJO,
+                "OBTENERATENCIONES",
+                "ELIMINARATENCION[4]",
+                //CU8 REPORTES
                 "VENTASMENSUALES",
-                "TOP3CLIENTESCOMPRAS",
-                "TOP3MASCOTASATENDIDAS",
-                "TOP3PRODUCTOSVENDIDOS",
+                "TOPTRESCLIENTESCOMPRAS",
+                "TOPTRESMASCOTASATENDIDAS",
+                "TOPTRESPRODUCTOSVENDIDOS",
                 "VENTASTOTALDEHOY",
                 "TORTAPORCENTAJEANIMAL"
         ));
