@@ -5,7 +5,6 @@
  */
 package correos.veterinaria.software.Email;
 
-import correos.veterinaria.software.Email.TemplateMail;
 import correos.veterinaria.protocolos.ClienteSMTP;
 import correos.veterinaria.procesador.*;
 import correos.veterinaria.software.Negocio.*;
@@ -17,11 +16,10 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jorge Luis Urquiza
  */
-public class MailCliente extends TemplateMail {
+public class MailCliente {
 
     ClienteNegocio clienteNegocio = new ClienteNegocio();
 
-    @Override
     public void registrar(Analex analex, String destinatario) throws Exception {
         // Obtengo el Siguiente token
         analex.Avanzar();
@@ -46,7 +44,7 @@ public class MailCliente extends TemplateMail {
         ClienteSMTP.sendMail(destinatario, "REGISTRAR CLIENTE", Cadenas.REGISTRO_SUCCESS);
     }
 
-    @Override
+  
     public void modificar(Analex analex, String destinatario) throws Exception {
         analex.Avanzar();
         Token token = analex.Preanalisis();
@@ -91,7 +89,7 @@ public class MailCliente extends TemplateMail {
 
     }
 
-    @Override
+   
     public void eliminar(Analex analex, String destinatario) throws Exception {
         // Obtengo el Siguiente token
         analex.Avanzar();
@@ -103,7 +101,7 @@ public class MailCliente extends TemplateMail {
         ClienteSMTP.sendMail(destinatario, "ELIMINAR CLIENTE", Cadenas.ELIMINAR_SUCCESS);
     }
 
-    @Override
+    
     public void listar(Analex analex, String destinatario) throws Exception {
         analex.Avanzar();
         Token token = analex.Preanalisis();

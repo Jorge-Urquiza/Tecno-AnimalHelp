@@ -21,6 +21,7 @@ public class Mascota {
     private String nombre;
     private String raza;
     private String color;
+    private int tipo;
     private int cliente_id;
 
     private Conexion m_Conexion;
@@ -71,7 +72,7 @@ public class Mascota {
     }
 
     ///METHODS
-    public void setMascota(int id, String nombre, String raza, String color, int cliente_id) {
+    public void setMascota(int id, String nombre, String raza, String color, int tipo, int cliente_id) {
         this.id = id;
         this.nombre = nombre;
         this.raza = raza;
@@ -79,7 +80,7 @@ public class Mascota {
         this.cliente_id = cliente_id;
     }
 
-    public void setMascota(String nombre, String raza, String color, int cliente_id) {
+    public void setMascota(String nombre, String raza, String color, int tipo, int cliente_id) {
         this.nombre = nombre;
         this.raza = raza;
         this.color = color;
@@ -91,16 +92,16 @@ public class Mascota {
         Connection con = this.m_Conexion.getConexion();
         // Preparo la consulta
         PreparedStatement ps = null;
-        String query = "INSERT INTO mascotas \n"
-                + "(nombre,raza,color,cliente_id) \n"
-                + " values (?,?,?,?)";
+        String query = "INSERT INTO mascotas2 \n"
+                + "(nombre,raza,color,tipo,cliente_id) \n"
+                + " values (?,?,?,?,?)";
         try {
             ps = con.prepareStatement(query);
             ps.setString(1, nombre);
             ps.setString(2, raza);
             ps.setString(3, color);
-            //id del amo
-            ps.setInt(4, cliente_id);
+            ps.setInt(4, tipo);
+            ps.setInt(5, cliente_id);
             ps.executeUpdate();
             System.out.println("Registrado!!");
             con.close();
@@ -120,10 +121,11 @@ public class Mascota {
         this.m_Conexion.abrirConexion();
         Connection con = this.m_Conexion.getConexion();
         PreparedStatement ps = null;
-        String query = "UPDATE mascotas SET \n"
+        String query = "UPDATE mascotas2 SET \n"
                 + "nombre = ?,\n"
                 + "raza = ?, \n"
                 + "color = ?, \n"
+                + "tipo = ?, \n"
                 + "cliente_id = ? \n"
                 + "WHERE id = ?";
         try {
@@ -131,8 +133,9 @@ public class Mascota {
             ps.setString(1, nombre);
             ps.setString(2, raza);
             ps.setString(3, color);
-            ps.setInt(4, cliente_id);
-            ps.setInt(5, id);
+            ps.setInt(4, tipo);
+            ps.setInt(5, cliente_id);
+            ps.setInt(6, id);
             ps.executeUpdate();
             System.out.println("Modificado!!");
             con.close();
@@ -147,7 +150,7 @@ public class Mascota {
         Connection con = this.m_Conexion.getConexion();
         PreparedStatement ps = null;
         try {
-            ps = con.prepareStatement("DELETE FROM mascotas WHERE id = ?");
+            ps = con.prepareStatement("DELETE FROM mascotas2 WHERE id = ?");
             ps.setInt(1, this.id);
             System.out.println("ENTRO AL METODO ELIMINAR");
             ps.executeUpdate();
@@ -160,13 +163,13 @@ public class Mascota {
         // Tabla para mostrar lo obtenido de la consulta
         DefaultTableModel mascota = new DefaultTableModel();
         mascota.setColumnIdentifiers(new Object[]{
-            "id", "nombre", "raza", "color", "cliente_id"
+            "id", "nombre", "raza", "color", "tipo", "cliente_id"
         });
         // Abro y obtengo la conexion
         this.m_Conexion.abrirConexion();
         Connection con = this.m_Conexion.getConexion();
         // Preparo la consulta
-        String sql = "SELECT * FROM mascotas WHERE id=?";
+        String sql = "SELECT * FROM mascotas2 WHERE id=?";
         try {
             // La ejecuto
             PreparedStatement ps = con.prepareStatement(sql);
@@ -182,6 +185,7 @@ public class Mascota {
                     rs.getString("nombre"),
                     rs.getString("raza"),
                     rs.getString("color"),
+                    rs.getInt("tipo"),
                     rs.getInt("cliente_id")
                 });
             }
@@ -195,14 +199,14 @@ public class Mascota {
         // Tabla para mostrar lo obtenido de la consulta
         DefaultTableModel mascotas = new DefaultTableModel();
         mascotas.setColumnIdentifiers(new Object[]{
-            "id", "nombre", "raza", "color", "cliente_id"
+            "id", "nombre", "raza", "color", "tipo", "cliente_id"
         });
         // Abro y obtengo la conexion
         this.m_Conexion.abrirConexion();
         Connection con = this.m_Conexion.getConexion();
 
         // Preparo la consulta
-        String sql = "SELECT * FROM mascotas";
+        String sql = "SELECT * FROM mascotas2";
         try {
             // La ejecuto
             PreparedStatement ps = con.prepareStatement(sql);
@@ -219,6 +223,7 @@ public class Mascota {
                     rs.getString("nombre"),
                     rs.getString("raza"),
                     rs.getString("color"),
+                    rs.getInt("tipo"),
                     rs.getInt("cliente_id")
                 });
             }

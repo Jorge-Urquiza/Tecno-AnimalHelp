@@ -28,14 +28,13 @@ public class MascotaNegocio {
         return mascota.getMascotas();
     }
 
-    public void registrar(String nombre,String raza, String color, int cliente_id) {
-        mascota.setMascota(nombre, raza, color, cliente_id);
+    public void registrar(String nombre,String raza, String color,int tipo,int cliente_id) {
+        mascota.setMascota(nombre, raza, color,  tipo ,cliente_id);
         mascota.registrar();
     }
 
-    public void modificar(int id, String nombre,String raza, String color, int cliente_id) {
-
-        mascota.setMascota(id, nombre, raza, color, cliente_id);
+    public void modificar(int id, String nombre,String raza, String color,int tipo, int cliente_id) {
+        mascota.setMascota(id, nombre, raza, color, tipo, cliente_id);
         mascota.modificar();
     }
 

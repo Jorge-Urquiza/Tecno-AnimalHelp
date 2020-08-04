@@ -5,7 +5,6 @@
  */
 package correos.veterinaria.software.Email;
 
-import correos.veterinaria.software.Email.TemplateMail;
 import correos.veterinaria.protocolos.ClienteSMTP;
 import correos.veterinaria.procesador.*;
 import correos.veterinaria.software.Negocio.VeterinarioNegocio;
@@ -16,17 +15,16 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jorge Luis Urquiza
  */
-public class MailVeterinario extends TemplateMail {
+public class MailVeterinario {
 
     VeterinarioNegocio veterinarioNegocio = new VeterinarioNegocio();
 
-    @Override
     public void registrar(Analex analex, String destinatario) throws Exception {
         // Obtengo el Siguiente token
         analex.Avanzar();
         Token token = analex.Preanalisis();
         // Reviso si no es ayuda
-      
+
         // Sino, ejecutar el comando
         analex.Avanzar();
         // Atributos
@@ -49,10 +47,9 @@ public class MailVeterinario extends TemplateMail {
         String direccion = Utils.quitarComillas(analex.Preanalisis().getToStr());
         veterinarioNegocio.registrar(nombre, apellido, ci, celular, direccion);
 
-        ClienteSMTP.sendMail(destinatario, "REGISTRAR VETERINARIO",Cadenas.REGISTRO_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "REGISTRAR VETERINARIO", Cadenas.REGISTRO_SUCCESS);
     }
 
-    @Override
     public void modificar(Analex analex, String destinatario) throws Exception {
         analex.Avanzar();
         Token token = analex.Preanalisis();
@@ -98,27 +95,25 @@ public class MailVeterinario extends TemplateMail {
         String direccion = (analex.Preanalisis().getNombre() != Token.GB)
                 ? Utils.quitarComillas(analex.Preanalisis().getToStr())
                 : String.valueOf(veterinario.getValueAt(0, 5));
-        veterinarioNegocio.modificar(id,nombre, apellido, ci, celular, direccion);
+        veterinarioNegocio.modificar(id, nombre, apellido, ci, celular, direccion);
         ClienteSMTP.sendMail(destinatario, "MODIFICAR VETERINARIO", Cadenas.MODIFICAR_SUCCESS);
 
     }
 
-    @Override
     public void eliminar(Analex analex, String destinatario) throws Exception {
-       // Obtengo el Siguiente token
+        // Obtengo el Siguiente token
         analex.Avanzar();
         Token token = analex.Preanalisis();
         analex.Avanzar();
         int id = (int) analex.Preanalisis().getAtributo();
         veterinarioNegocio.eliminar(id);
-        ClienteSMTP.sendMail(destinatario, "ELIMINAR VETERINARIO", Cadenas.ELIMINAR_SUCCESS);  
+        ClienteSMTP.sendMail(destinatario, "ELIMINAR VETERINARIO", Cadenas.ELIMINAR_SUCCESS);
     }
 
-    @Override
     public void listar(Analex analex, String destinatario) throws Exception {
         analex.Avanzar();
         Token token = analex.Preanalisis();
-        String Head[] = {"ID","NOMBRE", "APELLIDO", "CI", "CELULAR", "DIRECCION"};
+        String Head[] = {"ID", "NOMBRE", "APELLIDO", "CI", "CELULAR", "DIRECCION"};
         String Cabecera = "ANIMALHELP - LISTA DE VETERINARIOS";
         Mensaje message = Utils.dibujarTablaHtml(veterinarioNegocio.getVeterinarios(), Head, Cabecera);
         message.setCorreo(destinatario);
