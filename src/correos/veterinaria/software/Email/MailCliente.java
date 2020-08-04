@@ -16,10 +16,11 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jorge Luis Urquiza
  */
+
 public class MailCliente {
 
     ClienteNegocio clienteNegocio = new ClienteNegocio();
-
+    
     public void registrar(Analex analex, String destinatario) throws Exception {
         // Obtengo el Siguiente token
         analex.Avanzar();
@@ -48,7 +49,6 @@ public class MailCliente {
     public void modificar(Analex analex, String destinatario) throws Exception {
         analex.Avanzar();
         Token token = analex.Preanalisis();
-        
         analex.Avanzar();
         int id = (int) analex.Preanalisis().getAtributo();
         DefaultTableModel veterinario = clienteNegocio.getCliente(id);
@@ -63,7 +63,6 @@ public class MailCliente {
         analex.Avanzar();
         String nombre = (analex.Preanalisis().getNombre() != Token.GB)
                 ? Utils.quitarComillas(analex.Preanalisis().getToStr())
-                // posicion de la fila del defaultTableModel
                 : String.valueOf(veterinario.getValueAt(0, 1));
         analex.Avanzar();
         analex.Avanzar();

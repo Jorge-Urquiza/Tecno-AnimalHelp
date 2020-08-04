@@ -164,8 +164,12 @@ public class Mensaje {
             Multipart multipart = new MimeMultipart();
 
             messageBodyPart = new MimeBodyPart();
-            String file = "reporte.pdf";
-            String fileName = "reporte.pdf";
+            /*
+             String file = "reporte.pdf";
+             String fileName =  "reporte.pdf";
+             */
+            String file = "chart.jpg";
+            String fileName = "chart.jpg";
             DataSource source = new FileDataSource(file);
             messageBodyPart.setDataHandler(new DataHandler(source));
             messageBodyPart.setFileName(fileName);
@@ -173,11 +177,8 @@ public class Mensaje {
             message.setContent(multipart);
 
             System.out.println("Sending");
-
             Transport.send(message);
-
             System.out.println("Done");
-
         } catch (MessagingException e) {
             e.printStackTrace();
         }

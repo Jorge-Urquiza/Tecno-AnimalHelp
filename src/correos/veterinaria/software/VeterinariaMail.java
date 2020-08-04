@@ -51,7 +51,7 @@ public class VeterinariaMail {
         parser.Expresion();
         if (parser.errorFlag) {
             // Enviar Correo de Error
-            ClienteSMTP.sendMail(destinatario,"ERROR DE COMANDO ",
+            ClienteSMTP.sendMail(destinatario, "ERROR DE COMANDO ",
                     "El comando o caracteres que usted ha introducido es incorrecto,"
                     + "para ver la lista de comandos disponibles y ejemplos utilice el comando HELP"
             );
@@ -64,6 +64,7 @@ public class VeterinariaMail {
         if (token.getNombre() == Token.HELP) { // EL USUARIO HA PEDIDO LA LISTA DE COMANDOS
             // Mostrar Ayudas
             Mensaje message = Utils.dibujarMenuAyuda(); //MimeBodyMail
+          
             message.setCorreo(destinatario);
             if (message.enviarCorreo()) {
                 System.out.println("Envio Correo de Respuesta Exitoso");
@@ -174,7 +175,6 @@ public class VeterinariaMail {
                 break;
 
             //CU8 REPORTES
-                
             case Token.VENTASMENSUALES:
                 mailReporte.ventasMensuales(analex, destinatario);
                 break;

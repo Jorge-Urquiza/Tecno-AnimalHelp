@@ -30,19 +30,14 @@ public class VentaNegocio {
         venta.setVenta(nit, fecha, cliente_id, veterinario_id);
         int total = 0;
         int venta_id = venta.registrar();
-
-        if (venta_id != -1) {
-            for (DetalleVenta detalle : lista) {
-                detalle.setIDVenta(venta_id);
-                detalle.registrar();
-                // System.out.println("DETALLES: producto_id: " + detalle_venta.getProducto_id() + "venta_ id: " + detalle_venta.getVenta_id() + "cant :" + detalle_venta.getCantidad());
-                total += detalle.getPrecioProductoxCantidad();
-                System.out.println("Vueltas" + total++);
-            }
-            venta.actualizarTotal(total);
-        } else {
-            System.out.println("Error al crear la venta");
+        for (DetalleVenta detalle : lista) {
+            detalle.setIDVenta(venta_id);
+            detalle.registrar();
+            total += detalle.getPrecioProductoxCantidad();
+            System.out.println("registrando detalles");
         }
+        venta.actualizarTotal(total);
+
     }
 
     public DefaultTableModel getVenta(int id) {
@@ -59,7 +54,7 @@ public class VentaNegocio {
         venta.modificar();
     }
 
-    public void eliminar(int id) { 
+    public void eliminar(int id) {
         venta.setId(id); // elimina la venta
         venta.eliminar();
 

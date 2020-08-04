@@ -110,7 +110,7 @@ public class Utils {
         String Cabecera = "MENÚ DE AYUDA- ANIMAL HELP";
         LinkedList<String> Head = new LinkedList<>(Arrays.asList(
                 "CASO DE USO",
-                "DETALLE",
+                "DETALLES Y USO",
                 "EJEMPLO"
         ));
         LinkedList<String> CasosDeUso = new LinkedList<>(Arrays.asList(
@@ -164,37 +164,37 @@ public class Utils {
 
                 //CU1 Gestionar Cliente
                 "REGISTRARCLIENTE[\"Nombre\"][\"Apellidos\"][Cedula Identidad][\"Celular\"][\"Direcciopn\"]",
-                "MODIFICARCLIENTE[ID Cliente][\"Nombre\"][\"Apellidos\"][Cedula Identidad][\"Celular\"][\"Direcciopn\"]",
+                "MODIFICARCLIENTE[ID Cliente][\"Nombre\"][\"Apellidos\"][Cedula Identidad][\"Celular\"][\"Direcciopn\"]"+ Cadenas.GUION_BAJO,
                 "OBTENERCLIENTES",
                 "ELIMINARCLIENTE[ID Cliente]",
                 //CU2 Gestionar Mascota
-                "REGISTRARMASCOTA[\"Nombre\"][\"Raza\"][\"Color\"][id del amo (cliente)][Tipo de mascota (1, 2 | 1=Perro 2 = Gato)]",
-                "MODIFICARMASCOTA[id de mascota][\"Nombre\"][\"Raza\"][\"Color\"][id del amo (cliente)][Tipo de mascota (1, 2 | 1=Perro 2 = Gato)]",
+                "REGISTRARMASCOTA[\"Nombre\"][\"Raza\"][\"Color\"][id del amo (cliente)][Tipo de mascota (1, 2 ,3 | 1=Perro 2 = Gato | 3 = otros (cualquier otro tipo de mascota )]",
+                "MODIFICARMASCOTA[id de mascota][\"Nombre\"][\"Raza\"][\"Color\"][id del amo (cliente)][Tipo de mascota (1, 2 ,3 | 1=Perro 2 = Gato  | 3 = otros (cualquier otro tipo de mascota ))]"+ Cadenas.GUION_BAJO,
                 "OBTENERMASCOTAS",
                 "ELIMINARMASCOTA[id de la mascota]",
                 ///CU3 Gestionar Veterinario
                 "REGISTRARVETERINARIO[\"Nombre\"][\"Apellidos\"][Cedula Identidad][\"Celular\"][\"Direcciopn\"]",
                 "OBTENERVETERINARIOS",
-                "MODIFICARVETERINARIO[id de veterinario][\"Nombre\"][\"Descripcion\"]",
+                "MODIFICARVETERINARIO[id de veterinario][\"Nombre\"][\"Descripcion\"]"+ Cadenas.GUION_BAJO,
                 "ELIMINARVETERINARIO[id veterinario]",
                 ///CU4 Gestionar Categoria
                 "REGISTRARCATEGORIA[\"Nombre\"][\"Descripcion\"]",
                 "OBTENERCATEGORIAS",
-                "MODIFICARCATEGORIA[\"ID categoria\"][\"Nombre Categoria\"][\"Descripcion\"]",
+                "MODIFICARCATEGORIA[\"ID categoria\"][\"Nombre Categoria\"][\"Descripcion\"]"+ Cadenas.GUION_BAJO,
                 "ELIMINARCATEGORIA[\"ID categoria\"]",
                 ///CU5 Gestionar Producto
                 "REGISTRARPRODUCTO[\"Nombre\"][Precio][ID  de la Categoria]",
                 "OBTENERPRODUCTOS",
-                "MODIFICARPRODUCTO[ID Producto][\"Nombre\"][Precio][ID Categoria]",
+                "MODIFICARPRODUCTO[ID Producto][\"Nombre\"][Precio][ID Categoria]"+ Cadenas.GUION_BAJO,
                 "ELIMINARPRODUCTO[ID Producto] ",
                 //CU6 Gestionar Venta
-                "REGISTRARVENTAREGISTRARVENTA[\"21461\"][\"02-08-2020\"][2][1][1][5][3][4]",
-                "MODIFICARVENTAMODIFICARVENTA[8][_][\"10-02-2019\"][_][_]",
+                "REGISTRARVENTA[\"NIT\"][\"Fecha(dia-mes-año)\"][id cliente][id veterinario](despues del \"id veterinario\" vienen los detalles de la compra siempre en pares [id producto][cantidad][id producto][cantidad].....etc. importante nunca repetir el id del producto porque el mismo producto no puede estar detallado 2 veces en la venta) ej. asi: [2][1][1][5][3][4]",
+                "MODIFICARVENTA[ID Venta][\"NIT\"][\"Fecha(dia-mes-año\"][id cliente][id veterinario]"+ Cadenas.GUION_BAJO,
                 "OBTENERVENTAS",
                 "ELIMINARVENTAELIMINARVENTA[10]",
                 //CU7 Gestionar Atencion
                 "REGISTRARATENCION[\"Fecha\"][\"Descripcion\"][\"Diagnostico\"][id cliente][id veterinario][id mascota]",
-                "MODIFICARATENCION[ID atencion[[\"03-08-2020\"][\"Descripcion\"][\"Diagnostico medico\"][id cliente][id veterinario][id mascota]",
+                "MODIFICARATENCION[ID atencion[[\"03-08-2020\"][\"Descripcion\"][\"Diagnostico medico\"][id cliente][id veterinario][id mascota]"+ Cadenas.GUION_BAJO,
                 "OBTENERATENCIONES",
                 "ELIMINARATENCION[ID de la atención])",
                 //C8 REPORTES
@@ -209,37 +209,37 @@ public class Utils {
                 //Veterinaria
                 //CU1 Gestionar Cliente
                 "REGISTRARCLIENTE[\"Jhasmany\"][\"Campos Aguilar\"][1555][\"+59175575745\"]",
-                "MODIFICARCLIENTE[7][_][_][_][\"+59178036436\"]<br>" + Cadenas.GUION_BAJO,
+                "MODIFICARCLIENTE[7][_][_][_][\"+59178036436\"]<br>",
                 "OBTENERCLIENTES",
                 "ELIMINARCLIENTE[7]",
                 ///CU2 Gestionar Mascota
                 "REGISTRARMASCOTA[\"Sony\"][\"chihuahua\"][\"Negro\"][1][2]",
-                "MODIFICARMASCOTA[4][\"Sonic\"][_][_][_][_]<br>"+ Cadenas.GUION_BAJO,
+                "MODIFICARMASCOTA[4][\"Sonic\"][_][_][_][_]",
                 "OBTENERMASCOTAS",
                 "ELIMINARMASCOTA[4]",
                 //CU3 Gestionar Veterinario
                 "REGISTRARVETERINARIO[\"Luciano\"][\"Aguierre Peña\"][12530][\"+591700365436\"][\"Calle Guabira#03\"]",
                 "OBTENERVETERINARIOS",
-                "MODIFICARVETERINARIO[1][_][_][853651][\"+591 75575746\"][\"Calle Santa Cruz#1113\"]"+ Cadenas.GUION_BAJO,
+                "MODIFICARVETERINARIO[1][_][_][853651][\"+591 75575746\"][\"Calle Santa Cruz#1113\"]",
                 "ELIMINARVETERINARIO[2]",
                 ///CU4 Gestionar Categoria
                 "REGISTRARCATEGORIA[\"Limpieza\"][\"Productos de aseo para las mascotas\"]",
                 "OBTENERCATEGORIAS",
-                "MODIFICARCATEGORIA[11][_][\" Limpieza para mascotas\"]<br>" + Cadenas.GUION_BAJO,
+                "MODIFICARCATEGORIA[11][_][\" Limpieza para mascotas\"]" ,
                 "ELIMINARCATEGORIA[10]",
                 ///CU5 Gestionar Porducto
                 "REGISTRARPRODUCTO[\"Golfo\"][15][11]",
                 "OBTENERPRODUCTOS",
-                "MODIFICARPRODUCTO[5][\"Golfo ++\"][_][_]<br>" + Cadenas.GUION_BAJO,
+                "MODIFICARPRODUCTO[5][\"Golfo ++\"][_][_]",
                 "ELIMINARPRODUCTO[5]",
                 //CU6 Gestionar Venta
-                "REGISTRARVENTAREGISTRARVENTA[\"21461\"][\"02-08-2020\"][2][1][1][5][3][4]",
-                "MODIFICARVENTAMODIFICARVENTA[8][_][\"10-02-2019\"][_][_]<br>" + Cadenas.GUION_BAJO,
+                "REGISTRARVENTA[\"21461\"][\"02-08-2020\"][1][1][2][1][1][5][3][4]",
+                "MODIFICARVENTA[8][_][\"10-02-2019\"][_][_]",
                 "OBTENERVENTAS",
-                "ELIMINARVENTAELIMINARVENTA[10]",
+                "ELIMINARVENTA[10]",
                 //CU7 Gestionar Atencion
                 "REGISTRARATENCION[\"02-08-2020\"][\"el animal tenia moquillo\"][\"darle vitaminas C\"][1][1][3]",
-                "MODIFICARATENCION[\"03-08-2020\"][_][\"darle vitaminas c y b\"][_][_][_]<br>" + Cadenas.GUION_BAJO,
+                "MODIFICARATENCION[\"03-08-2020\"][_][\"darle vitaminas c y b\"][_][_][_]",
                 "OBTENERATENCIONES",
                 "ELIMINARATENCION[4]",
                 //CU8 REPORTES
@@ -258,6 +258,7 @@ public class Utils {
                 + "    color: black;\n"
                 + "}\n"
                 + "h2,img {\n"
+                + "color: red;\n"
                 + "    display: inline-block;\n"
                 + "}\n"
                 + "img{"
@@ -290,6 +291,13 @@ public class Utils {
                 + "</head>\n"
                 + "<body>\n"
                 + "<h1>" + Cabecera + "</h1> \n"
+                + "<h2>NOTA: IMPORTANTE LEER LA LISTA DE INSTRUCCIONES Y RECOMENDACIONES</h2> \n"
+                + "<ul>\n"
+                + "<li><strong>En los MODIFICAR usar \"_\" para mantener los valores anteriores de la fila, es decir los campos que no se quieren modificar.</strong></li>\n"
+                + "<li><strong>REGISTRAR VENTA: desdes del \"[id veterinario]\" agregar 2 lo menos 2 o mas campos si o si (en pares) [id producto][cantidad] se puede agregar N productos pero siempre producto y cantidad como se hace en un carrito de compra.</strong></li>\n"
+                + "<li><strong>Utilizar solo la lista comandos disponibles para poder realizar alguna acción</strong></li>\n"
+                + "<li><strong>Video tutorial de guia de uso: <a href=\"https://www.youtube.com/watch?v=YHTthcdGwpQ\">Video de apoyo</a></strong></li>\n"
+                + "</ul>\n"
                 + "<table class=\"w3-table-all\">\n";
         data = data + "<tr>\n";
         for (int i = 0; i < Head.size(); i++) {
@@ -307,84 +315,6 @@ public class Utils {
         data += "</table>\n"
                 + "</body>\n"
                 + "</html>\n";
-        Mensaje mensaje = new Mensaje(Cabecera, data);
-        return mensaje;
-    }
-
-    //table example
-    public static Mensaje dibujarTabla3(DefaultTableModel tabla, String Head[], String Cabecera) {
-        String data = "<!DOCTYPE html>\n"
-                + "<html lang=\"en\">\n"
-                + "<head>\n"
-                + "  <title>Bootstrap Example</title>\n"
-                + "  <meta charset=\"utf-8\">\n"
-                + "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
-                + "  <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">\n"
-                + "  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js\"></script>\n"
-                + "  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\"></script>\n"
-                + "  <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\"></script>\n"
-                + "</head>\n"
-                + "<body>\n"
-                + "\n"
-                + "<div class=\"container\">\n"
-                + "  <h2>Table Head Colors</h2>\n"
-                + "  <p>The .thead-dark class adds a black background to table headers, and the .thead-light class adds a grey background to table headers:</p>\n"
-                + "  <table class=\"table\">\n"
-                + "    <thead class=\"thead-dark\">\n"
-                + "      <tr>\n"
-                + "        <th>Firstname</th>\n"
-                + "        <th>Lastname</th>\n"
-                + "        <th>Email</th>\n"
-                + "      </tr>\n"
-                + "    </thead>\n"
-                + "    <tbody>\n"
-                + "      <tr>\n"
-                + "        <td>John</td>\n"
-                + "        <td>Doe</td>\n"
-                + "        <td>john@example.com</td>\n"
-                + "      </tr>\n"
-                + "      <tr>\n"
-                + "        <td>Mary</td>\n"
-                + "        <td>Moe</td>\n"
-                + "        <td>mary@example.com</td>\n"
-                + "      </tr>\n"
-                + "      <tr>\n"
-                + "        <td>July</td>\n"
-                + "        <td>Dooley</td>\n"
-                + "        <td>july@example.com</td>\n"
-                + "      </tr>\n"
-                + "    </tbody>\n"
-                + "  </table>\n"
-                + "  <table class=\"table\">\n"
-                + "    <thead class=\"thead-light\">\n"
-                + "      <tr>\n"
-                + "        <th>Firstname</th>\n"
-                + "        <th>Lastname</th>\n"
-                + "        <th>Email</th>\n"
-                + "      </tr>\n"
-                + "    </thead>\n"
-                + "    <tbody>\n"
-                + "      <tr>\n"
-                + "        <td>John</td>\n"
-                + "        <td>Doe</td>\n"
-                + "        <td>john@example.com</td>\n"
-                + "      </tr>\n"
-                + "      <tr>\n"
-                + "        <td>Mary</td>\n"
-                + "        <td>Moe</td>\n"
-                + "        <td>mary@example.com</td>\n"
-                + "      </tr>\n"
-                + "      <tr>\n"
-                + "        <td>July</td>\n"
-                + "        <td>Dooley</td>\n"
-                + "        <td>july@example.com</td>\n"
-                + "      </tr>\n"
-                + "    </tbody>\n"
-                + "  </table>\n"
-                + "</div>\n"
-                + "\n"
-                + "</body>\n"
-                + "</html>";
         Mensaje mensaje = new Mensaje(Cabecera, data);
         return mensaje;
     }

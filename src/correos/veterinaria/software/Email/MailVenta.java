@@ -5,7 +5,6 @@
  */
 package correos.veterinaria.software.Email;
 
-
 import correos.veterinaria.protocolos.ClienteSMTP;
 import correos.veterinaria.procesador.*;
 import correos.veterinaria.procesador.Token;
@@ -20,11 +19,10 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jorge Luis Urquiza
  */
-public class MailVenta{
+public class MailVenta {
 
     VentaNegocio ventaNegocio = new VentaNegocio();
 
-  
     public void registrar(Analex analex, String destinatario) throws Exception {
         // Obtengo el Siguiente token
         analex.Avanzar();
@@ -57,14 +55,14 @@ public class MailVenta{
             int cantidad = (int) analex.Preanalisis().getAtributo();
             analex.Avanzar();
             analex.Avanzar();
-            token = analex.Preanalisis();
             lista.add(new DetalleVenta(producto_id, cantidad));
+            token = analex.Preanalisis();
         }
         ventaNegocio.registrar(nit, fecha, cliente_id, veterinario_id, lista);
         ClienteSMTP.sendMail(destinatario, "REGISTRAR VENTA", Cadenas.REGISTRO_SUCCESS);
 
     }
-   
+
     public void modificar(Analex analex, String destinatario) throws Exception {
         // Obtengo el Siguiente token
         analex.Avanzar();
@@ -105,7 +103,6 @@ public class MailVenta{
         ClienteSMTP.sendMail(destinatario, "MODIFICAR VENTA", Cadenas.MODIFICAR_SUCCESS);
     }
 
-   
     public void eliminar(Analex analex, String destinatario) throws Exception {
         // Obtengo el Siguiente token
         analex.Avanzar();
@@ -115,7 +112,6 @@ public class MailVenta{
         ventaNegocio.eliminar(id);
     }
 
-    
     public void listar(Analex analex, String destinatario) throws Exception {
         analex.Avanzar();
         Token token = analex.Preanalisis();
@@ -129,6 +125,7 @@ public class MailVenta{
             System.out.println(Cadenas.FAILED_MAIL);
         }
     }
+
     private boolean isEOF(Token token) {
         return token.getNombre() == Token.FIN ? true : false; // pregunta si el token que veo es eof
     }

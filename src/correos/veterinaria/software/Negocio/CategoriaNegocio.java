@@ -30,8 +30,8 @@ public class CategoriaNegocio {
         this.categoria = new Categoria();
     }
 
-    public DefaultTableModel getCategoria(int x) {
-        return categoria.getCategoria(x);
+    public DefaultTableModel getCategoria(int id) {
+        return categoria.getCategoria(id);
 
     }
 

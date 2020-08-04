@@ -57,9 +57,11 @@ public class ReporteNegocio {
     public void tortaPorcentajeAnimal() {
         double perros = reporte.getPorcentajePerros();
         double gatos = reporte.getPorcentajeGatos();
+        double otros = reporte.getPorcentajeOtros();
         LinkedList<Double> lista = new LinkedList<>();
         lista.add(perros);
         lista.add(gatos);
+        lista.add(otros);
         guardarPDF(lista);
 
     }
@@ -67,12 +69,14 @@ public class ReporteNegocio {
     private void guardarPDF(LinkedList<Double> lista) {
         double perros = lista.get(0);
         double gatos = lista.get(1);
+        double otros = lista.get(2);
         DefaultPieDataset dataset = new DefaultPieDataset();
         dataset.setValue("PERROS: " + perros + "%", new Double(perros));
         dataset.setValue("GATOS: " + gatos + "%", new Double(gatos));
+        dataset.setValue("OTROS: " + gatos + "%", new Double(otros));
 
         JFreeChart chart = ChartFactory.createPieChart(// char t
-                "ATENCIONES",// title                                                                     
+                "Grafico circular",// title                                                                     
                 dataset, // data
                 true, // include legend
                 true, false);

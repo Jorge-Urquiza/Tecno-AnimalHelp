@@ -119,7 +119,6 @@ public class Reporte {
         // Abro y obtengo la conexion
         this.m_Conexion.abrirConexion();
         Connection con = this.m_Conexion.getConexion();
-
         // Preparo la consulta
         String sql = "SELECT mascotas.id, mascotas.nombre, raza, clientes.nombre as dueño, clientes.apellido as apellido, count (*) cantidad\n"
                 + "FROM mascotas\n"
@@ -158,7 +157,6 @@ public class Reporte {
         productos.setColumnIdentifiers(new Object[]{
             "ID", "NOMBRE", "PRECIO", "CATEGORIA", "CANTIDAD"
         });
-
         this.m_Conexion.abrirConexion();
         Connection con = this.m_Conexion.getConexion();
         String sql = "SELECT productos.id,productos.nombre,precio,categorias.nombre as categoria, count (*) cantidad\n"
@@ -245,6 +243,26 @@ public class Reporte {
       this.m_Conexion.abrirConexion();
         Connection con = this.m_Conexion.getConexion();
         String sql = "select CAST ( ((select count(*) from mascotas2 where tipo = 2) * 100) / \n"
+                + "(select count(*) from mascotas2)as  DOUBLE PRECISION) as total";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            // Recorro el resultado
+            while (rs.next()) {
+                // Agrego las tuplas a mi tabla
+                return rs.getDouble("total");
+            }
+            // Cierro la conexion
+            this.m_Conexion.cerrarConexion();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return -1;
+    }
+  public double getPorcentajeOtros() {
+      this.m_Conexion.abrirConexion();
+        Connection con = this.m_Conexion.getConexion();
+        String sql = "select CAST ( ((select count(*) from mascotas2 where tipo = 3) * 100) / \n"
                 + "(select count(*) from mascotas2)as  DOUBLE PRECISION) as total";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
