@@ -62,21 +62,18 @@ public class ReporteNegocio {
         lista.add(perros);
         lista.add(gatos);
         lista.add(otros);
-        guardarPDF(lista);
-
+        guardar(lista);
     }
-
-    private void guardarPDF(LinkedList<Double> lista) {
+    private void guardar(LinkedList<Double> lista) {
         double perros = lista.get(0);
         double gatos = lista.get(1);
         double otros = lista.get(2);
         DefaultPieDataset dataset = new DefaultPieDataset();
         dataset.setValue("PERROS: " + perros + "%", new Double(perros));
         dataset.setValue("GATOS: " + gatos + "%", new Double(gatos));
-        dataset.setValue("OTROS: " + gatos + "%", new Double(otros));
-
-        JFreeChart chart = ChartFactory.createPieChart(// char t
-                "Grafico circular",// title                                                                     
+        dataset.setValue("OTROS: " + otros + "%", new Double(otros));
+        JFreeChart chart = ChartFactory.createPieChart3D(// char t
+                "Grafico circular 3D - Porcentaje de tipos de animales atendidos ",// title                                                                     
                 dataset, // data
                 true, // include legend
                 true, false);
