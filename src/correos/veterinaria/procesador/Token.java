@@ -31,7 +31,8 @@ public class Token {
     public static final int REGISTRARCATEGORIA = 150;
     public static final int MODIFICARCATEGORIA = 151;
     public static final int OBTENERCATEGORIAS = 152;
-    public static final int ELIMINARCARTEGORIA = 153;
+    public static final int ELIMINARCATEGORIA = 153;
+    
     //VETERINARIA CU #2
 
     public static final int REGISTRARVETERINARIO = 154;

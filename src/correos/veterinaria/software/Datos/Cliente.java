@@ -166,7 +166,6 @@ public class Cliente {
             System.out.println("Modificado!!");
             con.close();
         } catch (SQLException e) {
-
             System.out.println(e.getMessage());
         }
 
@@ -179,7 +178,6 @@ public class Cliente {
         try {
             ps = con.prepareStatement("DELETE FROM clientes WHERE id = ?");
             ps.setInt(1, this.id);
-            System.out.println("ELIMINADO!!");
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex);

@@ -5,7 +5,6 @@
  */
 package correos.veterinaria.software.Email;
 
-
 import correos.veterinaria.protocolos.ClienteSMTP;
 import correos.veterinaria.procesador.*;
 import correos.veterinaria.software.Negocio.*;
@@ -27,29 +26,46 @@ public class MailMascota {
 
         analex.Avanzar();
         // Atributos
+        if (!esValidoParametros(analex.Preanalisis(), destinatario, 1)) {
+            return;
+        }
         String nombre = Utils.quitarComillas(analex.Preanalisis().getToStr());
         analex.Avanzar();
         analex.Avanzar();
         analex.Avanzar();
+        if (!esValidoParametros(analex.Preanalisis(), destinatario, 1)) {
+            return;
+        }
         String raza = Utils.quitarComillas(analex.Preanalisis().getToStr());
         analex.Avanzar();
         analex.Avanzar();
         analex.Avanzar();
+        if (!esValidoParametros(analex.Preanalisis(), destinatario, 1)) {
+            return;
+        }
         String color = Utils.quitarComillas(analex.Preanalisis().getToStr());
         analex.Avanzar();
         analex.Avanzar();
         analex.Avanzar();
+        if (!esValidoParametros(analex.Preanalisis(), destinatario, 0)) {
+            return;
+        }
         int tipo = (int) analex.Preanalisis().getAtributo();
-        System.out.println("TIPO");
         analex.Avanzar();
         analex.Avanzar();
         analex.Avanzar();
+        if (!esValidoParametros(analex.Preanalisis(), destinatario, 0)) {
+            return;
+        }
         int cliente_id = (int) analex.Preanalisis().getAtributo();
+        if (!validarValoresParametros(nombre, raza, color, tipo, cliente_id)) {
+            ClienteSMTP.sendMail(destinatario, Cadenas.ERROR_PARAM, Cadenas.LONGITUD_FAILED);
+            return;
+        }
         mascotaNegocio.registrar(nombre, raza, color, tipo, cliente_id);
         ClienteSMTP.sendMail(destinatario, "REGISTRAR MASCOTA", Cadenas.REGISTRO_SUCCESS);
     }
 
-  
     public void modificar(Analex analex, String destinatario) throws Exception {
         analex.Avanzar();
         Token token = analex.Preanalisis();
@@ -66,6 +82,9 @@ public class MailMascota {
         analex.Avanzar();
         analex.Avanzar();
         analex.Avanzar();
+        if (!esValidoParametros(analex.Preanalisis(), destinatario, 2)) {
+            return;
+        }
         String nombre = (analex.Preanalisis().getNombre() != Token.GB)
                 ? Utils.quitarComillas(analex.Preanalisis().getToStr())
                 // posicion de la fila del defaultTableModel
@@ -73,12 +92,18 @@ public class MailMascota {
         analex.Avanzar();
         analex.Avanzar();
         analex.Avanzar();
+        if (!esValidoParametros(analex.Preanalisis(), destinatario, 2)) {
+            return;
+        }
         String raza = (analex.Preanalisis().getNombre() != Token.GB)
                 ? Utils.quitarComillas(analex.Preanalisis().getToStr())
                 : String.valueOf(veterinario.getValueAt(0, 2));
         analex.Avanzar();
         analex.Avanzar();
         analex.Avanzar();
+        if (!esValidoParametros(analex.Preanalisis(), destinatario, 2)) {
+            return;
+        }
         String color = (analex.Preanalisis().getNombre() != Token.GB)
                 ? Utils.quitarComillas(analex.Preanalisis().getToStr())
                 // posicion de la fila del defaultTableModel
@@ -86,6 +111,9 @@ public class MailMascota {
         analex.Avanzar();
         analex.Avanzar();
         analex.Avanzar();
+        if (!esValidoParametros(analex.Preanalisis(), destinatario, 3)) {
+            return;
+        }
         int tipo = (analex.Preanalisis().getNombre() != Token.GB)
                 ? (int) analex.Preanalisis().getAtributo()
                 : (int) (veterinario.getValueAt(0, 4));
@@ -95,12 +123,15 @@ public class MailMascota {
         int cliente_id = (analex.Preanalisis().getNombre() != Token.GB)
                 ? (int) analex.Preanalisis().getAtributo()
                 : (int) (veterinario.getValueAt(0, 5));
+        if (!validarValoresParametros(nombre, raza, color, tipo, cliente_id)) {
+            ClienteSMTP.sendMail(destinatario, Cadenas.ERROR_PARAM, Cadenas.LONGITUD_FAILED);
+            return;
+        }
         mascotaNegocio.modificar(id, nombre, raza, color, tipo, cliente_id);
         ClienteSMTP.sendMail(destinatario, "MODIFICAR MASCOTA", Cadenas.MODIFICAR_SUCCESS);
 
     }
 
- 
     public void eliminar(Analex analex, String destinatario) throws Exception {
         // Obtengo el Siguiente token
         analex.Avanzar();
@@ -108,16 +139,23 @@ public class MailMascota {
 
         analex.Avanzar();
         int id = (int) analex.Preanalisis().getAtributo();
+        if (!esValidoParametros(analex.Preanalisis(), destinatario, 4)) {
+            return;
+        }
+        //valido si el num > 0 (no existe id < 1)
+        if (id < 1) {
+            ClienteSMTP.sendMail(destinatario, Cadenas.ERROR_PARAM, Cadenas.ELIMINAR_FAILED);
+            return;
+        }
         mascotaNegocio.eliminar(id);
         ClienteSMTP.sendMail(destinatario, "ELIMINAR MASCOTA", Cadenas.ELIMINAR_SUCCESS);
     }
 
-   
     public void listar(Analex analex, String destinatario) throws Exception {
         analex.Avanzar();
         Token token = analex.Preanalisis();
 
-        String Head[] = {"ID", "NOMBRE", "RAZA", "COLOR", "CLIENTE ID"};
+        String Head[] = {"ID", "NOMBRE", "RAZA", "COLOR", "TIPO(1=PERO , 2 = GATO ,3 = OTROS)", "LIENTE ID"};
         String Cabecera = "ANIMALHELP - LISTA DE MASCOTAS";
         Mensaje message = Utils.dibujarTablaHtml(mascotaNegocio.getMascotas(), Head, Cabecera);
         message.setCorreo(destinatario);
@@ -126,5 +164,55 @@ public class MailMascota {
         } else {
             System.out.println(Cadenas.FAILED_MAIL);
         }
+    }
+
+    //validaciones
+    private boolean esValidoParametros(Token token, String destinatario, int tipo) {
+        //TIPO =1 REGISTRAR ; 2 MODIFICAR
+        switch (tipo) {
+            //REGISTRAR
+            case 0:
+                if (!(token.getNombre() == Token.NUM)) {
+                    ClienteSMTP.sendMail(destinatario, "ERROR DE PARAMETROS", Cadenas.REGISTRO_FAILED);
+                    return false;
+                }
+                break;
+
+            case 1:
+                if (!(token.getNombre() == Token.STRING)) {
+                    ClienteSMTP.sendMail(destinatario, "ERROR DE PARAMETROS", Cadenas.REGISTRO_FAILED);
+                    return false;
+                }
+                break;
+            //MODIFICAR
+            case 2:
+                if (!(token.getNombre() == Token.STRING) && !(token.getNombre() == Token.GB)) {
+                    ClienteSMTP.sendMail(destinatario, "ERROR DE PARAMETROS", Cadenas.MODIFICAR_FAILED);
+                    return false;
+                }
+                break;
+            case 3:
+                if (!(token.getNombre() == Token.STRING) && !(token.getNombre() == Token.GB)) {
+                    ClienteSMTP.sendMail(destinatario, "ERROR DE PARAMETROS", Cadenas.MODIFICAR_FAILED);
+                    return false;
+                }
+                break;
+            //ELIMINAR
+            case 4:
+                if (!(token.getNombre() == Token.NUM)) {
+                    ClienteSMTP.sendMail(destinatario, "ERROR DE PARAMETROS", Cadenas.ELIMINAR_FAILED);
+                    return false;
+                }
+        }
+        return true;
+    }
+
+    private boolean validarValoresParametros(String nombre, String raza, String color, int tipo, int cliente_id) {
+        return (!nombre.isEmpty()
+                && !raza.isEmpty()
+                && !color.isEmpty()
+                && !color.isEmpty()
+                && cliente_id > 0
+                && 1 <= tipo && tipo <= 3);
     }
 }

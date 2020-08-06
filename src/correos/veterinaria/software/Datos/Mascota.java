@@ -82,6 +82,7 @@ public class Mascota {
 
     public void setMascota(String nombre, String raza, String color, int tipo, int cliente_id) {
         this.nombre = nombre;
+        this.tipo=tipo;
         this.raza = raza;
         this.color = color;
         this.cliente_id = cliente_id;
@@ -92,7 +93,7 @@ public class Mascota {
         Connection con = this.m_Conexion.getConexion();
         // Preparo la consulta
         PreparedStatement ps = null;
-        String query = "INSERT INTO mascotas2 \n"
+        String query = "INSERT INTO mascotas \n"
                 + "(nombre,raza,color,tipo,cliente_id) \n"
                 + " values (?,?,?,?,?)";
         try {
@@ -121,7 +122,7 @@ public class Mascota {
         this.m_Conexion.abrirConexion();
         Connection con = this.m_Conexion.getConexion();
         PreparedStatement ps = null;
-        String query = "UPDATE mascotas2 SET \n"
+        String query = "UPDATE mascotas SET \n"
                 + "nombre = ?,\n"
                 + "raza = ?, \n"
                 + "color = ?, \n"
@@ -150,7 +151,7 @@ public class Mascota {
         Connection con = this.m_Conexion.getConexion();
         PreparedStatement ps = null;
         try {
-            ps = con.prepareStatement("DELETE FROM mascotas2 WHERE id = ?");
+            ps = con.prepareStatement("DELETE FROM mascotas WHERE id = ?");
             ps.setInt(1, this.id);
             System.out.println("ENTRO AL METODO ELIMINAR");
             ps.executeUpdate();
@@ -169,7 +170,7 @@ public class Mascota {
         this.m_Conexion.abrirConexion();
         Connection con = this.m_Conexion.getConexion();
         // Preparo la consulta
-        String sql = "SELECT * FROM mascotas2 WHERE id=?";
+        String sql = "SELECT * FROM mascotas WHERE id=?";
         try {
             // La ejecuto
             PreparedStatement ps = con.prepareStatement(sql);
@@ -206,7 +207,7 @@ public class Mascota {
         Connection con = this.m_Conexion.getConexion();
 
         // Preparo la consulta
-        String sql = "SELECT * FROM mascotas2";
+        String sql = "SELECT * FROM mascotas";
         try {
             // La ejecuto
             PreparedStatement ps = con.prepareStatement(sql);

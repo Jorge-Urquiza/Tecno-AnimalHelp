@@ -183,7 +183,6 @@ public class Venta {
             ps.setInt(1, total);
             ps.setInt(2, id);
             ps.executeUpdate();
-            System.out.println("Actualizado!!");
             con.close();
         } catch (SQLException e) {
 
@@ -197,9 +196,6 @@ public class Venta {
         Connection con = this.m_Conexion.getConexion();
         PreparedStatement ps = null;
         try {
-            ps = con.prepareStatement("DELETE FROM detalles_ventas WHERE venta_id = ?");
-            ps.setInt(1, this.id);
-            ps.executeUpdate();
             ps = con.prepareStatement("DELETE FROM ventas WHERE id = ?");
             ps.setInt(1, this.id);
             ps.executeUpdate();
@@ -226,10 +222,8 @@ public class Venta {
             ps.setInt(4, veterinario_id);
             ps.setInt(5, id);
             ps.executeUpdate();
-            System.out.println("Modificado!!");
             con.close();
         } catch (SQLException e) {
-
             System.out.println(e.getMessage());
         }
     }

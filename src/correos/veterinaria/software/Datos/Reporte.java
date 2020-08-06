@@ -190,7 +190,7 @@ public class Reporte {
     public DefaultTableModel ventasTotalDeHoy() {
         DefaultTableModel ventas = new DefaultTableModel();
         ventas.setColumnIdentifiers(new Object[]{
-            "ID", "NIT", "FECHA", "TOTAL", "PROMEDIOVENTA"
+            "ID", "NIT", "FECHA", "TOTAL", "CLIENTE_ID", "VETERINARIO_ID"
         });
 
         this.m_Conexion.abrirConexion();
@@ -205,10 +205,11 @@ public class Reporte {
                 ventas.addRow(new Object[]{
                     rs.getInt("id"),
                     rs.getString("nit"),
-                    rs.getInt("fecha"),
+                    rs.getDate("fecha"),
                     rs.getInt("total"),
                     rs.getInt("cliente_id"),
-                    rs.getInt("veterinario_id"),});
+                    rs.getInt("veterinario_id")
+                });
             }
             // Cierro la conexion
             this.m_Conexion.cerrarConexion();
@@ -221,8 +222,8 @@ public class Reporte {
     public double getPorcentajePerros() {
         this.m_Conexion.abrirConexion();
         Connection con = this.m_Conexion.getConexion();
-        String sql = "select CAST ( ((select count(*) from mascotas2 where tipo = 1) * 100) / \n"
-                + "(select count(*) from mascotas2)as  DOUBLE PRECISION) as total";
+        String sql = "select CAST ( ((select count(*) from mascotas where tipo = 1) * 100) / \n"
+                + "(select count(*) from mascotas)as  DOUBLE PRECISION) as total";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -242,8 +243,8 @@ public class Reporte {
     public double getPorcentajeGatos() {
       this.m_Conexion.abrirConexion();
         Connection con = this.m_Conexion.getConexion();
-        String sql = "select CAST ( ((select count(*) from mascotas2 where tipo = 2) * 100) / \n"
-                + "(select count(*) from mascotas2)as  DOUBLE PRECISION) as total";
+        String sql = "select CAST ( ((select count(*) from mascotas where tipo = 2) * 100) / \n"
+                + "(select count(*) from mascotas)as  DOUBLE PRECISION) as total";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -262,8 +263,8 @@ public class Reporte {
   public double getPorcentajeOtros() {
       this.m_Conexion.abrirConexion();
         Connection con = this.m_Conexion.getConexion();
-        String sql = "select CAST ( ((select count(*) from mascotas2 where tipo = 3) * 100) / \n"
-                + "(select count(*) from mascotas2)as  DOUBLE PRECISION) as total";
+        String sql = "select CAST ( ((select count(*) from mascotas where tipo = 3) * 100) / \n"
+                + "(select count(*) from mascotas)as  DOUBLE PRECISION) as total";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();

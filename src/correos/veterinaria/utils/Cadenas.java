@@ -11,7 +11,6 @@ package correos.veterinaria.utils;
  */
 public class Cadenas {
 
-
     public static final String SUCCESSFULL_MAIL = "Correo enviado Exitosamente";
     public static final String FAILED_MAIL = "Correo no enviado, intente de nuevo";
     public static final String AYUDA = "AYUDA - ANIMALHELP MAIL";
@@ -23,5 +22,12 @@ public class Cadenas {
     public static final String MODIFICAR_SUCCESS = "Modificación Realizada Exitosamente";
     public static final String ELIMINAR_SUCCESS = "Registro Eliminado Exitosamente";
 
-    public static final String GUION_BAJO="\n (Usar \"_\" para mantener los valores anterior de los registros)";
+    public static final String REGISTRO_FAILED = "Registro no realizado, para obtener mas informacion use el comando HELP y vea las recomendaciones y ejemplos";
+    public static final String MODIFICAR_FAILED = "Modificación no realizado, para obtener mas informacion use el comando HELP y vea las recomendaciones y ejemplos";
+    public static final String ELIMINAR_FAILED = "Registro no Eliminado , para obtener mas informacion use el comando HELP y vea las recomendaciones y ejemplos";
+
+    //ASUNTO ERRORES
+    public static final String ERROR_PARAM = "ERROR - PARAMETROS INCORRECTOS";
+    public static final String GUION_BAJO = "\n (Usar \"_\" para mantener los valores anterior de los registros)";
+    public static final String LONGITUD_FAILED ="La longitud de los parametros no es valida, para mas informacion y guias de uso utilize la lista de comandos HELP";
 }

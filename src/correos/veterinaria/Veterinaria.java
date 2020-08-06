@@ -6,7 +6,7 @@
 package correos.veterinaria;
 
 import correos.veterinaria.protocolos.ClientePOP;
-import correos.veterinaria.software.VeterinariaMail;
+import correos.veterinaria.software.RecepcionadorMail;
 import correos.veterinaria.utils.Constants;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,7 +36,7 @@ public class Veterinaria extends javax.swing.JFrame {
 
         @Override
         public void run() {
-            System.out.println("INICIAR");
+            System.out.println("Connection open");
             while (estado) {
                 // Preguntar si hay mail
                 String content = ClientePOP.readMail();
@@ -45,7 +45,7 @@ public class Veterinaria extends javax.swing.JFrame {
                 }
                 sleep();
             }
-            System.out.println("DETENER");
+            System.out.println("Connection close");
         }
 
         public void sleep() {
@@ -69,7 +69,7 @@ public class Veterinaria extends javax.swing.JFrame {
         @Override
         public void run() {
             try {
-                new VeterinariaMail().processMessage(mensaje);
+                new RecepcionadorMail().procesarMensaje(mensaje);
             } catch (Exception ex) {
                 Logger.getLogger(Veterinaria.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -58,7 +58,7 @@ public class MailReporte {
 
     // LAS 3 MASCOTAS QUE RECIBIERON ATENCION
     public void top3MascotasAtendidas(Analex analex, String destinatario) throws MessagingException {
-        String Head[] = {"ID", "FECHA", "DESCRIPCION", "DIAGNOSTICO", "CIENTE ID", "VETERINARIO ID", "MASCOTA ID"};
+        String Head[] = {"ID", "NOMBRE", "RAZA", "NOMBRE (DUEÑO)", "APELLIDOS", "CANTIDAD"};
         String Cabecera = "REPORTE - TOP 3 MASCOTAS MAS VECES ATENTIDAS";
         Mensaje message = Utils.dibujarTablaHtml(reporteNegocio.top3MascotasAtendidas(), Head, Cabecera);
         message.setCorreo(destinatario);
@@ -84,7 +84,7 @@ public class MailReporte {
 
     //ventas total del dia de hoy
     public void ventasTotalDeHoy(Analex analex, String destinatario) throws MessagingException {
-        String Head[] = {"ID", "NIT", "FECHA", "TOTAL", "PROMEDIOVENTA"};
+        String Head[] = {"ID", "NIT", "FECHA", "TOTAL(Bs.)", "CIENTE ID", "VETERINARIO ID"};
         String Cabecera = "REPORTE - VENTAS DEL DIA DE HOY";
         Mensaje message = Utils.dibujarTablaHtml(reporteNegocio.ventasTotalDeHoy(), Head, Cabecera);
         message.setCorreo(destinatario);

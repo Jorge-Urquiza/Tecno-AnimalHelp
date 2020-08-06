@@ -41,7 +41,7 @@ public class TPC {
             "REGISTRARCATEGORIA",
             "MODIFICARCATEGORIA",
             "OBTENERCATEGORIAS",
-            "ELIMINARCARTEGORIA",
+            "ELIMINARCATEGORIA",
             ///CU5 Gestionar Porducto
 
             "REGISTRARPRODUCTO",
@@ -91,7 +91,7 @@ public class TPC {
             new Token(Token.FUNC, Token.REGISTRARCATEGORIA, "REGISTRARCATEGORIA"),
             new Token(Token.FUNC, Token.MODIFICARCATEGORIA, "MODIFICARCATEGORIA"),
             new Token(Token.FUNC, Token.OBTENERCATEGORIAS, "OBTENERCATEGORIAS"),
-            new Token(Token.FUNC, Token.ELIMINARCARTEGORIA, "ELIMINARCARTEGORIA"),
+            new Token(Token.FUNC, Token.ELIMINARCATEGORIA, "ELIMINARCATEGORIA"),
             //CU5 Gestionar Producto
             new Token(Token.FUNC, Token.REGISTRARPRODUCTO, "REGISTRARPRODUCTO"),
             new Token(Token.FUNC, Token.MODIFICARPRODUCTO, "MODIFICARPRODUCTO"),

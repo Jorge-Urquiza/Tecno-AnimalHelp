@@ -117,84 +117,84 @@ public class Utils {
                 //VETERINARIA ANIMAL HELP
 
                 //CU1 Gestionar Cliente
-                "REGISTRAR CLIENTE",
-                "MODIFICAR CLIENTE",
+                "REGISTRARCLIENTE",
+                "MODIFICARCLIENTE",
                 "OBTENERCLIENTES",
-                "ELIMINAR CLIENTE",
+                "ELIMINARCLIENTE",
                 //CU2 Gestionar Mascota
-                "REGISTRAR MASCOTA",
-                "MODIFICAR MASCOTA",
-                "OBTENER MASCOTAS",
-                "ELIMINAR MASCOTA",
+                "REGISTRARMASCOTA",
+                "MODIFICARMASCOTA",
+                "OBTENERMASCOTAS",
+                "ELIMINARMASCOTA",
                 ///CU3 Gestionar Veterinario
-                "REGISTRAR VETERINARIO",
-                "OBTENER VETERINARIO",
-                "MODIFICAR VETERINARIO",
-                "ELIMINAR VETERINARIO",
+                "REGISTRARVETERINARIO",
+                "OBTENERVETERINARIO",
+                "MODIFICARVETERINARIO",
+                "ELIMINARVETERINARIO",
                 ///CU4 Gestionar Categoria
-                "REGISTRAR CATEGORIA",
-                "OBTENER CATEGORIA",
-                "MODIFICAR CATEGORIA",
-                "ELIMINAR CATEGORIA",
+                "REGISTRARCATEGORIA",
+                "OBTENERCATEGORIA",
+                "MODIFICARCATEGORIA",
+                "ELIMINARCATEGORIA",
                 ///CU5 Gestionar Producto
-                "REGISTRAR PRODUCTO",
-                "MODIFICAR PRODUCTO",
-                "OBTENER PRODUCTOS",
-                "ELIMINAR PRODUCTO",
+                "REGISTRARPRODUCTO",
+                "MODIFICARPRODUCTO",
+                "OBTENERPRODUCTOS",
+                "ELIMINARPRODUCTO",
                 //CU6 Gestionar Venta
-                "REGISTRAR VENTA",
-                "MODIFICAR VENTA",
+                "REGISTRARVENTA",
+                "MODIFICARVENTA",
                 "OBTENERVENTAS",
-                "ELIMINAR VENTA",
+                "ELIMINARVENTA",
                 //CU7 Gestionar atencion
-                "REGISTRAR ATENCION",
-                "MODIFICAR ATENCION",
+                "REGISTRARATENCION",
+                "MODIFICARATENCION",
                 "OBTENERATENCIONES",
-                "ELIMINAR ATENCION",
+                "ELIMINARATENCION",
                 //CU8 REPORTES
                 "VENTASMENSUALES",
-                "TOP3 CLIENTES COMPRAS",
-                "TOP3 MASCOTAS MAS ATENDIDAS",
-                "TOP3 PRODUCTOS MAS VENDIDOS",
-                "VENTAS TOTAL DE HOY",
-                "TORTA PORCENTAJE POR ANIMAL"
+                "TOPTRESCLIENTESCOMPRAS",
+                "TOPTRESMASCOTASMASATENDIDAS",
+                "TOPTRESPRODUCTOSMASVENDIDOS",
+                "VENTASTOTALDEHOY",
+                "TORTAPORCENTAJEPORANIMAL"
         ));
         LinkedList<String> Detalles = new LinkedList<>(Arrays.asList(
                 //veterinaria animal help
 
                 //CU1 Gestionar Cliente
-                "REGISTRARCLIENTE[\"Nombre\"][\"Apellidos\"][Cedula Identidad][\"Celular\"][\"Direcciopn\"]",
-                "MODIFICARCLIENTE[ID Cliente][\"Nombre\"][\"Apellidos\"][Cedula Identidad][\"Celular\"][\"Direcciopn\"]"+ Cadenas.GUION_BAJO,
+                "REGISTRARCLIENTE[\"Nombre\"][\"Apellidos\"][Cedula Identidad][\"Celular\"]",
+                "MODIFICARCLIENTE[ID Cliente][\"Nombre\"][\"Apellidos\"][Cedula Identidad][\"Celular\"]" + Cadenas.GUION_BAJO,
                 "OBTENERCLIENTES",
                 "ELIMINARCLIENTE[ID Cliente]",
                 //CU2 Gestionar Mascota
-                "REGISTRARMASCOTA[\"Nombre\"][\"Raza\"][\"Color\"][id del amo (cliente)][Tipo de mascota (1, 2 ,3 | 1=Perro 2 = Gato | 3 = otros (cualquier otro tipo de mascota )]",
-                "MODIFICARMASCOTA[id de mascota][\"Nombre\"][\"Raza\"][\"Color\"][id del amo (cliente)][Tipo de mascota (1, 2 ,3 | 1=Perro 2 = Gato  | 3 = otros (cualquier otro tipo de mascota ))]"+ Cadenas.GUION_BAJO,
+                "REGISTRARMASCOTA[\"Nombre\"][\"Raza\"][\"Color\"][Tipo de mascota (1, 2 ,3 | 1=Perro 2 = Gato | 3 = otros (cualquier otro tipo de mascota )] [id del amo (cliente)]",
+                "MODIFICARMASCOTA[id de mascota][\"Nombre\"][\"Raza\"][\"Color\"][Tipo de mascota (1, 2 ,3 | 1=Perro 2 = Gato  | 3 = otros (cualquier otro tipo de mascota ))] [id del amo (cliente)]" + Cadenas.GUION_BAJO,
                 "OBTENERMASCOTAS",
                 "ELIMINARMASCOTA[id de la mascota]",
                 ///CU3 Gestionar Veterinario
                 "REGISTRARVETERINARIO[\"Nombre\"][\"Apellidos\"][Cedula Identidad][\"Celular\"][\"Direcciopn\"]",
                 "OBTENERVETERINARIOS",
-                "MODIFICARVETERINARIO[id de veterinario][\"Nombre\"][\"Descripcion\"]"+ Cadenas.GUION_BAJO,
+                "MODIFICARVETERINARIO[id de veterinario][\"Nombre\"][\"Descripcion\"]" + Cadenas.GUION_BAJO,
                 "ELIMINARVETERINARIO[id veterinario]",
                 ///CU4 Gestionar Categoria
                 "REGISTRARCATEGORIA[\"Nombre\"][\"Descripcion\"]",
                 "OBTENERCATEGORIAS",
-                "MODIFICARCATEGORIA[\"ID categoria\"][\"Nombre Categoria\"][\"Descripcion\"]"+ Cadenas.GUION_BAJO,
+                "MODIFICARCATEGORIA[\"ID categoria\"][\"Nombre Categoria\"][\"Descripcion\"]" + Cadenas.GUION_BAJO,
                 "ELIMINARCATEGORIA[\"ID categoria\"]",
                 ///CU5 Gestionar Producto
                 "REGISTRARPRODUCTO[\"Nombre\"][Precio][ID  de la Categoria]",
                 "OBTENERPRODUCTOS",
-                "MODIFICARPRODUCTO[ID Producto][\"Nombre\"][Precio][ID Categoria]"+ Cadenas.GUION_BAJO,
+                "MODIFICARPRODUCTO[ID Producto][\"Nombre\"][Precio][ID Categoria]" + Cadenas.GUION_BAJO,
                 "ELIMINARPRODUCTO[ID Producto] ",
                 //CU6 Gestionar Venta
-                "REGISTRARVENTA[\"NIT\"][\"Fecha(dia-mes-año)\"][id cliente][id veterinario](despues del \"id veterinario\" vienen los detalles de la compra siempre en pares [id producto][cantidad][id producto][cantidad].....etc. importante nunca repetir el id del producto porque el mismo producto no puede estar detallado 2 veces en la venta) ej. asi: [2][1][1][5][3][4]",
-                "MODIFICARVENTA[ID Venta][\"NIT\"][\"Fecha(dia-mes-año\"][id cliente][id veterinario]"+ Cadenas.GUION_BAJO,
+                "REGISTRARVENTA[\"NIT\"][\"Fecha(dia-mes-año)\"][id cliente][id veterinario](despues del \"id veterinario\" vienen los detalles de la compra siempre en pares [id producto][cantidad][id producto][cantidad].....etc. importante nunca repetir el id del producto porque el mismo producto no puede estar detallado 2 veces en la misma venta) ej. asi: [2][1][1][5][3][4]",
+                "MODIFICARVENTA[ID Venta][\"NIT\"][\"Fecha(dia-mes-año\"][id cliente][id veterinario]" + Cadenas.GUION_BAJO,
                 "OBTENERVENTAS",
-                "ELIMINARVENTAELIMINARVENTA[10]",
+                "ELIMINARVENTA[15]",
                 //CU7 Gestionar Atencion
                 "REGISTRARATENCION[\"Fecha\"][\"Descripcion\"][\"Diagnostico\"][id cliente][id veterinario][id mascota]",
-                "MODIFICARATENCION[ID atencion[[\"03-08-2020\"][\"Descripcion\"][\"Diagnostico medico\"][id cliente][id veterinario][id mascota]"+ Cadenas.GUION_BAJO,
+                "MODIFICARATENCION[ID atencion[[\"03-08-2020\"][\"Descripcion\"][\"Diagnostico medico\"][id cliente][id veterinario][id mascota]" + Cadenas.GUION_BAJO,
                 "OBTENERATENCIONES",
                 "ELIMINARATENCION[ID de la atención])",
                 //C8 REPORTES
@@ -218,14 +218,14 @@ public class Utils {
                 "OBTENERMASCOTAS",
                 "ELIMINARMASCOTA[4]",
                 //CU3 Gestionar Veterinario
-                "REGISTRARVETERINARIO[\"Luciano\"][\"Aguierre Peña\"][12530][\"+591700365436\"][\"Calle Guabira#03\"]",
+                "REGISTRARVETERINARIO[\"Luciano\"][\"Aguierre Balboa\"][12530][\"+591700365436\"][\"Calle Guabira#03\"]",
                 "OBTENERVETERINARIOS",
                 "MODIFICARVETERINARIO[1][_][_][853651][\"+591 75575746\"][\"Calle Santa Cruz#1113\"]",
                 "ELIMINARVETERINARIO[2]",
                 ///CU4 Gestionar Categoria
                 "REGISTRARCATEGORIA[\"Limpieza\"][\"Productos de aseo para las mascotas\"]",
                 "OBTENERCATEGORIAS",
-                "MODIFICARCATEGORIA[11][_][\" Limpieza para mascotas\"]" ,
+                "MODIFICARCATEGORIA[11][_][\" Limpieza para mascotas\"]",
                 "ELIMINARCATEGORIA[10]",
                 ///CU5 Gestionar Porducto
                 "REGISTRARPRODUCTO[\"Golfo\"][15][11]",
@@ -239,9 +239,9 @@ public class Utils {
                 "ELIMINARVENTA[10]",
                 //CU7 Gestionar Atencion
                 "REGISTRARATENCION[\"02-08-2020\"][\"el animal tenia moquillo\"][\"darle vitaminas C\"][1][1][3]",
-                "MODIFICARATENCION[\"03-08-2020\"][_][\"darle vitaminas c y b\"][_][_][_]",
+                "MODIFICARATENCION[28][\"03-08-2020\"][_][\"darle vitaminas c y b\"][_][_][_]",
                 "OBTENERATENCIONES",
-                "ELIMINARATENCION[4]",
+                "ELIMINARATENCION[28]",
                 //CU8 REPORTES
                 "VENTASMENSUALES",
                 "TOPTRESCLIENTESCOMPRAS",
@@ -294,9 +294,10 @@ public class Utils {
                 + "<h2>NOTA: IMPORTANTE LEER LA LISTA DE INSTRUCCIONES Y RECOMENDACIONES</h2> \n"
                 + "<ul>\n"
                 + "<li><strong>En los MODIFICAR usar \"_\" para mantener los valores anteriores de la fila, es decir los campos que no se quieren modificar.</strong></li>\n"
-                + "<li><strong>REGISTRAR VENTA: desdes del \"[id veterinario]\" agregar 2 lo menos 2 o mas campos si o si (en pares) [id producto][cantidad] se puede agregar N productos pero siempre producto y cantidad como se hace en un carrito de compra.</strong></li>\n"
+                + "<li><strong>REGISTRAR VENTA: desdes del \"[id veterinario]\" agregar 2 campos por lo menos si o si (en pares) [id producto][cantidad] se puede agregar N productos pero siempre producto y cantidad como se hace en un carrito de compra.</strong></li>\n"
+                + "<li><strong>Prohibido usar caracteres especiales</strong></li>\n"
+                + "<li><strong>Reemplazar la letra \"ñ\"  por \"nh\"</strong></li>\n"
                 + "<li><strong>Utilizar solo la lista comandos disponibles para poder realizar alguna acción</strong></li>\n"
-                + "<li><strong>Video tutorial de guia de uso: <a href=\"https://www.youtube.com/watch?v=YHTthcdGwpQ\">Video de apoyo</a></strong></li>\n"
                 + "</ul>\n"
                 + "<table class=\"w3-table-all\">\n";
         data = data + "<tr>\n";

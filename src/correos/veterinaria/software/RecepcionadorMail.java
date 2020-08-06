@@ -25,7 +25,8 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jorge Luis Urquiza
  */
-public class VeterinariaMail {
+
+public class RecepcionadorMail {
 
     MailCategoria mailCategoria = new MailCategoria();
     MailVeterinario mailVeterinario = new MailVeterinario();
@@ -36,17 +37,15 @@ public class VeterinariaMail {
     MailAtencion mailAtencion = new MailAtencion();
     MailReporte mailReporte = new MailReporte();
 
-    public void processMessage(String Message) throws MessagingException, Exception {
+    public void procesarMensaje(String Message) throws MessagingException, Exception {
         // Setteando Variables
         String destinatario = Utils.getDestinatario(Message); //obtener destinario
         String content = Utils.getSubjectOrden(Message); // obtener subject
         System.out.println("Contenido : \t" + content);
         System.out.println("Destinatario : \t" + destinatario);
-
         Cinta cinta = new Cinta(content);
         Analex analex = new Analex(cinta);
         Parser parser = new Parser(analex);
-
         // Verificar Orden
         parser.Expresion();
         if (parser.errorFlag) {
@@ -62,9 +61,8 @@ public class VeterinariaMail {
         analex.Init();
         Token token = analex.Preanalisis();
         if (token.getNombre() == Token.HELP) { // EL USUARIO HA PEDIDO LA LISTA DE COMANDOS
-            // Mostrar Ayudas
+            // Mostrar HTML con ayuda
             Mensaje message = Utils.dibujarMenuAyuda(); //MimeBodyMail
-          
             message.setCorreo(destinatario);
             if (message.enviarCorreo()) {
                 System.out.println("Envio Correo de Respuesta Exitoso");
@@ -86,7 +84,7 @@ public class VeterinariaMail {
             case Token.MODIFICARCATEGORIA:
                 mailCategoria.modificar(analex, destinatario);
                 break;
-            case Token.ELIMINARCARTEGORIA:
+            case Token.ELIMINARCATEGORIA:
                 mailCategoria.eliminar(analex, destinatario);
                 break;
 
@@ -103,6 +101,7 @@ public class VeterinariaMail {
             case Token.ELIMINARVETERINARIO:
                 mailVeterinario.eliminar(analex, destinatario);
                 break;
+                
             // CU3
 
             case Token.REGISTRARPRODUCTO:

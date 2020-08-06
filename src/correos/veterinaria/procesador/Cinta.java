@@ -51,6 +51,6 @@ public class Cinta {
     }
 
     public boolean Letra(char c) {
-        return ((65 <= c && c <= 90) || (97 <= c && c <= 122));
+        return ((65 <= c && c <= 90) || (97 <= c && c <= 122) );
     }
 }

@@ -64,6 +64,7 @@ public class ReporteNegocio {
         lista.add(otros);
         guardar(lista);
     }
+
     private void guardar(LinkedList<Double> lista) {
         double perros = lista.get(0);
         double gatos = lista.get(1);
