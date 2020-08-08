@@ -70,7 +70,7 @@ public class MailAtencion {
             return;
         }
         atencionNegocio.registrar(fecha, descripcion, diagnostico, cliente_id, veterinario_id, mascota_id);
-        ClienteSMTP.sendMail(destinatario, "REGISTRAR ATENCION", Cadenas.REGISTRO_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "REGISTRAR ATENCION", Cadenas.REGISTRO_SUCCESS + Cadenas.ATENCION_REGISTER_SUCCESS);
     }
 
     public void modificar(Analex analex, String destinatario) throws Exception {
@@ -147,7 +147,7 @@ public class MailAtencion {
             return;
         }
         atencionNegocio.modificar(id, fecha, descripcion, diagnostico, cliente_id, veterinario_id, mascota_id);
-        ClienteSMTP.sendMail(destinatario, "MODIFICAR ATENCION", Cadenas.MODIFICAR_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "MODIFICAR ATENCION", Cadenas.MODIFICAR_SUCCESS + Cadenas.ATENCION_MODIFIED_SUCCESS);
 
     }
 
@@ -166,7 +166,7 @@ public class MailAtencion {
             return;
         }
         atencionNegocio.eliminar(id);
-        ClienteSMTP.sendMail(destinatario, "ELIMINAR ATENCION", Cadenas.ELIMINAR_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "ELIMINAR ATENCION", Cadenas.ELIMINAR_SUCCESS + Cadenas.ATENCION_DELETED_SUCCESS);
     }
 
     public void listar(Analex analex, String destinatario) throws Exception {

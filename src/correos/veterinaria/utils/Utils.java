@@ -239,7 +239,7 @@ public class Utils {
                 "ELIMINARVENTA[10]",
                 //CU7 Gestionar Atencion
                 "REGISTRARATENCION[\"02-08-2020\"][\"el animal tenia moquillo\"][\"darle vitaminas C\"][1][1][3]",
-                "MODIFICARATENCION[28][\"03-08-2020\"][_][\"darle vitaminas c y b\"][_][_][_]",
+                "MODIFICARATENCION[28][_][_][\"darle vitaminas c y b\"][_][_][_]",
                 "OBTENERATENCIONES",
                 "ELIMINARATENCION[28]",
                 //CU8 REPORTES

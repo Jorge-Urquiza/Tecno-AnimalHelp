@@ -72,7 +72,6 @@ public class Parser {
     }
 
     public void match(int token) {
-        System.out.println("ESTE ES EL TOKEN QUE ANALIZA " + analex.Preanalisis().getToStr());
         if (analex.Preanalisis().getNombre() == token) {
             analex.Avanzar();
         } else {

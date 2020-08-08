@@ -62,9 +62,10 @@ public class MailVeterinario {
         String direccion = Utils.quitarComillas(analex.Preanalisis().getToStr());
         if (!validarValoresParametros(nombre, apellido, ci, celular, direccion)) {
             ClienteSMTP.sendMail(destinatario, Cadenas.ERROR_PARAM, Cadenas.LONGITUD_FAILED);
+            return;
         }
         veterinarioNegocio.registrar(nombre, apellido, ci, celular, direccion);
-        ClienteSMTP.sendMail(destinatario, "REGISTRAR VETERINARIO", Cadenas.REGISTRO_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "REGISTRAR VETERINARIO", Cadenas.REGISTRO_SUCCESS+ Cadenas.VETERINARIO_REGISTER_SUCCESS);
     }
 
     public void modificar(Analex analex, String destinatario) throws Exception {
@@ -129,9 +130,10 @@ public class MailVeterinario {
                 : String.valueOf(veterinario.getValueAt(0, 5));
         if (!validarValoresParametros(nombre, apellido, ci, celular, direccion)) {
             ClienteSMTP.sendMail(destinatario, Cadenas.ERROR_PARAM, Cadenas.LONGITUD_FAILED);
+            return;
         }
         veterinarioNegocio.modificar(id, nombre, apellido, ci, celular, direccion);
-        ClienteSMTP.sendMail(destinatario, "MODIFICAR VETERINARIO", Cadenas.MODIFICAR_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "MODIFICAR VETERINARIO", Cadenas.MODIFICAR_SUCCESS + Cadenas.VETERINARIO_MODIFIED_SUCCESS);
 
     }
 
@@ -147,9 +149,10 @@ public class MailVeterinario {
         //valido si el num > 0 (no existe id < 1)
         if (id < 1) {
             ClienteSMTP.sendMail(destinatario, Cadenas.ERROR_PARAM, Cadenas.ELIMINAR_FAILED);
+            return;
         }
         veterinarioNegocio.eliminar(id);
-        ClienteSMTP.sendMail(destinatario, "ELIMINAR VETERINARIO", Cadenas.ELIMINAR_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "ELIMINAR VETERINARIO", Cadenas.ELIMINAR_SUCCESS + Cadenas.VETERINARIO_DELETED_SUCCESS);
     }
 
     public void listar(Analex analex, String destinatario) throws Exception {

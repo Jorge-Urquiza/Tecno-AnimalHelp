@@ -5,13 +5,11 @@
  */
 package correos.veterinaria;
 
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.TimerTask;
 import javax.mail.MessagingException;
-
 
 /**
  *
@@ -23,10 +21,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException, FileNotFoundException, MessagingException {
-      char characterValue ='ñ';
-      int asciiValue = (int) characterValue;
+        char characterValue = 'ñ';
+        int asciiValue = (int) characterValue;
         System.out.println(asciiValue);
-        
 
 //cu1
  /*
@@ -67,7 +64,7 @@ public class Main {
          /* producto.eliminar(2);
          */
         //CU5
-       //  MascotaNegocio mascota = new MascotaNegocio();
+        //  MascotaNegocio mascota = new MascotaNegocio();
         //System.out.println(mascota.getMascotas().getDataVector());
         //CU6
         //AtencionNegocio atencion = new AtencionNegocio();

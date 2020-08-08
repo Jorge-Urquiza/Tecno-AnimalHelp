@@ -48,7 +48,7 @@ public class MailProducto {
             return;
         }
         productoNegocio.registrar(nombre, precio, categoria_id);
-        ClienteSMTP.sendMail(destinatario, "REGISTRAR PRODUCTO", Cadenas.REGISTRO_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "REGISTRAR PRODUCTO", Cadenas.REGISTRO_SUCCESS + Cadenas.PRODUCTO_REGISTER_SUCCESS);
     }
 
     public void modificar(Analex analex, String destinatario) throws Exception {
@@ -99,7 +99,7 @@ public class MailProducto {
             return;
         }
         productoNegocio.modificar(id, nombre, precio, categoria_id);
-        ClienteSMTP.sendMail(destinatario, "MODIFICAR PRODUCTO", Cadenas.MODIFICAR_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "MODIFICAR PRODUCTO", Cadenas.MODIFICAR_SUCCESS + Cadenas.PRODUCTO_MODIFIED_SUCCESS);
 
     }
 
@@ -119,7 +119,7 @@ public class MailProducto {
             return ;
         }
         productoNegocio.eliminar(id);
-        ClienteSMTP.sendMail(destinatario, "ELIMINAR PRODUCTO", Cadenas.ELIMINAR_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "ELIMINAR PRODUCTO", Cadenas.ELIMINAR_SUCCESS + Cadenas.PRODUCTO_DELETED_SUCCESS);
     }
 
     public void listar(Analex analex, String destinatario) throws Exception {

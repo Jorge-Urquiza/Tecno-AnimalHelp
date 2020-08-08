@@ -82,7 +82,7 @@ public class MailVenta {
             token = analex.Preanalisis();
         }
         ventaNegocio.registrar(nit, fecha, cliente_id, veterinario_id, lista);
-        ClienteSMTP.sendMail(destinatario, "REGISTRAR VENTA", Cadenas.REGISTRO_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "REGISTRAR VENTA", Cadenas.REGISTRO_SUCCESS+Cadenas.VENTA_REGISTER_SUCCESS);
 
     }
 
@@ -103,6 +103,7 @@ public class MailVenta {
         if (!esValidoParametros(analex.Preanalisis(), destinatario, 2)) {
             return;
         }
+        System.out.println("NIT");
         String nit = (analex.Preanalisis().getNombre() != Token.GB)
                 ? Utils.quitarComillas(analex.Preanalisis().getToStr())
                 : String.valueOf(venta.getValueAt(0, 1));
@@ -112,6 +113,7 @@ public class MailVenta {
         if (!esValidoParametros(analex.Preanalisis(), destinatario, 2)) {
             return;
         }
+        System.out.println("date");
         Date fecha = (analex.Preanalisis().getNombre() != Token.GB)
                 ? Utils.convertirFechas(Utils.quitarComillas(analex.Preanalisis().getToStr()))
                 : ((Date) venta.getValueAt(0, 2));
@@ -121,6 +123,7 @@ public class MailVenta {
         if (!esValidoParametros(analex.Preanalisis(), destinatario, 3)) {
             return;
         }
+        System.out.println("cliente ");
         int cliente_id = (analex.Preanalisis().getNombre() != Token.GB)
                 ? (int) analex.Preanalisis().getAtributo()
                 : (int) (venta.getValueAt(0, 3));
@@ -131,6 +134,7 @@ public class MailVenta {
         if (!esValidoParametros(analex.Preanalisis(), destinatario, 3)) {
             return;
         }
+        System.out.println("veterinario ");
         int veterinario_id = (analex.Preanalisis().getNombre() != Token.GB)
                 ? (int) analex.Preanalisis().getAtributo()
                 : (int) (venta.getValueAt(0, 4));
@@ -138,8 +142,9 @@ public class MailVenta {
             ClienteSMTP.sendMail(destinatario, Cadenas.ERROR_PARAM, Cadenas.LONGITUD_FAILED);
             return;
         }
+        System.out.println("todo");
         ventaNegocio.modificar(id, nit, fecha, cliente_id, veterinario_id);
-        ClienteSMTP.sendMail(destinatario, "MODIFICAR VENTA", Cadenas.MODIFICAR_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "MODIFICAR VENTA", Cadenas.MODIFICAR_SUCCESS+Cadenas.VENTA_MODIFIED_SUCCESS);
     }
 
     public void eliminar(Analex analex, String destinatario) throws Exception {
@@ -159,7 +164,7 @@ public class MailVenta {
             return;
         }
         ventaNegocio.eliminar(id);
-        ClienteSMTP.sendMail(destinatario, "ELIMINAR VENTA", Cadenas.ELIMINAR_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "ELIMINAR VENTA", Cadenas.ELIMINAR_SUCCESS +Cadenas.VENTA_DELETED_SUCCESS);
     }
 
     public void listar(Analex analex, String destinatario) throws Exception {

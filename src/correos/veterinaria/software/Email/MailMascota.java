@@ -63,7 +63,7 @@ public class MailMascota {
             return;
         }
         mascotaNegocio.registrar(nombre, raza, color, tipo, cliente_id);
-        ClienteSMTP.sendMail(destinatario, "REGISTRAR MASCOTA", Cadenas.REGISTRO_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "REGISTRAR MASCOTA", Cadenas.REGISTRO_SUCCESS + Cadenas.MASCOTA_REGISTER_SUCCESS);
     }
 
     public void modificar(Analex analex, String destinatario) throws Exception {
@@ -128,7 +128,7 @@ public class MailMascota {
             return;
         }
         mascotaNegocio.modificar(id, nombre, raza, color, tipo, cliente_id);
-        ClienteSMTP.sendMail(destinatario, "MODIFICAR MASCOTA", Cadenas.MODIFICAR_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "MODIFICAR MASCOTA", Cadenas.MODIFICAR_SUCCESS + Cadenas.MASCOTA_MODIFIED_SUCCESS);
 
     }
 
@@ -136,7 +136,6 @@ public class MailMascota {
         // Obtengo el Siguiente token
         analex.Avanzar();
         Token token = analex.Preanalisis();
-
         analex.Avanzar();
         int id = (int) analex.Preanalisis().getAtributo();
         if (!esValidoParametros(analex.Preanalisis(), destinatario, 4)) {
@@ -144,18 +143,18 @@ public class MailMascota {
         }
         //valido si el num > 0 (no existe id < 1)
         if (id < 1) {
-            ClienteSMTP.sendMail(destinatario, Cadenas.ERROR_PARAM, Cadenas.ELIMINAR_FAILED);
+            ClienteSMTP.sendMail(destinatario, Cadenas.ERROR_PARAM, Cadenas.ELIMINAR_FAILED );
             return;
         }
         mascotaNegocio.eliminar(id);
-        ClienteSMTP.sendMail(destinatario, "ELIMINAR MASCOTA", Cadenas.ELIMINAR_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "ELIMINAR MASCOTA", Cadenas.ELIMINAR_SUCCESS + Cadenas.MASCOTA_DELETED_SUCCESS );
     }
 
     public void listar(Analex analex, String destinatario) throws Exception {
         analex.Avanzar();
         Token token = analex.Preanalisis();
 
-        String Head[] = {"ID", "NOMBRE", "RAZA", "COLOR", "TIPO(1=PERO , 2 = GATO ,3 = OTROS)", "LIENTE ID"};
+        String Head[] = {"ID", "NOMBRE", "RAZA", "COLOR", "TIPO(1=PERO , 2 = GATO ,3 = OTROS)", "CLIENTE ID"};
         String Cabecera = "ANIMALHELP - LISTA DE MASCOTAS";
         Mensaje message = Utils.dibujarTablaHtml(mascotaNegocio.getMascotas(), Head, Cabecera);
         message.setCorreo(destinatario);

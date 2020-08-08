@@ -57,7 +57,7 @@ public class MailCliente {
             return;
         }
         clienteNegocio.registrar(nombre, apellidos, ci, celular);
-        ClienteSMTP.sendMail(destinatario, "REGISTRAR CLIENTE", Cadenas.REGISTRO_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "REGISTRAR CLIENTE", Cadenas.REGISTRO_SUCCESS + Cadenas.CLIENTE_REGISTER_SUCCESS);
     }
 
     public void modificar(Analex analex, String destinatario) throws Exception {
@@ -99,7 +99,8 @@ public class MailCliente {
         int ci = (analex.Preanalisis().getNombre() != Token.GB)
                 ? (int) analex.Preanalisis().getAtributo()
                 // posicion de la fila del defaultTableModel
-                : (int) veterinario.getValueAt(0, 3);
+                : Integer.parseInt(String.valueOf(veterinario.getValueAt(0, 3)));
+        
         analex.Avanzar();
         analex.Avanzar();
         analex.Avanzar();
@@ -114,7 +115,7 @@ public class MailCliente {
             return;
         }
         clienteNegocio.modificar(id, nombre, apellido, ci, celular);
-        ClienteSMTP.sendMail(destinatario, "MODIFICAR CLIENTE", Cadenas.MODIFICAR_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "MODIFICAR CLIENTE", Cadenas.MODIFICAR_SUCCESS+ Cadenas.CLIENTE_MODIFIED_SUCCESS);
 
     }
 
@@ -132,7 +133,7 @@ public class MailCliente {
             return ;
         }
         clienteNegocio.eliminar(id);
-        ClienteSMTP.sendMail(destinatario, "ELIMINAR CLIENTE", Cadenas.ELIMINAR_SUCCESS);
+        ClienteSMTP.sendMail(destinatario, "ELIMINAR CLIENTE", Cadenas.ELIMINAR_SUCCESS + Cadenas.CLIENTE_DELETED_SUCCESS);
     }
 
     public void listar(Analex analex, String destinatario) throws Exception {
